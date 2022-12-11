@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, Link } from 'react-router-dom';
-import { bg, imageData } from './images';
-import data from './data';
+import { data, bg, imageData } from './data';
 import '../styles/App.css';
 
 function App() {
@@ -62,6 +61,7 @@ function Hero() {
 function Products() {
   let [shoes] = useState(data);
   let [shoesImage] = useState(imageData);
+
   return (
     <>
       <div className='container'>
@@ -92,14 +92,13 @@ function ProductCard(props) {
 }
 
 function Details() {
+  let [shoesImage] = useState(imageData);
+
   return (
     <div className='container'>
       <div className='row'>
         <div className='col-md-6'>
-          <img
-            src='https://codingapple1.github.io/shop/shoes1.jpg'
-            width='100%'
-          />
+          <img src={shoesImage[0]} width='100%' />
         </div>
         <div className='col-md-6'>
           <h4 className='pt-5'>Product Name</h4>
