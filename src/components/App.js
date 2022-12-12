@@ -7,6 +7,7 @@ import '../styles/App.css';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);
+  let [sorted, setSorted] = useState(false);
 
   return (
     <div className='App'>
@@ -20,16 +21,26 @@ function App() {
               <Button
                 className='sort-button'
                 variant='danger'
-                shoes={shoes}
                 onClick={() => {
                   let shoesDataCopy = [...shoes];
-                  shoesDataCopy.sort((a, b) => {
-                    return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
-                  });
-                  setShoes(shoesDataCopy);
-                  console.log(shoes);
 
-                  console.log(shoes.find((x) => x.id === 2));
+                  sorted
+                    ? shoesDataCopy.sort((a, b) => {
+                        return a.title < b.title
+                          ? 1
+                          : a.title > b.title
+                          ? -1
+                          : 0;
+                      })
+                    : shoesDataCopy.sort((a, b) => {
+                        return a.title < b.title
+                          ? -1
+                          : a.title > b.title
+                          ? 1
+                          : 0;
+                      });
+                  setSorted(!sorted);
+                  setShoes(shoesDataCopy);
                 }}
               >
                 Sort by Name
@@ -89,7 +100,7 @@ function TopNavbar() {
               navigate('/detail/0');
             }}
           >
-            Featured
+            Details
           </Nav.Link>
           <Nav.Link
             onClick={() => {
@@ -122,8 +133,9 @@ function Products(props) {
             return (
               <ProductCard
                 key={shoe.id}
+                id={shoe.id}
                 shoes={shoe}
-                shoesImage={shoesImage[i]}
+                shoesImage={shoesImage}
               ></ProductCard>
             );
           })}
@@ -134,9 +146,19 @@ function Products(props) {
 }
 
 function ProductCard(props) {
+  let navigate = useNavigate();
+
   return (
     <div className='col-md-4 product-card'>
-      <img src={props.shoesImage} alt='#' width='80%' />
+      <img
+        className='product-image'
+        src={props.shoesImage[props.id]}
+        alt='#'
+        width='80%'
+        onClick={() => {
+          navigate(`/detail/` + props.id);
+        }}
+      />
       <h4>{props.shoes.title}</h4>
       <p>${props.shoes.price}</p>
     </div>

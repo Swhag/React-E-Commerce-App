@@ -16,3 +16,8 @@
 .sort-button {
   margin: 10px;
 }
+
+.product-image:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
