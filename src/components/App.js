@@ -1,38 +1,75 @@
 import React, { useState } from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Routes, Route, Link } from 'react-router-dom';
-import { data, bg, imageData } from './data';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
+import { bg, shoesImage, shoesData } from './data';
+import Details from '../pages/detail';
 import '../styles/App.css';
 
 function App() {
+  let [shoes, setShoes] = useState(shoesData);
+
   return (
     <div className='App'>
+      <TopNavbar></TopNavbar>
       <Routes>
         <Route
           path='/'
           element={
             <>
-              <TopNavbar></TopNavbar>
               <Hero></Hero>
-              <Products></Products>
+              <Button
+                className='sort-button'
+                variant='danger'
+                shoes={shoes}
+                onClick={() => {
+                  let shoesDataCopy = [...shoes];
+                  shoesDataCopy.sort((a, b) => {
+                    return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
+                  });
+                  setShoes(shoesDataCopy);
+                  console.log(shoes);
+
+                  console.log(shoes.find((x) => x.id === 2));
+                }}
+              >
+                Sort by Name
+              </Button>
+              <Products shoes={shoes}></Products>
             </>
           }
         />
         <Route
-          path='/detail'
+          path='/detail/:id'
           element={
             <>
-              <TopNavbar></TopNavbar>
-              <Details></Details>
+              <Details shoes={shoes} shoesImage={shoesImage}></Details>
             </>
           }
         />
+
+        <Route path='/about' element={<About />}>
+          <Route path='member' element={<>Staff Members</>} />
+          <Route path='location' element={<>Store location</>} />
+        </Route>
+
+        <Route path='*' element={<>Error 404: Unable to reach this page</>} />
       </Routes>
     </div>
   );
 }
 
+function About() {
+  return (
+    <div>
+      <h4>About Page</h4>
+      <Outlet></Outlet>
+    </div>
+  );
+}
+
 function TopNavbar() {
+  let navigate = useNavigate();
+
   return (
     <Navbar bg='light' variant='light'>
       <Container>
@@ -40,9 +77,27 @@ function TopNavbar() {
           KickStore
         </Navbar.Brand>
         <Nav className='me-auto'>
-          <Nav.Link href='/'>Home</Nav.Link>
-          <Nav.Link href='detail'>Detail</Nav.Link>
-          <Nav.Link href='#cart'>Cart</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            Home
+          </Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate('/detail/0');
+            }}
+          >
+            Featured
+          </Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate('/about');
+            }}
+          >
+            About
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
@@ -58,15 +113,12 @@ function Hero() {
   );
 }
 
-function Products() {
-  let [shoes] = useState(data);
-  let [shoesImage] = useState(imageData);
-
+function Products(props) {
   return (
     <>
       <div className='container'>
         <div className='row'>
-          {shoes.map((shoe, i) => {
+          {props.shoes.map((shoe, i) => {
             return (
               <ProductCard
                 key={shoe.id}
@@ -84,29 +136,9 @@ function Products() {
 function ProductCard(props) {
   return (
     <div className='col-md-4 product-card'>
-      <img src={props.shoesImage} width='80%' />
+      <img src={props.shoesImage} alt='#' width='80%' />
       <h4>{props.shoes.title}</h4>
       <p>${props.shoes.price}</p>
-    </div>
-  );
-}
-
-function Details() {
-  let [shoesImage] = useState(imageData);
-
-  return (
-    <div className='container'>
-      <div className='row'>
-        <div className='col-md-6'>
-          <img src={shoesImage[0]} width='100%' />
-        </div>
-        <div className='col-md-6'>
-          <h4 className='pt-5'>Product Name</h4>
-          <p>More Information</p>
-          <p>$70</p>
-          <button className='btn btn-danger'>Add to Cart</button>
-        </div>
-      </div>
     </div>
   );
 }

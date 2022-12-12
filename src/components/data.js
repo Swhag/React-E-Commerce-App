@@ -3,9 +3,9 @@ import shoes1 from '../images/shoes1.jpg';
 import shoes2 from '../images/shoes2.jpg';
 import shoes3 from '../images/shoes3.jpg';
 
-let imageData = [shoes1, shoes2, shoes3];
+let shoesImage = [shoes1, shoes2, shoes3];
 
-let data = [
+let shoesData = [
   {
     id: 0,
     title: 'White and Black',
@@ -28,5 +28,4 @@ let data = [
   },
 ];
 
-export default data;
-export { data, bg, imageData };
+export { bg, shoesImage, shoesData };
