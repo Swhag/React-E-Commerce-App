@@ -25,22 +25,10 @@ function App() {
                   let shoesDataCopy = [...shoes];
 
                   sorted
-                    ? shoesDataCopy.sort((a, b) => {
-                        return a.title < b.title
-                          ? 1
-                          : a.title > b.title
-                          ? -1
-                          : 0;
-                      })
-                    : shoesDataCopy.sort((a, b) => {
-                        return a.title < b.title
-                          ? -1
-                          : a.title > b.title
-                          ? 1
-                          : 0;
-                      });
+                    ? setShoes(sortByNameReverse(shoesDataCopy))
+                    : setShoes(sortByName(shoesDataCopy));
+
                   setSorted(!sorted);
-                  setShoes(shoesDataCopy);
                 }}
               >
                 Sort by Name
@@ -163,6 +151,22 @@ function ProductCard(props) {
       <p>${props.shoes.price}</p>
     </div>
   );
+}
+
+function sortByName(arr) {
+  arr.sort((a, b) => {
+    return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
+  });
+
+  return arr;
+}
+
+function sortByNameReverse(arr) {
+  arr.sort((a, b) => {
+    return a.title < b.title ? 1 : a.title > b.title ? -1 : 0;
+  });
+
+  return arr;
 }
 
 export default App;
