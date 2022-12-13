@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import { bg, shoesImage, shoesData } from './data';
+import { sortByName, sortByNameReverse } from './utils';
 import Details from '../pages/detail';
 import '../styles/App.css';
 
@@ -151,22 +152,6 @@ function ProductCard(props) {
       <p>${props.shoes.price}</p>
     </div>
   );
-}
-
-function sortByName(arr) {
-  arr.sort((a, b) => {
-    return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
-  });
-
-  return arr;
-}
-
-function sortByNameReverse(arr) {
-  arr.sort((a, b) => {
-    return a.title < b.title ? 1 : a.title > b.title ? -1 : 0;
-  });
-
-  return arr;
 }
 
 export default App;
