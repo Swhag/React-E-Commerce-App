@@ -5,6 +5,7 @@ import { bg, shoesImage, shoesData } from './data';
 import { sortByName, sortByNameReverse } from './utils';
 import Details from '../pages/detail';
 import '../styles/App.css';
+import axios from 'axios';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);

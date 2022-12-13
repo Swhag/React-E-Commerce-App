@@ -1,0 +1,22 @@
+[
+  {
+    "id": 3,
+    "title": "Vans Fresh",
+    "content": "Made in Germany",
+    "price": 50
+  },
+
+  {
+    "id": 4,
+    "title": "FitVille Runner",
+    "content": "Made in USA",
+    "price": 65
+  },
+
+  {
+    "id": 5,
+    "title": "Nadiddas Originals",
+    "content": "Made in USA",
+    "price": 80
+  }
+]
