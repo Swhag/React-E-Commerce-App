@@ -4,17 +4,17 @@ import { useParams } from 'react-router-dom';
 function Details(props) {
   let { id } = useParams();
   let currentShoes = props.shoes.find((x) => x.id === parseInt(id));
+  let [inputAlert, setInputAlert] = useState(false);
   let [alert, setAlert] = useState(true);
-
   let [count, setCount] = useState(60);
 
   useEffect(() => {
     setTimeout(() => {
       setAlert(false);
-    }, 600000);
+    }, 60000);
 
     setTimeout(() => {
-      setCount(count - 1);
+      return count > 0 ? setCount(count - 1) : 0;
     }, 1000);
   });
 
@@ -34,6 +34,24 @@ function Details(props) {
           <h4 className='pt-5'>{currentShoes.title}</h4>
           <p>{currentShoes.content}</p>
           <p>${currentShoes.price}</p>
+
+          <div className='input-group mb-3'>
+            <input
+              onChange={(e) => {
+                isNaN(Number(e.target.value))
+                  ? setInputAlert(true)
+                  : setInputAlert(false);
+              }}
+              className='form-control'
+              type='text'
+              placeholder='quantity'
+            ></input>
+          </div>
+          {inputAlert ? (
+            <div className='alert alert-danger' role='alert'>
+              Please enter a number
+            </div>
+          ) : null}
           <button className='btn btn-danger'>Add to Cart</button>
         </div>
       </div>
