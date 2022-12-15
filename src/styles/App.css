@@ -1,3 +1,15 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----------------------------------------- */
+/* Apps main-page styling */
+/* ----------------------------------------- */
+
 .main-bg {
   height: 300px;
   background-size: cover;
@@ -39,4 +51,122 @@
 .product-row {
   display: flex;
   align-items: flex-end;
+}
+
+/* ----------------------------------------- */
+/* Details styling */
+/* ----------------------------------------- */
+
+.alert-warning-custom {
+  border: none;
+  background: -webkit-linear-gradient(to right, #e57373, #d500f9);
+  background: linear-gradient(to right, #e57373, #d500f9);
+  color: #fff;
+}
+
+.nav-link {
+  color: #333;
+}
+
+.tab-content-header {
+  margin: 20px 0 20px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.tab-content {
+  padding: 10px;
+}
+
+/* ----------------------------------------- */
+/* Details transition styling */
+/* ----------------------------------------- */
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+/* ----------------------------------------- */
+/* Cart styling */
+/* ----------------------------------------- */
+
+.cart-bg {
+  background: #e0e0e0;
+  min-height: 100vh;
+}
+
+.cart-top {
+  margin-top: 50px;
+}
+
+.img-fluid {
+  margin-right: 20px;
+}
+
+/* ----------------------------------------- */
+/* Footer styling */
+/* ----------------------------------------- */
+
+.footer {
+  border-top: 1px solid #4200ff;
+  margin: 5rem;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+.footer .footer-site-logo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.footer .footer-site-logo a {
+  color: #4200ff;
+}
+.footer .nav-links {
+  padding: 0;
+  margin: 0;
+}
+.footer .nav-links li {
+  display: inline-block;
+}
+.footer .nav-links li a {
+  padding: 10px;
+  color: #000;
+}
+.footer .nav-links li a:hover {
+  color: #4200ff;
+}
+.footer .social h3 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000;
+}
+.footer .social ul li {
+  display: inline-block;
+}
+.footer .social ul li a {
+  display: inline-block;
+  padding: 10px;
+}
+.footer .social ul li.in a {
+  color: #df588a;
+}
+.footer .social ul li.tw a {
+  color: #15b8ff;
+}
+.footer .social ul li.fb a {
+  color: #3742d0;
+}
+.footer .social ul li.dr a {
+  color: #fa38c1;
+}
+.footer .social ul li.pin a {
+  color: #dd4d5a;
+}
+.footer .copyright {
+  color: #999999;
 }

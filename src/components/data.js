@@ -5,8 +5,21 @@ import shoes3 from '../images/shoes3.jpg';
 import shoes4 from '../images/shoes4.PNG';
 import shoes5 from '../images/shoes5.PNG';
 import shoes6 from '../images/shoes6.PNG';
+import shoes7 from '../images/shoes7.PNG';
+import shoes8 from '../images/shoes8.PNG';
+import shoes9 from '../images/shoes9.PNG';
 
-let shoesImage = [shoes1, shoes2, shoes3, shoes4, shoes5, shoes6];
+let shoesImage = [
+  shoes1,
+  shoes2,
+  shoes3,
+  shoes4,
+  shoes5,
+  shoes6,
+  shoes7,
+  shoes8,
+  shoes9,
+];
 
 let shoesData = [
   {

@@ -3,48 +3,60 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import { bg, shoesImage, shoesData } from './data';
 import { sortByName, sortByNameReverse } from './utils';
-import Details from '../pages/detail';
+import Details from '../pages/Detail';
+import Cart from '../pages/Cart';
+import Footer from '../pages/Footer';
 import '../styles/App.css';
+// import '../styles/icomoon.css';
 import axios from 'axios';
 
 function App() {
-  useEffect(() => {});
-
   let [shoes, setShoes] = useState(shoesData);
   let [sorted, setSorted] = useState(false);
-  let [fetched, setFetched] = useState();
+  let [loadBtn, setLoadBtn] = useState('Load More');
+  let [loaded, setLoaded] = useState(0);
+
+  let productList = [
+    'https://swhag.github.io/shoesData.json',
+    'https://swhag.github.io/shoesData2.json',
+  ];
 
   return (
     <div className='App'>
       <TopNavbar></TopNavbar>
+
       <Routes>
         <Route
           path='/'
           element={
             <>
               <Hero></Hero>
-
               <Products shoes={shoes}></Products>
+
               <div className='button-container'>
                 <button
                   className='btn btn-secondary'
                   type='button'
                   onClick={() => {
-                    let shoesDataCopy = [...shoes];
+                    loaded < productList.length
+                      ? axios
+                          .get(productList[loaded])
+                          .then((res) => {
+                            let shoesDataCopy = [...shoes, ...res.data];
 
-                    axios
-                      .get('https://swhag.github.io/shoesData.json')
-                      .then((res) => {
-                        setFetched(res.data);
-                        console.log(fetched);
-                      })
-                      .catch(() => {
-                        console.error('Data request failed');
-                      });
+                            setShoes(shoesDataCopy);
+                            setLoaded(loaded + 1);
+                          })
+                          .catch(() => {
+                            console.error('Failed to Fetch Data');
+                          })
+                      : setShoes(shoesData);
+                    setLoaded(0);
                   }}
                 >
-                  Load More
+                  {loadBtn}
                 </button>
+
                 <button
                   className='btn btn-secondary'
                   onClick={() => {
@@ -64,7 +76,6 @@ function App() {
           }
         />
         ---------------------------------------------------
-        ---------------------------------------------------
         <Route
           path='/detail/:id'
           element={
@@ -74,6 +85,14 @@ function App() {
           }
         />
         ---------------------------------------------------
+        <Route
+          path='/cart'
+          element={
+            <>
+              <Cart></Cart>
+            </>
+          }
+        ></Route>
         ---------------------------------------------------
         <Route path='/about' element={<About />}>
           <Route path='member' element={<>Staff Members</>} />
@@ -81,6 +100,8 @@ function App() {
         </Route>
         <Route path='*' element={<>Error 404: Unable to reach this page</>} />
       </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }
@@ -125,6 +146,13 @@ function TopNavbar() {
           >
             About
           </Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate('/cart');
+            }}
+          >
+            Cart
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
@@ -141,9 +169,19 @@ function Hero() {
 }
 
 function Products(props) {
+  let [fadeIn, setFadeIn] = useState('');
+
+  useEffect(() => {
+    setFadeIn('end');
+
+    return () => {
+      setFadeIn('');
+    };
+  }, []);
+
   return (
     <>
-      <div className='container'>
+      <div className={`container start ${fadeIn}`}>
         <div className='row product-row'>
           {props.shoes.map((shoe, i) => {
             return (
