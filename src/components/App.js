@@ -7,7 +7,7 @@ import Details from '../pages/Detail';
 import Cart from '../pages/Cart';
 import Footer from '../pages/Footer';
 import '../styles/App.css';
-// import '../styles/icomoon.css';
+import '../styles/icomoon.css';
 import axios from 'axios';
 
 function App() {
