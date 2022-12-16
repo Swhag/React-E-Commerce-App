@@ -40,7 +40,7 @@ function Details(props) {
           <img src={props.shoesImage[id]} alt='#' width='100%' />
         </div>
         <div className='col-md-6 product-card'>
-          <h4 className='pt-5'>{currentShoes.title}</h4>
+          <h4 className='pt-5'>{currentShoes.name}</h4>
           <p>{currentShoes.content}</p>
           <p>${currentShoes.price}</p>
 
@@ -100,7 +100,7 @@ function TabContent({ tab, shoes }) {
   let [fadeIn, setFadeIn] = useState('');
   let content = [
     <>
-      <div className='tab-content-header'>{shoes.title}</div>
+      <div className='tab-content-header'>{shoes.name}</div>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut,
         asperiores necessitatibus nulla error dolore magni. Lorem ipsum dolor

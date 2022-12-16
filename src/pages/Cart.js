@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { shoesImage, shoesData } from '../components/data';
 
 function Cart(props) {
   let [fadeIn, setFadeIn] = useState('');
+  let state = useSelector((state) => {
+    return state;
+  });
+  console.log(state.cartItem[0].id);
 
   useEffect(() => {
     setFadeIn('end');
@@ -37,46 +43,10 @@ function Cart(props) {
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope='row' className='border-0'>
-                        <div className='p-2'>
-                          <img
-                            src='https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg'
-                            alt=''
-                            width='70'
-                            className='img-fluid rounded shadow-sm'
-                          />
-                          <div className='ml-3 d-inline-block align-middle'>
-                            <h5 className='mb-0'>
-                              <a
-                                href='#'
-                                className='text-dark d-inline-block align-middle'
-                              >
-                                Timex Unisex Originals
-                              </a>
-                            </h5>
-                            <span className='text-muted font-weight-normal font-italic d-block'>
-                              Category: Watches
-                            </span>
-                          </div>
-                        </div>
-                      </th>
-                      <td className='border-0 align-middle'>
-                        <strong>$79.00</strong>
-                      </td>
-                      <td className='border-0 align-middle'>
-                        <strong>3</strong>
-                      </td>
-                      <td className='border-0 align-middle'>
-                        <a href='#' className='text-dark'>
-                          <i className='fa fa-trash'></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
                       <th scope='row'>
                         <div className='p-2'>
                           <img
-                            src='https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg'
+                            src={shoesImage[state.cartItem[0].id]}
                             alt=''
                             width='70'
                             className='img-fluid rounded shadow-sm'
@@ -84,51 +54,17 @@ function Cart(props) {
                           <div className='ml-3 d-inline-block align-middle'>
                             <h5 className='mb-0'>
                               <a href='#' className='text-dark d-inline-block'>
-                                Lumix camera lense
+                                {shoesData[0].title}
                               </a>
                             </h5>
                             <span className='text-muted font-weight-normal font-italic'>
-                              Category: Electronics
+                              Size: 9
                             </span>
                           </div>
                         </div>
                       </th>
                       <td className='align-middle'>
-                        <strong>$79.00</strong>
-                      </td>
-                      <td className='align-middle'>
-                        <strong>3</strong>
-                      </td>
-                      <td className='align-middle'>
-                        <a href='#' className='text-dark'>
-                          <i className='fa fa-trash'></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope='row'>
-                        <div className='p-2'>
-                          <img
-                            src='https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg'
-                            alt=''
-                            width='70'
-                            className='img-fluid rounded shadow-sm'
-                          />
-                          <div className='ml-3 d-inline-block align-middle'>
-                            <h5 className='mb-0'>
-                              <a href='#' className='text-dark d-inline-block'>
-                                Gray Nike running shoe
-                              </a>
-                            </h5>
-                            <span className='text-muted font-weight-normal font-italic'>
-                              Category: Fashion
-                            </span>
-                          </div>
-                        </div>
-                      </th>
-
-                      <td className='align-middle'>
-                        <strong>$79.00</strong>
+                        <strong>${shoesData[0].price}</strong>
                       </td>
                       <td className='align-middle'>
                         <strong>3</strong>
@@ -146,7 +82,7 @@ function Cart(props) {
           </div>
           <div className='row py-5 p-4 bg-white rounded shadow-sm'>
             <div className='col-lg-6'>
-              <div className='bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold'>
+              <div className='bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold section-title'>
                 Coupon code
               </div>
               <div className='p-4'>
@@ -171,7 +107,7 @@ function Cart(props) {
                   </div>
                 </div>
               </div>
-              <div className='bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold'>
+              <div className='bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold section-title'>
                 Instructions for seller
               </div>
               <div className='p-4'>
@@ -188,7 +124,7 @@ function Cart(props) {
               </div>
             </div>
             <div className='col-lg-6'>
-              <div className='bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold'>
+              <div className='bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold section-title'>
                 Order summary
               </div>
               <div className='p-4'>
@@ -220,7 +156,7 @@ function Cart(props) {
                   href='#'
                   className='btn btn-dark rounded-pill py-2 btn-block'
                 >
-                  Procceed to checkout
+                  Proceed to checkout
                 </a>
               </div>
             </div>

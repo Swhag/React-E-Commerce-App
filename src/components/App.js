@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
+import axios from 'axios';
+
 import { bg, shoesImage, shoesData } from './data';
 import { sortByName, sortByNameReverse } from './utils';
 import Details from '../pages/Detail';
@@ -8,7 +10,6 @@ import Cart from '../pages/Cart';
 import Footer from '../pages/Footer';
 import '../styles/App.css';
 import '../styles/icomoon.css';
-import axios from 'axios';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);
@@ -185,12 +186,7 @@ function Products(props) {
         <div className='row product-row'>
           {props.shoes.map((shoe, i) => {
             return (
-              <ProductCard
-                key={shoe.id}
-                id={shoe.id}
-                shoes={shoe}
-                shoesImage={shoesImage}
-              ></ProductCard>
+              <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
             );
           })}
         </div>
@@ -206,14 +202,14 @@ function ProductCard(props) {
     <div className='col-md-4 product-card'>
       <img
         className='product-image'
-        src={props.shoesImage[props.id]}
+        src={shoesImage[props.id]}
         alt='#'
         width='80%'
         onClick={() => {
           navigate(`/detail/` + props.id);
         }}
       />
-      <h4>{props.shoes.title}</h4>
+      <h4>{props.shoes.name}</h4>
       <p>${props.shoes.price}</p>
       <button className='btn add-btn'>Add to Cart</button>
     </div>
