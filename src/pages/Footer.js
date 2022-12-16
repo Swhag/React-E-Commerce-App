@@ -32,7 +32,7 @@ function Footer() {
             </ul>
 
             <div className='social mb-4'>
-              <h3>Stay in touch</h3>
+              <h3>Stay Connected</h3>
               <ul className='list-unstyled'>
                 <li className='in'>
                   <a href='#'>
