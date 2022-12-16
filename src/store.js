@@ -17,8 +17,8 @@ let cartItem = createSlice({
     },
   ],
   reducers: {
-    changeCount(state) {
-      state.count++;
+    addCount(state, a) {
+      state[a].count++;
     },
   },
 });
@@ -28,3 +28,5 @@ export default configureStore({
     cartItem: cartItem.reducer,
   },
 });
+
+export let { addCount } = cartItem.actions;

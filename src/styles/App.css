@@ -112,14 +112,27 @@
   font-weight: 600;
 }
 
+.count-btn {
+  border-style: none;
+  background-color: #fff;
+  margin: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.item-count {
+  border: 1px solid #e0e0e0;
+  padding: 4px;
+}
+
 /* ----------------------------------------- */
 /* Footer styling */
 /* ----------------------------------------- */
 
 .footer {
   border-top: 1px solid #4200ff;
-  margin: 5rem 5rem 0 5rem;
-  padding: 2rem;
+  margin: 3rem 7rem 0 7rem;
+  padding: 1rem;
   font-family: 'Poppins', sans-serif;
 }
 .footer .footer-site-logo {

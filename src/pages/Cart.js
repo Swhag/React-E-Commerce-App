@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { shoesImage, shoesData } from '../components/data';
+import { useSelector, useDispatch } from 'react-redux';
+import { shoesImage } from '../components/data';
+import { addCount } from '../store';
 
 function Cart() {
   let [fadeIn, setFadeIn] = useState('');
-  let state = useSelector((state) => {
-    return state;
-  });
-  console.log(state.cartItem[0].id);
 
   useEffect(() => {
     setFadeIn('end');
@@ -60,9 +57,8 @@ function CartTableHead() {
 }
 
 function CartItems() {
-  let state = useSelector((state) => {
-    return state;
-  });
+  let state = useSelector((state) => state);
+  let Dispatch = useDispatch();
 
   return (
     <tbody>
@@ -93,7 +89,16 @@ function CartItems() {
               <strong>${item.price}</strong>
             </td>
             <td className='align-middle'>
-              <strong>{item.count}</strong>
+              <button className='count-btn'>−</button>
+              <span className='item-count'>{item.count}</span>
+              <button
+                onClick={() => {
+                  dispatchEvent(addCount(i));
+                }}
+                className='count-btn'
+              >
+                +
+              </button>
             </td>
             <td className='align-middle'>
               <a href='#' className='text-dark'>
