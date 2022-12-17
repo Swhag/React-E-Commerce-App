@@ -92,7 +92,7 @@ function CartItems() {
               <button
                 className='count-btn'
                 onClick={() => {
-                  dispatch(removeCount(i));
+                  dispatch(removeCount(item));
                 }}
                 className='count-btn'
               >
@@ -101,7 +101,7 @@ function CartItems() {
               <span className='item-count'>{item.count}</span>
               <button
                 onClick={() => {
-                  dispatch(addCount(i));
+                  dispatch(addCount(item));
                 }}
                 className='count-btn'
               >
@@ -109,9 +109,7 @@ function CartItems() {
               </button>
             </td>
             <td className='align-middle'>
-              <a href='#' className='text-dark'>
-                <i className='fa fa-trash'></i>
-              </a>
+              <i className='fa fa-trash cart-delete-icon'></i>
             </td>
           </tr>
         );

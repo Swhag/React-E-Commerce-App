@@ -120,13 +120,24 @@
   border-style: none;
   background-color: #fff;
   margin: 10px;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .item-count {
   border: 1px solid #e0e0e0;
   padding: 4px;
+}
+
+.cart-delete-icon:hover {
+  cursor: pointer;
+}
+
+.count-btn:active {
+  transform: scale(0.8);
+}
+.cart-delete-icon:active {
+  transform: scale(0.9);
 }
 
 /* ----------------------------------------- */

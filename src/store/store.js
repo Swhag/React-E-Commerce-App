@@ -19,13 +19,32 @@ let cartItem = createSlice({
 
   reducers: {
     removeCount(state, a) {
-      state[a.payload].count--;
+      let item = state.find((item) => item.id === a.payload.id);
+
+      if (item.count <= 1) {
+        state.forEach((item, index) => {
+          if (item.id === a.payload.id) {
+            state.splice(index, 1);
+          }
+        });
+      } else item.count--;
     },
+
     addCount(state, a) {
-      state[a.payload].count++;
+      let item = state.find((item) => item.id === a.payload.id);
+      item.count++;
     },
+
+    removeItem(state, a) {
+      state.forEach((item, index) => {
+        if (item.id === a.payload.id) {
+          state.splice(index, 1);
+        }
+      });
+    },
+
     addItem(state, a) {
-      let item = state.find((item) => item.name === a.payload.name);
+      let item = state.find((item) => item.id === a.payload.id);
 
       if (item) {
         item.count++;
