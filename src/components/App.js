@@ -4,7 +4,6 @@ import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
 
 import { bg, shoesImage, shoesData } from './data';
-import { sortByName, sortByNameReverse } from './utils';
 import Details from '../pages/Detail';
 import Cart from '../pages/Cart';
 import Footer from '../pages/Footer';
@@ -12,7 +11,6 @@ import '../styles/App.css';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);
-  let [sorted, setSorted] = useState(false);
   let [loadBtn, setLoadBtn] = useState('Load More');
   let [loaded, setLoaded] = useState(0);
 
@@ -55,21 +53,6 @@ function App() {
                   }}
                 >
                   {loadBtn}
-                </button>
-
-                <button
-                  className='btn btn-secondary'
-                  onClick={() => {
-                    let shoesDataCopy = [...shoes];
-
-                    sorted
-                      ? setShoes(sortByNameReverse(shoesDataCopy))
-                      : setShoes(sortByName(shoesDataCopy));
-
-                    setSorted(!sorted);
-                  }}
-                >
-                  Sort by Name
                 </button>
               </div>
             </>
