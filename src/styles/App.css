@@ -10,21 +10,38 @@
 /* Apps main-page styling */
 /* ----------------------------------------- */
 
-.main-bg {
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  /* background-image: url('../images/bg.png'); */
-}
+/* Navbar styling */
+/* ----------------------------------------- */
 
-.site-name {
-  font-weight: 500;
-}
-
-.site-name:hover {
+.navbar-brand:hover {
   cursor: pointer;
 }
 
+.nav-item:hover {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Hero styling */
+/* ----------------------------------------- */
+.hero {
+  min-height: 30rem;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center center;
+}
+
+/* .pb-3 {
+  padding-bottom: 1rem !important;
+} */
+
+/* Product section styling */
+/* ----------------------------------------- */
 .product-card {
   margin-top: 50px;
   text-align: center;
@@ -100,7 +117,7 @@
 /* ----------------------------------------- */
 
 .cart-bg {
-  background: #e0e0e0;
+  background: #f8f9fa;
   min-height: 100vh;
 }
 

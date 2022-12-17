@@ -8,6 +8,8 @@ import shoes6 from '../images/shoes6.PNG';
 import shoes7 from '../images/shoes7.PNG';
 import shoes8 from '../images/shoes8.PNG';
 import shoes9 from '../images/shoes9.PNG';
+import banner from '../images/banner.jpg';
+import banner2 from '../images/banner.alt.jpg';
 
 let shoesImage = [
   shoes1,
@@ -44,4 +46,4 @@ let shoesData = [
   },
 ];
 
-export { bg, shoesImage, shoesData };
+export { bg, shoesImage, shoesData, banner, banner2 };

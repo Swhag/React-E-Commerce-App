@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { bg, shoesImage, shoesData } from './data';
+import { shoesImage, shoesData } from './data';
 import { addItem } from '../store/store';
 import Details from '../pages/Detail';
 import Cart from '../pages/Cart';
-import Footer from '../pages/Footer';
+import TopNavbar from './Navbar';
+import Hero from './Hero';
+import Footer from './Footer';
 import '../styles/App.css';
 
 function App() {
@@ -23,70 +24,72 @@ function App() {
 
   return (
     <div className='App'>
-      <TopNavbar></TopNavbar>
+      <div className='container'>
+        <TopNavbar></TopNavbar>
 
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <>
-              <Hero></Hero>
-              <Products shoes={shoes}></Products>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <>
+                <Hero></Hero>
+                <Products shoes={shoes}></Products>
 
-              <div className='button-container'>
-                <button
-                  className='btn btn-secondary'
-                  type='button'
-                  onClick={() => {
-                    loaded < productList.length
-                      ? axios
-                          .get(productList[loaded])
-                          .then((res) => {
-                            let shoesDataCopy = [...shoes, ...res.data];
+                <div className='button-container'>
+                  <button
+                    className='btn btn-secondary'
+                    type='button'
+                    onClick={() => {
+                      loaded < productList.length
+                        ? axios
+                            .get(productList[loaded])
+                            .then((res) => {
+                              let shoesDataCopy = [...shoes, ...res.data];
 
-                            setShoes(shoesDataCopy);
-                            setLoaded(loaded + 1);
-                          })
-                          .catch(() => {
-                            console.error('Failed to Fetch Data');
-                          })
-                      : setShoes(shoesData);
-                    setLoaded(0);
-                  }}
-                >
-                  {loadBtn}
-                </button>
-              </div>
-            </>
-          }
-        />
-        ---------------------------------------------------
-        <Route
-          path='/detail/:id'
-          element={
-            <>
-              <Details shoes={shoes} shoesImage={shoesImage}></Details>
-            </>
-          }
-        />
-        ---------------------------------------------------
-        <Route
-          path='/cart'
-          element={
-            <>
-              <Cart></Cart>
-            </>
-          }
-        ></Route>
-        ---------------------------------------------------
-        <Route path='/about' element={<About />}>
-          <Route path='member' element={<>Staff Members</>} />
-          <Route path='location' element={<>Store location</>} />
-        </Route>
-        <Route path='*' element={<>Error 404: Unable to reach this page</>} />
-      </Routes>
+                              setShoes(shoesDataCopy);
+                              setLoaded(loaded + 1);
+                            })
+                            .catch(() => {
+                              console.error('Failed to Fetch Data');
+                            })
+                        : setShoes(shoesData);
+                      setLoaded(0);
+                    }}
+                  >
+                    {loadBtn}
+                  </button>
+                </div>
+              </>
+            }
+          />
+          ---------------------------------------------------
+          <Route
+            path='/detail/:id'
+            element={
+              <>
+                <Details shoes={shoes} shoesImage={shoesImage}></Details>
+              </>
+            }
+          />
+          ---------------------------------------------------
+          <Route
+            path='/cart'
+            element={
+              <>
+                <Cart></Cart>
+              </>
+            }
+          ></Route>
+          ---------------------------------------------------
+          <Route path='/about' element={<About />}>
+            <Route path='member' element={<>Staff Members</>} />
+            <Route path='location' element={<>Store location</>} />
+          </Route>
+          <Route path='*' element={<>Error 404: Unable to reach this page</>} />
+        </Routes>
 
-      <Footer></Footer>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }
@@ -97,64 +100,6 @@ function About() {
       <h4>About Page</h4>
       <Outlet></Outlet>
     </div>
-  );
-}
-
-function TopNavbar() {
-  let navigate = useNavigate();
-
-  return (
-    <Navbar bg='light' variant='light'>
-      <Container>
-        <Navbar.Brand
-          className='site-name'
-          onClick={() => {
-            navigate('/');
-          }}
-        >
-          KickStore
-        </Navbar.Brand>
-        <Nav className='me-auto'>
-          <Nav.Link
-            onClick={() => {
-              navigate('/');
-            }}
-          >
-            Home
-          </Nav.Link>
-          <Nav.Link
-            onClick={() => {
-              navigate('/detail/0');
-            }}
-          >
-            Details
-          </Nav.Link>
-          <Nav.Link
-            onClick={() => {
-              navigate('/about');
-            }}
-          >
-            About
-          </Nav.Link>
-          <Nav.Link
-            onClick={() => {
-              navigate('/cart');
-            }}
-          >
-            Cart
-          </Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
-  );
-}
-
-function Hero() {
-  return (
-    <div
-      className='main-bg'
-      style={{ backgroundImage: 'url(' + bg + ')' }}
-    ></div>
   );
 }
 
