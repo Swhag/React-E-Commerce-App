@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { bg, shoesImage, shoesData } from './data';
+import { addItem } from '../store/store';
 import Details from '../pages/Detail';
 import Cart from '../pages/Cart';
 import Footer from '../pages/Footer';
@@ -104,7 +106,12 @@ function TopNavbar() {
   return (
     <Navbar bg='light' variant='light'>
       <Container>
-        <Navbar.Brand className='site-name' href='/'>
+        <Navbar.Brand
+          className='site-name'
+          onClick={() => {
+            navigate('/');
+          }}
+        >
           KickStore
         </Navbar.Brand>
         <Nav className='me-auto'>
@@ -179,6 +186,8 @@ function Products(props) {
 
 function ProductCard(props) {
   let navigate = useNavigate();
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
 
   return (
     <div className='col-md-4 product-card'>
@@ -193,7 +202,14 @@ function ProductCard(props) {
       />
       <h4>{props.shoes.name}</h4>
       <p>${props.shoes.price}</p>
-      <button className='btn add-btn'>Add to Cart</button>
+      <button
+        className='btn add-btn'
+        onClick={() => {
+          dispatch(addItem(props.shoes));
+        }}
+      >
+        Add to Cart
+      </button>
     </div>
   );
 }

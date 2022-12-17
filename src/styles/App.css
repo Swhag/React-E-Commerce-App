@@ -21,6 +21,10 @@
   font-weight: 500;
 }
 
+.site-name:hover {
+  cursor: pointer;
+}
+
 .product-card {
   margin-top: 50px;
   text-align: center;
