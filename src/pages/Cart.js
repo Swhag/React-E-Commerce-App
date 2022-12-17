@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { shoesImage } from '../components/data';
-import { addCount, removeCount } from '../store/store';
+import { addCount, minusCount, removeItem } from '../store/store';
 
 function Cart() {
   let [fadeIn, setFadeIn] = useState('');
@@ -92,24 +92,28 @@ function CartItems() {
               <button
                 className='count-btn'
                 onClick={() => {
-                  dispatch(removeCount(item));
+                  dispatch(minusCount(item));
                 }}
-                className='count-btn'
               >
                 −
               </button>
               <span className='item-count'>{item.count}</span>
               <button
+                className='count-btn'
                 onClick={() => {
                   dispatch(addCount(item));
                 }}
-                className='count-btn'
               >
                 +
               </button>
             </td>
             <td className='align-middle'>
-              <i className='fa fa-trash cart-delete-icon'></i>
+              <i
+                className='fa fa-trash cart-delete-icon'
+                onClick={() => {
+                  dispatch(removeItem(item));
+                }}
+              ></i>
             </td>
           </tr>
         );

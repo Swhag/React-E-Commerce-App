@@ -18,29 +18,18 @@ let cartItem = createSlice({
   ],
 
   reducers: {
-    removeCount(state, a) {
-      let item = state.find((item) => item.id === a.payload.id);
-
-      if (item.count <= 1) {
-        state.forEach((item, index) => {
-          if (item.id === a.payload.id) {
-            state.splice(index, 1);
-          }
-        });
-      } else item.count--;
-    },
-
     addCount(state, a) {
       let item = state.find((item) => item.id === a.payload.id);
       item.count++;
     },
 
-    removeItem(state, a) {
-      state.forEach((item, index) => {
-        if (item.id === a.payload.id) {
-          state.splice(index, 1);
-        }
-      });
+    minusCount(state, a) {
+      let item = state.find((item) => item.id === a.payload.id);
+      let index = state.findIndex((item) => item.id === a.payload.id);
+
+      if (item.count <= 1) {
+        state.splice(index, 1);
+      } else item.count--;
     },
 
     addItem(state, a) {
@@ -57,11 +46,16 @@ let cartItem = createSlice({
         });
       }
     },
+
+    removeItem(state, a) {
+      state.forEach((item, index) => {
+        if (item.id === a.payload.id) {
+          state.splice(index, 1);
+        }
+      });
+    },
   },
 });
-
-// a.payload.count = 1;
-// state.push(a.payload);
 
 export default configureStore({
   reducer: {
@@ -69,4 +63,4 @@ export default configureStore({
   },
 });
 
-export let { removeCount, addCount, addItem } = cartItem.actions;
+export let { addCount, minusCount, addItem, removeItem } = cartItem.actions;
