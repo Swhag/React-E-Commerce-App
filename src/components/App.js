@@ -7,29 +7,22 @@ import { shoesImage, shoesData } from '../store/data';
 import { addItem } from '../store/store';
 import '../styles/App.css';
 
-import Details from '../pages/Detail';
-import Cart from '../pages/Cart';
 import TopNavbar from './Navbar';
 import Hero from './Hero';
 import Categories from './Categories';
 import Services from './Services';
 import Footer from './Footer';
 
+import Shop from '../pages/Shop';
+import Details from '../pages/Detail';
+import Cart from '../pages/Cart';
+
 function App() {
   let [shoes, setShoes] = useState(shoesData);
-  let [loadBtn, setLoadBtn] = useState('Load More');
-  let [loaded, setLoaded] = useState(0);
-  let [page, setPage] = useState(0);
-
-  let productList = [
-    'https://swhag.github.io/shoesData.json',
-    'https://swhag.github.io/shoesData2.json',
-  ];
 
   return (
     <div className='App'>
       <TopNavbar></TopNavbar>
-
       <div className='container'>
         <Routes>
           <Route
@@ -39,9 +32,7 @@ function App() {
                 <Hero></Hero>
                 <Categories></Categories>
                 <Products shoes={shoes}></Products>
-
                 <PageButtons></PageButtons>
-
                 <Services></Services>
               </>
             }
@@ -49,12 +40,13 @@ function App() {
           ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={
-              <>
-                <Details shoes={shoes} shoesImage={shoesImage}></Details>
-              </>
-            }
-          />
+            element={<Details shoes={shoes} shoesImage={shoesImage}></Details>}
+          ></Route>
+          ---------------------------------------------------
+          <Route
+            path='/shop'
+            element={<Shop shoes={shoes} shoesImage={shoesImage}></Shop>}
+          ></Route>
           ---------------------------------------------------
           <Route
             path='/cart'

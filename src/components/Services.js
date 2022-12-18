@@ -43,9 +43,7 @@ function Services() {
         <div className='container p-0'>
           <div className='row gy-3'>
             <div className='col-lg-6'>
-              <h5 className='text-uppercase'>
-                Subscribe and get 30% off Coupon
-              </h5>
+              <h5 className='text-uppercase'>Get 30% discount Coupon</h5>
               <p className='text-sm text-muted mb-0'>
                 Nisi nisi tempor consequat laboris nisi.
               </p>

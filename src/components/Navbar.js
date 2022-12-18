@@ -43,6 +43,17 @@ function TopNavbar() {
                 <a
                   className='nav-link'
                   onClick={() => {
+                    navigate('/shop');
+                  }}
+                >
+                  Shop
+                </a>
+              </li>
+
+              <li className='nav-item top-nav-item'>
+                <a
+                  className='nav-link'
+                  onClick={() => {
                     navigate('/detail/0');
                   }}
                 >
