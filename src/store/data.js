@@ -19,12 +19,6 @@ import shoesModel3 from '../images/shoes-model3.jpg';
 import shoesModel4 from '../images/shoes-model4.jpg';
 import shoesModel5 from '../images/shoes-model5.jpg';
 
-let bannerImage = {
-  banner,
-  banner2,
-  banner3,
-};
-
 let shoesImage = [
   shoes1,
   shoes2,
@@ -85,7 +79,7 @@ let shoesData = [
 
   {
     id: 5,
-    name: 'Nadiddas Originals',
+    name: 'Adiddas Originals',
     content: 'Made in USA',
     price: 80,
   },

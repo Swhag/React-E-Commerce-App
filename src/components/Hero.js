@@ -13,7 +13,7 @@ function Hero() {
   }, []);
 
   return (
-    <div className={`start ${fadeIn}`}>
+    <div className={`hero-container start ${fadeIn}`}>
       <section
         className='hero pb-3 bg-cover bg-center d-flex align-items-center'
         style={{ backgroundImage: 'url(' + banner3 + ')' }}

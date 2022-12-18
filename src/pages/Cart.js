@@ -71,7 +71,7 @@ function CartItems() {
                   src={shoesImage[item.id]}
                   alt=''
                   width='70'
-                  className='img-fluid rounded shadow-sm'
+                  className='img-fluid rounded shadow-sm cart-img'
                 />
                 <div className='ml-3 d-inline-block align-middle'>
                   <h5 className='mb-0'>

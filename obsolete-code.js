@@ -111,3 +111,30 @@
 //     </div>
 //   );
 // }
+
+{
+  /* <div className='button-container'>
+  <button
+    className='btn btn-secondary'
+    type='button'
+    onClick={() => {
+      loaded < productList.length
+        ? axios
+            .get(productList[loaded])
+            .then((res) => {
+              let shoesDataCopy = [...shoes, ...res.data];
+
+              setShoes(shoesDataCopy);
+              setLoaded(loaded + 1);
+            })
+            .catch(() => {
+              console.error('Failed to Fetch Data');
+            })
+        : setShoes(shoesData);
+      setLoaded(0);
+    }}
+  >
+    {loadBtn}
+  </button>
+</div>; */
+}

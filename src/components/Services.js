@@ -19,7 +19,9 @@ function Services() {
             </div>
             <div>
               <h6 className='mb-1'>24 / 7 SERVICE</h6>
-              <p className='text-sm mb-0 text-muted'>Free shipping worldwide</p>
+              <p className='text-sm mb-0 text-muted'>
+                Our customer service is available 24/7
+              </p>
             </div>
           </div>
 
@@ -28,8 +30,10 @@ function Services() {
               <i className='fa-brands fa-square-instagram service-icons'></i>
             </div>
             <div>
-              <h6 className='mb-1'>FESTIVALOFFERS</h6>
-              <p className='text-sm mb-0 text-muted'>Free shipping worldwide</p>
+              <h6 className='mb-1'>SURVEY OFFERS</h6>
+              <p className='text-sm mb-0 text-muted'>
+                We'd love to learn more about your shopping experiences
+              </p>
             </div>
           </div>
         </div>

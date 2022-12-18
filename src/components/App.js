@@ -19,6 +19,7 @@ function App() {
   let [shoes, setShoes] = useState(shoesData);
   let [loadBtn, setLoadBtn] = useState('Load More');
   let [loaded, setLoaded] = useState(0);
+  let [page, setPage] = useState(0);
 
   let productList = [
     'https://swhag.github.io/shoesData.json',
@@ -39,30 +40,7 @@ function App() {
                 <Categories></Categories>
                 <Products shoes={shoes}></Products>
 
-                <div className='button-container'>
-                  <button
-                    className='btn btn-secondary'
-                    type='button'
-                    onClick={() => {
-                      loaded < productList.length
-                        ? axios
-                            .get(productList[loaded])
-                            .then((res) => {
-                              let shoesDataCopy = [...shoes, ...res.data];
-
-                              setShoes(shoesDataCopy);
-                              setLoaded(loaded + 1);
-                            })
-                            .catch(() => {
-                              console.error('Failed to Fetch Data');
-                            })
-                        : setShoes(shoesData);
-                      setLoaded(0);
-                    }}
-                  >
-                    {loadBtn}
-                  </button>
-                </div>
+                <PageButtons></PageButtons>
 
                 <Services></Services>
               </>
@@ -173,6 +151,83 @@ function ProductCard(props) {
           </span>
         </a>
       </div>
+    </div>
+  );
+}
+
+function PageButtons() {
+  let [page, setPage] = useState(0);
+  let [isActive, setActive] = useState(false);
+  let [shoes, setShoes] = useState(shoesData);
+
+  let productList = [
+    'https://swhag.github.io/shoesData.json',
+    'https://swhag.github.io/shoesData2.json',
+  ];
+
+  return (
+    <div className='button-container'>
+      <nav aria-label='Page navigation example'>
+        <ul className='pagination justify-content-center justify-content-lg-end'>
+          <li className='page-item mx-1'>
+            <a
+              className='page-link'
+              href='#!'
+              aria-label='Previous'
+              onClick={() => {
+                console.log('clicked prev');
+              }}
+            >
+              <span aria-hidden='true'>«</span>
+            </a>
+          </li>
+          <li className='page-item mx-1 active'>
+            <a
+              className='page-link'
+              href='#!'
+              onClick={() => {
+                console.log('clicked 1');
+              }}
+            >
+              1
+            </a>
+          </li>
+          <li className='page-item mx-1'>
+            <a
+              className='page-link'
+              href='#!'
+              onClick={() => {
+                console.log('clicked 2');
+              }}
+            >
+              2
+            </a>
+          </li>
+          <li className='page-item mx-1'>
+            <a
+              className='page-link'
+              href='#!'
+              onClick={() => {
+                console.log('clicked 3');
+              }}
+            >
+              3
+            </a>
+          </li>
+          <li className='page-item ms-1'>
+            <a
+              className='page-link'
+              href='#!'
+              aria-label='Next'
+              onClick={() => {
+                console.log('clicked next');
+              }}
+            >
+              <span aria-hidden='true'>»</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }
