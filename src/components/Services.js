@@ -20,7 +20,7 @@ function Services() {
             <div>
               <h6 className='mb-1'>24 / 7 SERVICE</h6>
               <p className='text-sm mb-0 text-muted'>
-                Our customer service is available 24/7
+                Customer service is available 24/7
               </p>
             </div>
           </div>
@@ -32,7 +32,7 @@ function Services() {
             <div>
               <h6 className='mb-1'>SURVEY OFFERS</h6>
               <p className='text-sm mb-0 text-muted'>
-                We'd love to learn more about your shopping experiences
+                Share your shopping experiences!
               </p>
             </div>
           </div>
