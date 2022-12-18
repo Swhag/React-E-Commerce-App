@@ -125,9 +125,9 @@ function Products(props) {
   }, []);
 
   return (
-    <>
-      <div className={`container start ${fadeIn}`}>
-        <div className='row product-row'>
+    <div className={`container page-wrapper start ${fadeIn}`}>
+      <div className='page-inner'>
+        <div className='row'>
           {props.shoes.map((shoe, i) => {
             return (
               <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
@@ -135,36 +135,55 @@ function Products(props) {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 function ProductCard(props) {
   let navigate = useNavigate();
-  let state = useSelector((state) => state);
   let dispatch = useDispatch();
 
   return (
-    <div className='col-md-4 product-card'>
-      <img
-        className='product-image'
-        src={shoesImage[props.id]}
-        alt='#'
-        width='80%'
-        onClick={() => {
-          navigate(`/detail/` + props.id);
-        }}
-      />
-      <h4>{props.shoes.name}</h4>
-      <p>${props.shoes.price}</p>
-      <button
-        className='btn add-btn'
-        onClick={() => {
-          dispatch(addItem(props.shoes));
-        }}
-      >
-        Add to Cart
-      </button>
+    <div className='el-wrapper'>
+      <div className='box-up'>
+        <img
+          className='img product-image'
+          src={shoesImage[props.id]}
+          alt='#'
+          width='80%'
+          onClick={() => {
+            navigate(`/detail/` + props.id);
+          }}
+        />
+        <div className='img-info'>
+          <div className='info-inner'>
+            <span className='p-name'>{props.shoes.name}</span>
+            <span className='p-company'>Brand Name</span>
+          </div>
+          <div className='a-size'>
+            Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+          </div>
+        </div>
+      </div>
+
+      <div className='box-down'>
+        <div className='h-bg'>
+          <div className='h-bg-inner'></div>
+        </div>
+
+        <a
+          className='cart'
+          href='#!'
+          onClick={() => {
+            dispatch(addItem(props.shoes));
+          }}
+        >
+          <span className='price'>${props.shoes.price}</span>
+          <span className='add-to-cart'>
+            <span className='txt'>Add in cart</span>
+          </span>
+        </a>
+      </div>
     </div>
   );
 }
