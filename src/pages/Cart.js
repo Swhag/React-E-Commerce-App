@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { shoesImage } from '../components/data';
+import { shoesImage } from '../store/data';
 import { addCount, minusCount, removeItem } from '../store/store';
 
 function Cart() {

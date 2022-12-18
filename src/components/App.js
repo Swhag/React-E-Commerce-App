@@ -3,14 +3,16 @@ import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { shoesImage, shoesData } from './data';
+import { shoesImage, shoesData } from '../store/data';
 import { addItem } from '../store/store';
+import '../styles/App.css';
+
 import Details from '../pages/Detail';
 import Cart from '../pages/Cart';
 import TopNavbar from './Navbar';
 import Hero from './Hero';
+import Services from './Services';
 import Footer from './Footer';
-import '../styles/App.css';
 
 function App() {
   let [shoes, setShoes] = useState(shoesData);
@@ -59,6 +61,8 @@ function App() {
                     {loadBtn}
                   </button>
                 </div>
+
+                <Services></Services>
               </>
             }
           />
@@ -85,11 +89,17 @@ function App() {
             <Route path='member' element={<>Staff Members</>} />
             <Route path='location' element={<>Store location</>} />
           </Route>
-          <Route path='*' element={<>Error 404: Unable to reach this page</>} />
+          <Route
+            path='*'
+            element={
+              <>
+                Error 404: Unable to reach this page - still working on it bruh
+              </>
+            }
+          />
         </Routes>
-
-        <Footer></Footer>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

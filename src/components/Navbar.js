@@ -5,19 +5,30 @@ function TopNavbar() {
 
   return (
     <header className='header bg-white'>
-      <div className='container px-lg-3'>
+      <div className='container px-lg-3 navbar-container'>
         <nav className='navbar navbar-expand-lg navbar-light py-3 px-lg-0'>
           <a
-            className='navbar-brand'
+            className='navbar-brand top-navbar-brand'
             onClick={() => {
               navigate('/');
             }}
           >
-            <span className='fw-bold text-dark'>KICKSTORE</span>
+            <span className='fw-bold text-uppercase text-dark'>KickStore</span>
           </a>
+          <button
+            className='navbar-toggler navbar-toggler-end'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+          >
+            <span className='navbar-toggler-icon'></span>
+          </button>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav me-auto'>
-              <li className='nav-item'>
+              <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
                   onClick={() => {
@@ -28,7 +39,7 @@ function TopNavbar() {
                 </a>
               </li>
 
-              <li className='nav-item'>
+              <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
                   onClick={() => {
@@ -38,7 +49,7 @@ function TopNavbar() {
                   Product detail
                 </a>
               </li>
-              <li className='nav-item dropdown'>
+              <li className='nav-item top-nav-item dropdown'>
                 <a
                   className='nav-link dropdown-toggle'
                   id='pagesDropdown'
@@ -87,7 +98,7 @@ function TopNavbar() {
               </li>
             </ul>
             <ul className='navbar-nav ms-auto'>
-              <li className='nav-item'>
+              <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
                   onClick={() => {
@@ -98,13 +109,13 @@ function TopNavbar() {
                   <small className='text-gray fw-normal'>(2)</small>
                 </a>
               </li>
-              <li className='nav-item'>
+              <li className='nav-item top-nav-item'>
                 <a className='nav-link' href='#!'>
                   <i className='far fa-heart me-1'></i>
                   <small className='text-gray fw-normal'> (0)</small>
                 </a>
               </li>
-              <li className='nav-item'>
+              <li className='nav-item top-nav-item'>
                 <a className='nav-link' href='#!'>
                   <i className='fas fa-user me-1 text-gray fw-normal'></i>Login
                 </a>

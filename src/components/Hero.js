@@ -1,4 +1,4 @@
-import { bg, banner, banner2 } from './data';
+import { bg, banner, banner2 } from '../store/data';
 
 function Hero() {
   return (
@@ -14,7 +14,7 @@ function Hero() {
                 New Inspiration 2023
               </p>
               <h1 className='h2 text-uppercase mb-3'>20% off on new season</h1>
-              <a className='btn btn-dark' href='shop.html'>
+              <a className='btn btn-dark' href='#!'>
                 Browse collections
               </a>
             </div>
