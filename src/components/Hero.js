@@ -1,11 +1,22 @@
-import { bg, banner, banner2 } from '../store/data';
+import React, { useState, useEffect } from 'react';
+import { banner3 } from '../store/data';
 
 function Hero() {
+  let [fadeIn, setFadeIn] = useState('');
+
+  useEffect(() => {
+    setFadeIn('end');
+
+    return () => {
+      setFadeIn('');
+    };
+  }, []);
+
   return (
-    <div className='container'>
+    <div className={`start ${fadeIn}`}>
       <section
         className='hero pb-3 bg-cover bg-center d-flex align-items-center'
-        style={{ backgroundImage: 'url(' + banner + ')' }}
+        style={{ backgroundImage: 'url(' + banner3 + ')' }}
       >
         <div className='container py-5'>
           <div className='row px-4 px-lg-5'>

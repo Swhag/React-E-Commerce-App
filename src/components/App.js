@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { shoesImage, shoesData } from '../store/data';
@@ -11,6 +11,7 @@ import Details from '../pages/Detail';
 import Cart from '../pages/Cart';
 import TopNavbar from './Navbar';
 import Hero from './Hero';
+import Categories from './Categories';
 import Services from './Services';
 import Footer from './Footer';
 
@@ -26,15 +27,16 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='container'>
-        <TopNavbar></TopNavbar>
+      <TopNavbar></TopNavbar>
 
+      <div className='container'>
         <Routes>
           <Route
             path='/'
             element={
               <>
                 <Hero></Hero>
+                <Categories></Categories>
                 <Products shoes={shoes}></Products>
 
                 <div className='button-container'>
@@ -85,10 +87,6 @@ function App() {
             }
           ></Route>
           ---------------------------------------------------
-          <Route path='/about' element={<About />}>
-            <Route path='member' element={<>Staff Members</>} />
-            <Route path='location' element={<>Store location</>} />
-          </Route>
           <Route
             path='*'
             element={
@@ -104,38 +102,29 @@ function App() {
   );
 }
 
-function About() {
-  return (
-    <div>
-      <h4>About Page</h4>
-      <Outlet></Outlet>
-    </div>
-  );
-}
-
 function Products(props) {
-  let [fadeIn, setFadeIn] = useState('');
-
-  useEffect(() => {
-    setFadeIn('end');
-
-    return () => {
-      setFadeIn('');
-    };
-  }, []);
-
   return (
-    <div className={`container page-wrapper start ${fadeIn}`}>
-      <div className='page-inner'>
-        <div className='row'>
-          {props.shoes.map((shoe, i) => {
-            return (
-              <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
-            );
-          })}
+    <section className='pt-5 product-container'>
+      <header className='text-center'>
+        <p className='small text-muted small text-uppercase mb-1'>
+          The Style Room
+        </p>
+        <h2 className='h5 text-uppercase mb-4'>TOP TRENDING PRODUCTS </h2>
+      </header>
+      <div className='row'>
+        <div className='container page-wrapper'>
+          <div className='page-inner'>
+            <div className='row'>
+              {props.shoes.map((shoe, i) => {
+                return (
+                  <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -5,7 +5,7 @@ function TopNavbar() {
 
   return (
     <header className='header bg-white'>
-      <div className='container px-lg-3 navbar-container'>
+      <div className='container px-lg-3'>
         <nav className='navbar navbar-expand-lg navbar-light py-3 px-lg-0'>
           <a
             className='navbar-brand top-navbar-brand'
