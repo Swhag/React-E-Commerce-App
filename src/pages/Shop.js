@@ -57,45 +57,6 @@ function ShopMenu() {
     `Men's sunglasses`,
   ]);
 
-  return(
-    
-  )
-}
-function ShopMenu2() {
-  let [menu2] = useState([
-    `Shavers`,
-    `bags`,
-    `Cosmetic`,
-    `Nail Art`,
-    `Korean cosmetics`,
-  ]);
-  return()
-}
-function ShopMenu3() {
-  let [menu3] = useState([
-    `Electronics`,
-    `USB Flash drives`,
-    `Headphones`,
-    `Portable speakers`,
-    `Keyboards`,
-  ]);
-  return()
-}
-function ShopMen4() {
-  let [menu4] = useState([
-    `In Stock`,
-    `Returns Accepted`,
-    `Deals & Savings`,
-    `Authorized Seller`,
-  ]);
-
-
-
-
-
-
-
-
   return (
     <div className='col-lg-3 order-2 order-lg-1'>
       <h5 className='text-uppercase mb-4'>Categories</h5>
@@ -107,7 +68,7 @@ function ShopMen4() {
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
         {menu.map((item, i) => {
           return (
-            <li className='mb-2'>
+            <li className='mb-2' key={i}>
               <a className='reset-anchor' href='#!' key={i}>
                 {item}
               </a>
@@ -116,6 +77,25 @@ function ShopMen4() {
         })}
       </ul>
 
+      <ShopMenu2></ShopMenu2>
+      <ShopMenu3></ShopMenu3>
+      <MenuRange></MenuRange>
+      <MenuCheckBox></MenuCheckBox>
+      <MenuRadio></MenuRadio>
+    </div>
+  );
+}
+
+function ShopMenu2() {
+  let [menu2] = useState([
+    `Shavers`,
+    `bags`,
+    `Cosmetic`,
+    `Nail Art`,
+    `Korean cosmetics`,
+  ]);
+  return (
+    <>
       <div className='py-2 px-4 bg-light mb-3'>
         <strong className='small text-uppercase fw-bold'>
           Health &amp; Beauty
@@ -124,7 +104,7 @@ function ShopMen4() {
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
         {menu2.map((item, i) => {
           return (
-            <li className='mb-2'>
+            <li className='mb-2' key={i}>
               <a className='reset-anchor' href='#!' key={i}>
                 {item}
               </a>
@@ -132,21 +112,40 @@ function ShopMen4() {
           );
         })}
       </ul>
+    </>
+  );
+}
 
+function ShopMenu3() {
+  let [menu3] = useState([
+    `USB Flash drives`,
+    `Headphones`,
+    `Portable speakers`,
+    `Keyboards`,
+  ]);
+  return (
+    <>
       <div className='py-2 px-4 bg-light mb-3'>
         <strong className='small text-uppercase fw-bold'>Electronics</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5'>
         {menu3.map((item, i) => {
           return (
-            <li className='mb-2'>
-              <a className='reset-anchor' href='#!' key={i}>
+            <li className='mb-2' key={i}>
+              <a className='reset-anchor' href='#!'>
                 {item}
               </a>
             </li>
           );
         })}
       </ul>
+    </>
+  );
+}
+
+function MenuRange() {
+  return (
+    <>
       <h6 className='text-uppercase mb-4'>Price range</h6>
       <div className='price-range pt-4 mb-5'>
         <div id='range'></div>
@@ -159,70 +158,65 @@ function ShopMen4() {
           </div>
         </div>
       </div>
-      <h6 className='text-uppercase mb-3'>Show only</h6>
+    </>
+  );
+}
 
+function MenuCheckBox() {
+  let [menu4] = useState([
+    `In Stock`,
+    `Returns Accepted`,
+    `Deals & Savings`,
+    `Authorized Seller`,
+  ]);
+
+  return (
+    <>
+      <h6 className='text-uppercase mb-3'>Show only</h6>
       {menu4.map((item, i) => {
         return (
-          <div className='form-check mb-1'>
-            <input
-              className='form-check-input'
-              type='checkbox'
-              id={`checkbox_${i}`}
-              key={i}
-            ></input>
-            <label className='form-check-label' htmlFor={`checkbox_${i}`}>
-              {item}
-            </label>
+          <div key={i}>
+            <div className='form-check mb-1'>
+              <input
+                className='form-check-input'
+                type='checkbox'
+                id={`checkbox_${i}`}
+              ></input>
+              <label className='form-check-label' htmlFor={`checkbox_${i}`}>
+                {item}
+              </label>
+            </div>
           </div>
         );
       })}
+    </>
+  );
+}
 
+function MenuRadio() {
+  let [menu5] = useState([`All Listings`, `Auction`, `Buy It Now`]);
+
+  return (
+    <>
       <h6 className='text-uppercase mb-3'>Buying format</h6>
-      <div className='form-check mb-1'>
-        <input
-          className='form-check-input'
-          type='radio'
-          name='customRadio'
-          id='radio_1'
-        ></input>
-        <label className='form-check-label' htmlFor='radio_1'>
-          All Listings
-        </label>
-      </div>
-      <div className='form-check mb-1'>
-        <input
-          className='form-check-input'
-          type='radio'
-          name='customRadio'
-          id='radio_2'
-        ></input>
-        <label className='form-check-label' htmlFor='radio_2'>
-          Best Offer
-        </label>
-      </div>
-      <div className='form-check mb-1'>
-        <input
-          className='form-check-input'
-          type='radio'
-          name='customRadio'
-          id='radio_3'
-        ></input>
-        <label className='form-check-label' htmlFor='radio_3'>
-          Auction
-        </label>
-      </div>
-      <div className='form-check mb-1'>
-        <input
-          className='form-check-input'
-          type='radio'
-          name='customRadio'
-          id='radio_4'
-        ></input>
-        <label className='form-check-label' htmlFor='radio_4'>
-          Buy It Now
-        </label>
-      </div>
-    </div>
+      {menu5.map((item, i) => {
+        return (
+          <div key={i}>
+            <div className='form-check mb-1'>
+              <input
+                className='form-check-input'
+                type='radio'
+                name='customRadio'
+                id={`radio_${i}`}
+              ></input>
+              <label className='form-check-label' htmlFor={`radio_${i}`}>
+                {item}
+              </label>
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 }
 
@@ -251,7 +245,6 @@ function ProductHeader() {
             >
               <option value>Sort By </option>
               <option value='default'>Default sorting </option>
-              <option value='popularity'>Popularity </option>
               <option value='low-high'>Price: Low to High </option>
               <option value='high-low'>Price: High to Low </option>
             </select>
