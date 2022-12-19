@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 
 import { shoesImage, shoesData } from '../store/data';
 import { addItem } from '../store/store';
@@ -152,15 +151,6 @@ function ProductCard(props) {
 }
 
 function PageButtons() {
-  let [page, setPage] = useState(0);
-  let [isActive, setActive] = useState(false);
-  let [shoes, setShoes] = useState(shoesData);
-
-  let productList = [
-    'https://swhag.github.io/shoesData.json',
-    'https://swhag.github.io/shoesData2.json',
-  ];
-
   return (
     <div className='button-container'>
       <nav aria-label='Page navigation example'>

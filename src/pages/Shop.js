@@ -1,15 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../store/store';
+import axios from 'axios';
 
-import { shoesImage, shoesData } from '../store/data';
+import { shoesImage } from '../store/data';
 
 function ShopPage() {
-  let [shoes, setShoes] = useState(shoesData);
+  let [fadeIn, setFadeIn] = useState('');
+  let [shoes, setShoes] = useState([]);
+
+  useEffect(() => {
+    setFadeIn('end');
+
+    return () => {
+      setFadeIn('');
+    };
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get('https://Swhag.github.io/shoesData1.json')
+      .then((res) => {
+        let shoesDataCopy = [...res.data];
+        setShoes(shoesDataCopy);
+      })
+      .catch(() => {
+        console.error('Failed to Fetch Data');
+      });
+  }, []);
 
   return (
-    <div className='container'>
+    <div className={`container start ${fadeIn}`}>
       <ShopHeader></ShopHeader>
       <section className='py-5'>
         <div className='container p-0'>
@@ -263,9 +285,9 @@ function ProductCard(props) {
       <div className='box-up'>
         <img
           className='img product-image'
-          src={shoesImage[props.id]}
+          src={props.shoes.imageURL}
           alt='#'
-          width='80%'
+          width='70%'
           onClick={() => {
             navigate(`/detail/` + props.id);
           }}
@@ -273,7 +295,7 @@ function ProductCard(props) {
         <div className='img-info'>
           <div className='info-inner'>
             <span className='p-name'>{props.shoes.name}</span>
-            <span className='p-company'>Brand Name</span>
+            <span className='p-company'>{props.shoes.brand}</span>
           </div>
           <div className='a-size'>
             Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
