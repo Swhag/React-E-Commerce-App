@@ -81,7 +81,7 @@ let shoesData = [
 
   {
     id: 5,
-    name: 'Adiddas Originals',
+    name: 'Adidas Originals',
     content: 'Made in USA',
     price: 80,
   },
