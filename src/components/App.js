@@ -13,8 +13,8 @@ import Categories from './Categories';
 import Services from './Services';
 import Footer from './Footer';
 
-import Shop from '../pages/Shop';
-import Details from '../pages/Detail';
+import ShopPage from '../pages/Shop';
+import DetailsPage from '../pages/Detail';
 import Cart from '../pages/Cart';
 
 function App() {
@@ -40,12 +40,16 @@ function App() {
           ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={<Details shoes={shoes} shoesImage={shoesImage}></Details>}
+            element={
+              <DetailsPage shoes={shoes} shoesImage={shoesImage}></DetailsPage>
+            }
           ></Route>
           ---------------------------------------------------
           <Route
             path='/shop'
-            element={<Shop shoes={shoes} shoesImage={shoesImage}></Shop>}
+            element={
+              <ShopPage shoes={shoes} shoesImage={shoesImage}></ShopPage>
+            }
           ></Route>
           ---------------------------------------------------
           <Route

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Shop() {
+function ShopPage() {
   return (
     <div className='container'>
       <ShopHeader></ShopHeader>
@@ -10,7 +10,6 @@ function Shop() {
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
               <ProductHeader></ProductHeader>
-              <ProductCard></ProductCard>
               <PageButtons></PageButtons>
             </div>
           </div>
@@ -60,10 +59,8 @@ function ShopMenu() {
   return (
     <div className='col-lg-3 order-2 order-lg-1'>
       <h5 className='text-uppercase mb-4'>Categories</h5>
-      <div className='py-2 px-4 bg-dark text-white mb-3'>
-        <strong className='small text-uppercase fw-bold'>
-          Fashion &amp; A, icc
-        </strong>
+      <div className='py-2 px-4 bg-light mb-3'>
+        <strong className='small text-uppercase fw-bold'>Fashion</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
         {menu.map((item, i) => {
@@ -76,10 +73,8 @@ function ShopMenu() {
           );
         })}
       </ul>
-
       <ShopMenu2></ShopMenu2>
       <ShopMenu3></ShopMenu3>
-      <MenuRange></MenuRange>
       <MenuCheckBox></MenuCheckBox>
       <MenuRadio></MenuRadio>
     </div>
@@ -98,7 +93,7 @@ function ShopMenu2() {
     <>
       <div className='py-2 px-4 bg-light mb-3'>
         <strong className='small text-uppercase fw-bold'>
-          Health &amp; Beauty
+          Health & Beauty
         </strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
@@ -143,35 +138,11 @@ function ShopMenu3() {
   );
 }
 
-function MenuRange() {
-  return (
-    <>
-      <h6 className='text-uppercase mb-4'>Price range</h6>
-      <div className='price-range pt-4 mb-5'>
-        <div id='range'></div>
-        <div className='row pt-2'>
-          <div className='col-6'>
-            <strong className='small fw-bold text-uppercase'>From</strong>
-          </div>
-          <div className='col-6 text-end'>
-            <strong className='small fw-bold text-uppercase'>To</strong>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-
 function MenuCheckBox() {
-  let [menu4] = useState([
-    `In Stock`,
-    `Returns Accepted`,
-    `Deals & Savings`,
-    `Authorized Seller`,
-  ]);
+  let [menu4] = useState([`In Stock`, `Returns Accepted`, `Deals & Savings`]);
 
   return (
-    <>
+    <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5 shop-check-box'>
       <h6 className='text-uppercase mb-3'>Show only</h6>
       {menu4.map((item, i) => {
         return (
@@ -189,7 +160,7 @@ function MenuCheckBox() {
           </div>
         );
       })}
-    </>
+    </ul>
   );
 }
 
@@ -197,7 +168,7 @@ function MenuRadio() {
   let [menu5] = useState([`All Listings`, `Auction`, `Buy It Now`]);
 
   return (
-    <>
+    <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5 shop-radio'>
       <h6 className='text-uppercase mb-3'>Buying format</h6>
       {menu5.map((item, i) => {
         return (
@@ -216,7 +187,7 @@ function MenuRadio() {
           </div>
         );
       })}
-    </>
+    </ul>
   );
 }
 
@@ -240,8 +211,8 @@ function ProductHeader() {
           </li>
           <li className='list-inline-item'>
             <select
-              className='selectpicker'
-              // data-customclassName='form-control form-control-sm'
+              className='selectpicker form-control form-control-sm'
+              data-customclass='form-control form-control-sm'
             >
               <option value>Sort By </option>
               <option value='default'>Default sorting </option>
@@ -250,539 +221,6 @@ function ProductHeader() {
             </select>
           </li>
         </ul>
-      </div>
-    </div>
-  );
-}
-
-function ProductCard() {
-  return (
-    <div className='row'>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-1.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Kui Ye Chen’s AirPods
-            </a>
-          </h6>
-          <p className='small text-muted'>$250</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-2.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Air Jordan 12 gym red
-            </a>
-          </h6>
-          <p className='small text-muted'>$300</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-primary'>New</div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-3.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Cyan cotton t-shirt
-            </a>
-          </h6>
-          <p className='small text-muted'>$25</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-4.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Timex Unisex Originals
-            </a>
-          </h6>
-          <p className='small text-muted'>$351</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-info'>Sale</div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-5.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Red digital smartwatch
-            </a>
-          </h6>
-          <p className='small text-muted'>$250</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-6.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Nike air max 95
-            </a>
-          </h6>
-          <p className='small text-muted'>$300</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-7.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Joemalone Women prefume
-            </a>
-          </h6>
-          <p className='small text-muted'>$25</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-8.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Apple Watch
-            </a>
-          </h6>
-          <p className='small text-muted'>$351</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-danger'>Sold</div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-9.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            <a className='reset-anchor' href='detail.html'>
-              Men silver Byron Watch
-            </a>
-          </h6>
-          <p className='small text-muted'>$351</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-primary'>New</div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-10.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Ploaroid one step camera
-            </a>
-          </h6>
-          <p className='small text-muted'>$351</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-11.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            {' '}
-            <a className='reset-anchor' href='detail.html'>
-              Gray Nike running shoes
-            </a>
-          </h6>
-          <p className='small text-muted'>$351</p>
-        </div>
-      </div>
-      <div className='col-lg-4 col-sm-6'>
-        <div className='product text-center'>
-          <div className='mb-3 position-relative'>
-            <div className='badge text-white bg-'></div>
-            <a className='d-block' href='detail.html'>
-              <img
-                className='img-fluid w-100'
-                src='img/product-12.jpg'
-                alt='...'
-              ></img>
-            </a>
-            <div className='product-overlay'>
-              <ul className='mb-0 list-inline'>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-outline-dark' href='#!'>
-                    <i className='far fa-heart'></i>
-                  </a>
-                </li>
-                <li className='list-inline-item m-0 p-0'>
-                  <a className='btn btn-sm btn-dark' href='cart.html'>
-                    Add to cart
-                  </a>
-                </li>
-                <li className='list-inline-item mr-0'>
-                  <a
-                    className='btn btn-sm btn-outline-dark'
-                    href='#productView'
-                    data-bs-toggle='modal'
-                  >
-                    <i className='fas fa-expand'></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <h6>
-            <a className='reset-anchor' href='detail.html'>
-              Black DSLR lense
-            </a>
-          </h6>
-          <p className='small text-muted'>$351</p>
-        </div>
       </div>
     </div>
   );
@@ -822,4 +260,4 @@ function PageButtons() {
   );
 }
 
-export default Shop;
+export default ShopPage;

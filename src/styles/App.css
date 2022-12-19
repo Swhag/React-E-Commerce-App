@@ -356,6 +356,25 @@
 }
 
 /* ----------------------------------------- */
+/* Shop Page styling */
+/* ----------------------------------------- */
+
+.reset-anchor {
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.reset-anchor:hover,
+.reset-anchor:focus {
+  text-decoration: none;
+}
+
+.shop-check-box,
+.shop-radio {
+  margin-top: -20px;
+}
+
+/* ----------------------------------------- */
 /* Page Buttons styling */
 /* ----------------------------------------- */
 
