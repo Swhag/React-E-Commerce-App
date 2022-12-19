@@ -135,7 +135,7 @@
   background-color: #fff;
   width: 330px;
   padding: 15px;
-  /* margin: 15px auto; */
+  margin: 0 auto;
 }
 
 .el-wrapper:hover .h-bg {
@@ -372,6 +372,30 @@
 .shop-check-box,
 .shop-radio {
   margin-top: -20px;
+}
+
+/* ----------------------------------------- */
+/* Shop Page Product Card styling */
+/* ----------------------------------------- */
+
+@media (min-width: 1400px) {
+  .shop-product-container {
+    margin-top: -50px;
+    margin-left: -30px;
+    width: 1000px;
+  }
+
+  .shop-page-wrapper {
+    transform: scale(0.95);
+  }
+
+  .shop-el-wrapper {
+    border: 5px solid rgb(248, 249, 250);
+    background-color: #fff;
+    width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
 }
 
 /* ----------------------------------------- */
