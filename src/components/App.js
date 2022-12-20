@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { shoesImage, shoesData } from '../store/data';
-import { addItem } from '../store/store';
+import { addItem } from '../store/cartSlice';
 import '../styles/App.css';
 
 import TopNavbar from './Navbar';

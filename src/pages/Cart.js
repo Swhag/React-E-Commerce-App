@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { shoesImage } from '../store/data';
-import { addCount, minusCount, removeItem } from '../store/store';
+import { addCount, minusCount, removeItem } from '../store/cartSlice';
 
 function Cart() {
   let [fadeIn, setFadeIn] = useState('');
@@ -36,21 +36,17 @@ function Cart() {
 }
 
 function CartTableHead() {
+  let [headers] = useState(['Product', 'Price', 'Quantity', 'Remove']);
   return (
     <thead>
       <tr>
-        <th scope='col' className='border-0 bg-light'>
-          <div className='p-2 px-3 text-uppercase'>Product</div>
-        </th>
-        <th scope='col' className='border-0 bg-light'>
-          <div className='py-2 text-uppercase'>Price</div>
-        </th>
-        <th scope='col' className='border-0 bg-light'>
-          <div className='py-2 text-uppercase'>Quantity</div>
-        </th>
-        <th scope='col' className='border-0 bg-light'>
-          <div className='py-2 text-uppercase'>Remove</div>
-        </th>
+        {headers.map((header, i) => {
+          return (
+            <th scope='col' className='border-0 bg-light' key={i}>
+              <div className='p-2 px-3 text-uppercase'>{header}</div>
+            </th>
+          );
+        })}
       </tr>
     </thead>
   );
@@ -62,7 +58,7 @@ function CartItems() {
 
   return (
     <tbody>
-      {state.cartItem.map((item, i) => {
+      {state.cart.map((item, i) => {
         return (
           <tr key={i}>
             <th scope='row'>
