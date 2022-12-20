@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 import { addItem } from '../store/cartSlice';
+import {
+  addPage,
+  minusPage,
+  setPage,
+  setTIndex,
+} from '../store/showItemsSlice';
+
 import axios from 'axios';
 
 function ShopPage() {
   let [fadeIn, setFadeIn] = useState('');
   let [shoes, setShoes] = useState([]);
-  let [targetIndex, settargetIndex] = useState(0);
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
 
   useEffect(() => {
     setFadeIn('end');
@@ -38,7 +47,11 @@ function ShopPage() {
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
               <ProductHeader></ProductHeader>
-              <Products shoes={shoes} targetIndex={targetIndex}></Products>
+              <Products
+                shoes={shoes}
+                index={state.showItems.index}
+                numberOfItemsToShow={state.showItems.numberOfItemsToShow}
+              ></Products>
               <PageButtons></PageButtons>
             </div>
           </div>
@@ -56,7 +69,7 @@ function Products(props) {
           <div className='page-inner'>
             <div className='row'>
               {props.shoes
-                .slice(props.targetIndex, props.targetIndex + 9)
+                .slice(props.index, props.index + props.numberOfItemsToShow)
                 .map((shoe, i) => {
                   return (
                     <ProductCard
@@ -331,6 +344,11 @@ function ProductHeader() {
 }
 
 function PageButtons() {
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+
+  // { addPage, minusPage, setPage }
+
   return (
     <nav aria-label='Page navigation example'>
       <ul className='pagination justify-content-center justify-content-lg-end'>
@@ -340,17 +358,38 @@ function PageButtons() {
           </a>
         </li>
         <li className='page-item mx-1 active'>
-          <a className='page-link' href='#!'>
+          <a
+            className='page-link'
+            href='#!'
+            onClick={() => {
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             1
           </a>
         </li>
         <li className='page-item mx-1'>
-          <a className='page-link' href='#!'>
+          <a
+            className='page-link'
+            href='#!'
+            onClick={() => {
+              dispatch(setPage(2));
+              dispatch(setTIndex());
+            }}
+          >
             2
           </a>
         </li>
         <li className='page-item mx-1'>
-          <a className='page-link' href='#!'>
+          <a
+            className='page-link'
+            href='#!'
+            onClick={() => {
+              dispatch(setPage(3));
+              dispatch(setTIndex());
+            }}
+          >
             3
           </a>
         </li>
