@@ -4,11 +4,10 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../store/store';
 import axios from 'axios';
 
-import { shoesImage } from '../store/data';
-
 function ShopPage() {
   let [fadeIn, setFadeIn] = useState('');
   let [shoes, setShoes] = useState([]);
+  let [targetIndex, settargetIndex] = useState(0);
 
   useEffect(() => {
     setFadeIn('end');
@@ -39,12 +38,87 @@ function ShopPage() {
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
               <ProductHeader></ProductHeader>
-              <Products shoes={shoes}></Products>
+              <Products shoes={shoes} targetIndex={targetIndex}></Products>
               <PageButtons></PageButtons>
             </div>
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function Products(props) {
+  return (
+    <section className='pt-5 shop-product-container'>
+      <div className='row'>
+        <div className='container page-wrapper shop-page-wrapper'>
+          <div className='page-inner'>
+            <div className='row'>
+              {props.shoes
+                .slice(props.targetIndex, props.targetIndex + 9)
+                .map((shoe, i) => {
+                  return (
+                    <ProductCard
+                      key={i}
+                      id={shoe.id}
+                      shoes={shoe}
+                    ></ProductCard>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductCard(props) {
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+
+  return (
+    <div className='el-wrapper shop-el-wrapper '>
+      <div className='box-up'>
+        <img
+          className='img product-image'
+          src={props.shoes.imageURL}
+          alt='#'
+          width='70%'
+          onClick={() => {
+            navigate(`/detail/` + props.id);
+          }}
+        />
+        <div className='img-info'>
+          <div className='info-inner'>
+            <span className='p-name'>{props.shoes.name}</span>
+            <span className='p-company'>{props.shoes.brand}</span>
+          </div>
+          <div className='a-size'>
+            Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+          </div>
+        </div>
+      </div>
+
+      <div className='box-down'>
+        <div className='h-bg'>
+          <div className='h-bg-inner'></div>
+        </div>
+
+        <a
+          className='cart'
+          href='#!'
+          onClick={() => {
+            dispatch(addItem(props.shoes));
+          }}
+        >
+          <span className='price'>${props.shoes.price}</span>
+          <span className='add-to-cart'>
+            <span className='txt'>Add in cart</span>
+          </span>
+        </a>
+      </div>
     </div>
   );
 }
@@ -225,7 +299,7 @@ function ProductHeader() {
   return (
     <div className='row mb-3 align-items-center'>
       <div className='col-lg-6 mb-2 mb-lg-0'>
-        <p className='text-sm text-muted mb-0'>Showing 1–12 of 53 results</p>
+        <p className='text-sm text-muted mb-0'>Showing 1–9 of 53 results</p>
       </div>
       <div className='col-lg-6'>
         <ul className='list-inline d-flex align-items-center justify-content-lg-end mb-0'>
@@ -251,75 +325,6 @@ function ProductHeader() {
             </select>
           </li>
         </ul>
-      </div>
-    </div>
-  );
-}
-
-function Products(props) {
-  return (
-    <section className='pt-5 shop-product-container'>
-      <div className='row'>
-        <div className='container page-wrapper shop-page-wrapper'>
-          <div className='page-inner'>
-            <div className='row'>
-              {props.shoes.map((shoe, i) => {
-                return (
-                  <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProductCard(props) {
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
-
-  return (
-    <div className='el-wrapper shop-el-wrapper '>
-      <div className='box-up'>
-        <img
-          className='img product-image'
-          src={props.shoes.imageURL}
-          alt='#'
-          width='70%'
-          onClick={() => {
-            navigate(`/detail/` + props.id);
-          }}
-        />
-        <div className='img-info'>
-          <div className='info-inner'>
-            <span className='p-name'>{props.shoes.name}</span>
-            <span className='p-company'>{props.shoes.brand}</span>
-          </div>
-          <div className='a-size'>
-            Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
-          </div>
-        </div>
-      </div>
-
-      <div className='box-down'>
-        <div className='h-bg'>
-          <div className='h-bg-inner'></div>
-        </div>
-
-        <a
-          className='cart'
-          href='#!'
-          onClick={() => {
-            dispatch(addItem(props.shoes));
-          }}
-        >
-          <span className='price'>${props.shoes.price}</span>
-          <span className='add-to-cart'>
-            <span className='txt'>Add in cart</span>
-          </span>
-        </a>
       </div>
     </div>
   );
