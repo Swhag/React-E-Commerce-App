@@ -52,7 +52,10 @@ function ShopPage() {
                 index={state.showItems.index}
                 numberOfItemsToShow={state.showItems.numberOfItemsToShow}
               ></Products>
-              <PageButtons></PageButtons>
+              <PageButtons
+                shoes={shoes}
+                numberOfItemsToShow={state.showItems.numberOfItemsToShow}
+              ></PageButtons>
             </div>
           </div>
         </div>
@@ -343,11 +346,11 @@ function ProductHeader() {
   );
 }
 
-function PageButtons() {
+function PageButtons(props) {
+  // generates page button count by dividing the total # of items by # of items to show
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
-
-  // { addPage, minusPage, setPage }
+  let pageCount = Math.round(props.shoes.length / props.numberOfItemsToShow);
 
   return (
     <nav aria-label='Page navigation example'>
@@ -357,42 +360,24 @@ function PageButtons() {
             <span aria-hidden='true'>«</span>
           </a>
         </li>
-        <li className='page-item mx-1 active'>
-          <a
-            className='page-link'
-            href='#!'
-            onClick={() => {
-              dispatch(setPage(1));
-              dispatch(setTIndex());
-            }}
-          >
-            1
-          </a>
-        </li>
-        <li className='page-item mx-1'>
-          <a
-            className='page-link'
-            href='#!'
-            onClick={() => {
-              dispatch(setPage(2));
-              dispatch(setTIndex());
-            }}
-          >
-            2
-          </a>
-        </li>
-        <li className='page-item mx-1'>
-          <a
-            className='page-link'
-            href='#!'
-            onClick={() => {
-              dispatch(setPage(3));
-              dispatch(setTIndex());
-            }}
-          >
-            3
-          </a>
-        </li>
+
+        {/* creates an array consisting of undefined items for iteration */}
+        {[...Array(pageCount)].map((item, i) => {
+          return (
+            <li className='page-item mx-1' key={i}>
+              <a
+                className='page-link'
+                href='#!'
+                onClick={() => {
+                  dispatch(setPage(i + 1));
+                  dispatch(setTIndex());
+                }}
+              >
+                {i + 1}
+              </a>
+            </li>
+          );
+        })}
         <li className='page-item ms-1'>
           <a className='page-link' href='#!' aria-label='Next'>
             <span aria-hidden='true'>»</span>
