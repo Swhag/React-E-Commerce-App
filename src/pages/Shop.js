@@ -46,12 +46,18 @@ function ShopPage() {
           <div className='row'>
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
-              <ProductHeader></ProductHeader>
+              <ProductHeader
+                shoes={shoes}
+                index={state.showItems.index}
+                numberOfItemsToShow={state.showItems.numberOfItemsToShow}
+              ></ProductHeader>
+
               <Products
                 shoes={shoes}
                 index={state.showItems.index}
                 numberOfItemsToShow={state.showItems.numberOfItemsToShow}
               ></Products>
+
               <PageButtons
                 shoes={shoes}
                 numberOfItemsToShow={state.showItems.numberOfItemsToShow}
@@ -311,24 +317,22 @@ function MenuRadio() {
   );
 }
 
-function ProductHeader() {
+function ProductHeader(props) {
+  let state = useSelector((state) => state);
+  let total = props.shoes.length;
+  let index = state.showItems.index;
+  let endIndex = state.showItems.index + state.showItems.numberOfItemsToShow;
+
   return (
     <div className='row mb-3 align-items-center'>
       <div className='col-lg-6 mb-2 mb-lg-0'>
-        <p className='text-sm text-muted mb-0'>Showing 1–9 of 53 results</p>
+        <p className='text-sm text-muted mb-0'>
+          {`Showing ${index + 1}-${endIndex} of
+          ${total} results`}
+        </p>
       </div>
       <div className='col-lg-6'>
         <ul className='list-inline d-flex align-items-center justify-content-lg-end mb-0'>
-          <li className='list-inline-item text-muted me-3'>
-            <a className='reset-anchor p-0' href='#!'>
-              <i className='fas fa-th-large'></i>
-            </a>
-          </li>
-          <li className='list-inline-item text-muted me-3'>
-            <a className='reset-anchor p-0' href='#!'>
-              <i className='fas fa-th'></i>
-            </a>
-          </li>
           <li className='list-inline-item'>
             <select
               className='selectpicker form-control form-control-sm'
@@ -350,7 +354,8 @@ function PageButtons(props) {
   // generates page button count by dividing the total # of items by # of items to show
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
-  let pageCount = Math.round(props.shoes.length / props.numberOfItemsToShow);
+  let numberOfItemsToShow = state.showItems.numberOfItemsToShow;
+  let pageCount = Math.round(props.shoes.length / numberOfItemsToShow);
 
   return (
     <nav aria-label='Page navigation example'>
