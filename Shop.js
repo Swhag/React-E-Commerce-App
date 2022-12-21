@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { addItem } from '../store/cartSlice';
-import { setPage, setTIndex } from '../store/pageSlice';
+import {
+  addPage,
+  minusPage,
+  setPage,
+  setTIndex,
+} from '../store/showItemsSlice';
 
 import axios from 'axios';
 
@@ -22,12 +27,15 @@ function ShopPage() {
   }, []);
 
   useEffect(() => {
-    const fetchShoes = async () => {
-      const res = await axios.get('https://Swhag.github.io/shoesData1.json');
-      let shoesDataCopy = [...res.data];
-      setShoes(shoesDataCopy);
-    };
-    fetchShoes();
+    axios
+      .get('https://Swhag.github.io/shoesData1.json')
+      .then((res) => {
+        let shoesDataCopy = [...res.data];
+        setShoes(shoesDataCopy);
+      })
+      .catch(() => {
+        console.error('Failed to Fetch Data');
+      });
   }, []);
 
   return (
@@ -40,19 +48,19 @@ function ShopPage() {
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
               <ProductHeader
                 shoes={shoes}
-                index={state.page.index}
-                itemsPerPage={state.page.itemsPerPage}
+                index={state.showItems.index}
+                itemsPerPage={state.showItems.itemsPerPage}
               ></ProductHeader>
 
               <Products
                 shoes={shoes}
-                index={state.page.index}
-                itemsPerPage={state.page.itemsPerPage}
+                index={state.showItems.index}
+                itemsPerPage={state.showItems.itemsPerPage}
               ></Products>
 
               <PageButtons
                 shoes={shoes}
-                itemsPerPage={state.page.itemsPerPage}
+                itemsPerPage={state.showItems.itemsPerPage}
               ></PageButtons>
             </div>
           </div>
@@ -63,22 +71,23 @@ function ShopPage() {
 }
 
 function Products(props) {
-  let state = useSelector((state) => state);
-  let index = state.page.index;
-  let itemsPerPage = state.page.itemsPerPage;
-  let shoes = props.shoes;
-
   return (
     <section className='pt-5 shop-product-container'>
       <div className='row'>
         <div className='container page-wrapper shop-page-wrapper'>
           <div className='page-inner'>
             <div className='row'>
-              {shoes.slice(index, index + itemsPerPage).map((shoe, i) => {
-                return (
-                  <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
-                );
-              })}
+              {props.shoes
+                .slice(props.index, props.index + props.itemsPerPage)
+                .map((shoe, i) => {
+                  return (
+                    <ProductCard
+                      key={i}
+                      id={shoe.id}
+                      shoes={shoe}
+                    ></ProductCard>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -90,14 +99,13 @@ function Products(props) {
 function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let shoes = props.shoes;
 
   return (
     <div className='el-wrapper shop-el-wrapper '>
       <div className='box-up'>
         <img
           className='img product-image'
-          src={shoes.imageURL}
+          src={props.shoes.imageURL}
           alt='#'
           width='70%'
           onClick={() => {
@@ -106,8 +114,8 @@ function ProductCard(props) {
         />
         <div className='img-info'>
           <div className='info-inner'>
-            <span className='p-name'>{shoes.name}</span>
-            <span className='p-company'>{shoes.brand}</span>
+            <span className='p-name'>{props.shoes.name}</span>
+            <span className='p-company'>{props.shoes.brand}</span>
           </div>
           <div className='a-size'>
             Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
@@ -124,10 +132,10 @@ function ProductCard(props) {
           className='cart'
           href='#!'
           onClick={() => {
-            dispatch(addItem(shoes));
+            dispatch(addItem(props.shoes));
           }}
         >
-          <span className='price'>${shoes.price}</span>
+          <span className='price'>${props.shoes.price}</span>
           <span className='add-to-cart'>
             <span className='txt'>Add in cart</span>
           </span>
@@ -312,8 +320,8 @@ function MenuRadio() {
 function ProductHeader(props) {
   let state = useSelector((state) => state);
   let total = props.shoes.length;
-  let index = state.page.index;
-  let endIndex = state.page.index + state.page.itemsPerPage;
+  let index = state.showItems.index;
+  let endIndex = state.showItems.index + state.showItems.itemsPerPage;
 
   return (
     <div className='row mb-3 align-items-center'>
@@ -346,7 +354,7 @@ function PageButtons(props) {
   // generates page button count by dividing the total # of items by # of items to show
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
-  let itemsPerPage = state.page.itemsPerPage;
+  let itemsPerPage = state.showItems.itemsPerPage;
   let pageCount = Math.round(props.shoes.length / itemsPerPage);
 
   return (

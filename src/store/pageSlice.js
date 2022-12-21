@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-let showItems = createSlice({
+let page = createSlice({
   name: 'display',
-  initialState: { page: 1, index: 0, numberOfItemsToShow: 9 },
+  initialState: { page: 1, index: 0, itemsPerPage: 9 },
 
   reducers: {
     addPage(state, a) {
@@ -18,12 +18,11 @@ let showItems = createSlice({
     },
 
     setTIndex(state, a) {
-      state.index =
-        state.page * state.numberOfItemsToShow - state.numberOfItemsToShow;
+      state.index = state.page * state.itemsPerPage - state.itemsPerPage;
       console.log(state.index);
     },
   },
 });
 
-export default showItems;
-export let { addPage, minusPage, setPage, setTIndex } = showItems.actions;
+export default page;
+export let { addPage, minusPage, setPage, setTIndex } = page.actions;
