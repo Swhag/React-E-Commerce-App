@@ -332,7 +332,7 @@ function ProductHeader(props) {
 }
 
 function PageButtons(props) {
-  // generates page button count by dividing the total # of items by # of items to show
+  // Calculates # of page by dividing the total # of items by # of items to show
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
   let itemsPerPage = state.page.itemsPerPage;
@@ -347,7 +347,7 @@ function PageButtons(props) {
           </a>
         </li>
 
-        {/* creates an array consisting of undefined items for iteration */}
+        {/* Creates an array consisting of undefined items for iteration */}
         {[...Array(pageCount)].map((item, i) => {
           return (
             <li className='page-item mx-1' key={i}>
