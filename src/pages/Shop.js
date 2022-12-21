@@ -10,8 +10,6 @@ import axios from 'axios';
 function ShopPage() {
   let [fadeIn, setFadeIn] = useState('');
   let [shoes, setShoes] = useState([]);
-  let state = useSelector((state) => state);
-  let dispatch = useDispatch();
 
   useEffect(() => {
     setFadeIn('end');
@@ -38,22 +36,9 @@ function ShopPage() {
           <div className='row'>
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
-              <ProductHeader
-                shoes={shoes}
-                index={state.page.index}
-                itemsPerPage={state.page.itemsPerPage}
-              ></ProductHeader>
-
-              <Products
-                shoes={shoes}
-                index={state.page.index}
-                itemsPerPage={state.page.itemsPerPage}
-              ></Products>
-
-              <PageButtons
-                shoes={shoes}
-                itemsPerPage={state.page.itemsPerPage}
-              ></PageButtons>
+              <ProductHeader shoes={shoes}></ProductHeader>
+              <Products shoes={shoes}></Products>
+              <PageButtons shoes={shoes}></PageButtons>
             </div>
           </div>
         </div>
@@ -64,9 +49,9 @@ function ShopPage() {
 
 function Products(props) {
   let state = useSelector((state) => state);
+  let shoes = props.shoes;
   let index = state.page.index;
   let itemsPerPage = state.page.itemsPerPage;
-  let shoes = props.shoes;
 
   return (
     <section className='pt-5 shop-product-container'>
@@ -312,14 +297,18 @@ function MenuRadio() {
 function ProductHeader(props) {
   let state = useSelector((state) => state);
   let total = props.shoes.length;
-  let index = state.page.index;
+  let startIndex = state.page.index + 1;
   let endIndex = state.page.index + state.page.itemsPerPage;
+
+  if (endIndex > total) {
+    endIndex = props.shoes.length;
+  }
 
   return (
     <div className='row mb-3 align-items-center'>
       <div className='col-lg-6 mb-2 mb-lg-0'>
         <p className='text-sm text-muted mb-0'>
-          {`Showing ${index + 1}-${endIndex} of
+          {`Showing ${startIndex}-${endIndex} of
           ${total} results`}
         </p>
       </div>

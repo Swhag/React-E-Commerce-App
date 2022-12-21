@@ -17,7 +17,7 @@ import DetailsPage from '../pages/Detail';
 import Cart from '../pages/Cart';
 
 function App() {
-  let [shoes, setShoes] = useState(shoesData);
+  let [shoes] = useState(shoesData);
 
   return (
     <div className='App'>
@@ -104,22 +104,23 @@ function Products(props) {
 function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
+  let item = props.shoes;
 
   return (
     <div className='el-wrapper'>
       <div className='box-up'>
         <img
           className='img product-image'
-          src={shoesImage[props.id]}
+          src={shoesImage[item.id]}
           alt='#'
           width='80%'
           onClick={() => {
-            navigate(`/detail/` + props.id);
+            navigate(`/detail/` + item.id);
           }}
         />
         <div className='img-info'>
           <div className='info-inner'>
-            <span className='p-name'>{props.shoes.name}</span>
+            <span className='p-name'>{item.name}</span>
             <span className='p-company'>Brand Name</span>
           </div>
           <div className='a-size'>
@@ -137,10 +138,10 @@ function ProductCard(props) {
           className='cart'
           href='#!'
           onClick={() => {
-            dispatch(addItem(props.shoes));
+            dispatch(addItem(item));
           }}
         >
-          <span className='price'>${props.shoes.price}</span>
+          <span className='price'>${item.price}</span>
           <span className='add-to-cart'>
             <span className='txt'>Add in cart</span>
           </span>

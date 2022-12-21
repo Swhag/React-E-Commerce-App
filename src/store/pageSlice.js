@@ -19,7 +19,6 @@ let page = createSlice({
 
     setTIndex(state, a) {
       state.index = state.page * state.itemsPerPage - state.itemsPerPage;
-      console.log(state.index);
     },
   },
 });
