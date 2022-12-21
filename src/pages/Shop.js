@@ -151,19 +151,20 @@ function ShopHeader() {
 }
 function ShopMenu() {
   let [menu] = useState([
-    `Women's T-Shirts`,
-    `Men's T-Shirts`,
-    `Dresses`,
-    `Novelty socks`,
-    `Women's sunglasses`,
-    `Men's sunglasses`,
+    `Women's Casual`,
+    `Men's Casual`,
+    `Women's athletic`,
+    `Men's athletic`,
+    `Kids`,
   ]);
 
   return (
     <div className='col-lg-3 order-2 order-lg-1'>
       <h5 className='text-uppercase mb-4'>Categories</h5>
       <div className='py-2 px-4 bg-light mb-3'>
-        <strong className='small text-uppercase fw-bold'>Fashion</strong>
+        <strong className='small text-uppercase fw-bold'>
+          Sneakers & Athletic
+        </strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
         {menu.map((item, i) => {
@@ -185,19 +186,11 @@ function ShopMenu() {
 }
 
 function ShopMenu2() {
-  let [menu2] = useState([
-    `Shavers`,
-    `bags`,
-    `Cosmetic`,
-    `Nail Art`,
-    `Korean cosmetics`,
-  ]);
+  let [menu2] = useState([`Nike`, `Adidas`, `Hush Puppies`, `Vans`]);
   return (
     <>
       <div className='py-2 px-4 bg-light mb-3'>
-        <strong className='small text-uppercase fw-bold'>
-          Health & Beauty
-        </strong>
+        <strong className='small text-uppercase fw-bold'>Brand</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
         {menu2.map((item, i) => {
@@ -215,16 +208,11 @@ function ShopMenu2() {
 }
 
 function ShopMenu3() {
-  let [menu3] = useState([
-    `USB Flash drives`,
-    `Headphones`,
-    `Portable speakers`,
-    `Keyboards`,
-  ]);
+  let [menu3] = useState([`Women's Formal`, `Men's Formal`, `Limited Edition`]);
   return (
     <>
       <div className='py-2 px-4 bg-light mb-3'>
-        <strong className='small text-uppercase fw-bold'>Electronics</strong>
+        <strong className='small text-uppercase fw-bold'>Fashion</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5'>
         {menu3.map((item, i) => {
@@ -315,10 +303,7 @@ function ProductHeader(props) {
       <div className='col-lg-6'>
         <ul className='list-inline d-flex align-items-center justify-content-lg-end mb-0'>
           <li className='list-inline-item'>
-            <select
-              className='selectpicker form-control form-control-sm'
-              data-customclass='form-control form-control-sm'
-            >
+            <select className='selectpicker form-control form-control-sm'>
               <option value>Sort By </option>
               <option value='default'>Default sorting </option>
               <option value='low-high'>Price: Low to High </option>
