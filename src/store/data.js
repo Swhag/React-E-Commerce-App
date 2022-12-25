@@ -48,55 +48,87 @@ let shoesData = [
   {
     id: 0,
     name: 'White and Black',
-    content: 'Made in France',
+    brand: 'NOBRAND',
     price: 70,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes1.jpg',
   },
 
   {
     id: 1,
     name: 'Red Knit',
-    content: 'Made in Seoul',
+    brand: 'NOBRAND',
     price: 110,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes2.jpg',
   },
 
   {
     id: 2,
     name: 'Gray Jordan',
-    content: 'Made in USA',
+    brand: 'AIR JORDAN',
     price: 130,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes3.jpg',
   },
   {
     id: 3,
     name: 'Vans Fresh',
-    content: 'Made in Germany',
+    brand: 'VANS',
     price: 50,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes4.PNG',
   },
 
   {
     id: 4,
     name: 'FitVille Runner',
-    content: 'Made in USA',
+    brand: 'FitVille',
     price: 65,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes5.PNG',
   },
 
   {
     id: 5,
     name: 'Adidas Originals',
-    content: 'Made in USA',
+    brand: 'ADIDAS',
     price: 80,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes6.PNG',
   },
   {
     id: 6,
     name: 'Lite Racer',
-    content: 'Made in Germany',
+    brand: 'NOBRAND',
     price: 60,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes7.PNG',
   },
 
   {
     id: 7,
     name: 'Afterburner 8 Turf',
-    content: 'Made in USA',
+    brand: 'NOBRAND',
     price: 85,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes8.PNG',
   },
 ];
 

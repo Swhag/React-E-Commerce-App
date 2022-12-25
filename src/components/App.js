@@ -111,7 +111,7 @@ function ProductCard(props) {
       <div className='box-up'>
         <img
           className='img product-image'
-          src={shoesImage[item.id]}
+          src={item.imageURL}
           alt='#'
           width='80%'
           onClick={() => {
@@ -121,7 +121,7 @@ function ProductCard(props) {
         <div className='img-info'>
           <div className='info-inner'>
             <span className='p-name'>{item.name}</span>
-            <span className='p-company'>Brand Name</span>
+            <span className='p-company'>{item.brand}</span>
           </div>
           <div className='a-size'>
             Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>

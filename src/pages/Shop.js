@@ -3,7 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { addItem } from '../store/cartSlice';
-import { setItems } from '../store/itemSlice';
+import {
+  setItems,
+  sortByBrand,
+  sortByGender,
+  doubleCondition,
+  multipleCondition,
+} from '../store/itemSlice';
 import { setPage, setTIndex } from '../store/pageSlice';
 
 import axios from 'axios';
@@ -40,9 +46,9 @@ function ShopPage() {
           <div className='row'>
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
-              <ProductHeader items={state.items}></ProductHeader>
-              <Products items={state.items}></Products>
-              <PageButtons items={state.items}></PageButtons>
+              <ProductHeader items={state.items.sorted}></ProductHeader>
+              <Products items={state.items.sorted}></Products>
+              <PageButtons items={state.items.sorted}></PageButtons>
             </div>
           </div>
         </div>
@@ -154,6 +160,9 @@ function ShopHeader() {
   );
 }
 function ShopMenu() {
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+
   return (
     <div className='col-lg-3 order-2 order-lg-1'>
       <h5 className='text-uppercase mb-4'>Categories</h5>
@@ -164,27 +173,79 @@ function ShopMenu() {
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
         <li className='mb-2'>
-          <a className='reset-anchor' href='#!'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(doubleCondition([state.items.data, 'WOMEN', 'CASUAL']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             Women's Casual
           </a>
         </li>
         <li className='mb-2'>
-          <a className='reset-anchor' href='#!'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(doubleCondition([state.items.data, 'MEN', 'CASUAL']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             Men's Casual
           </a>
         </li>
         <li className='mb-2'>
-          <a className='reset-anchor' href='#!'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(
+                multipleCondition([
+                  state.items.data,
+                  'WOMEN',
+                  ['RUNNING', 'FOOTBALL', 'BASKETBALL'],
+                ])
+              );
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             Women's athletic
           </a>
         </li>
         <li className='mb-2'>
-          <a className='reset-anchor' href='#!'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(
+                multipleCondition([
+                  state.items.data,
+                  'MEN',
+                  ['RUNNING', 'FOOTBALL', 'BASKETBALL'],
+                ])
+              );
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             Men's athletic
           </a>
         </li>
         <li className='mb-2'>
-          <a className='reset-anchor' href='#!'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByGender([state.items.data, 'KIDS']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             Kids
           </a>
         </li>
@@ -198,44 +259,126 @@ function ShopMenu() {
 }
 
 function ShopMenu2() {
-  let [menu2] = useState([`Nike`, `Adidas`, `Hush Puppies`, `Vans`]);
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+
   return (
     <>
       <div className='py-2 px-4 bg-light mb-3'>
         <strong className='small text-uppercase fw-bold'>Brand</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
-        {menu2.map((item, i) => {
-          return (
-            <li className='mb-2' key={i}>
-              <a className='reset-anchor' href='#!' key={i}>
-                {item}
-              </a>
-            </li>
-          );
-        })}
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByBrand([state.items.data, 'NIKE']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Nike
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByBrand([state.items.data, 'ADIDAS']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Adidas
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByBrand([state.items.data, 'HUSHPUPPIES']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Hush Puppies
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByBrand([state.items.data, 'VANS']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Vans
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByBrand([state.items.data, 'AIR JORDAN']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Air Jordan
+          </a>
+        </li>
       </ul>
     </>
   );
 }
 
 function ShopMenu3() {
-  let [menu3] = useState([`Women's Formal`, `Men's Formal`, `Limited Edition`]);
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+
   return (
     <>
       <div className='py-2 px-4 bg-light mb-3'>
         <strong className='small text-uppercase fw-bold'>Fashion</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5'>
-        {menu3.map((item, i) => {
-          return (
-            <li className='mb-2' key={i}>
-              <a className='reset-anchor' href='#!'>
-                {item}
-              </a>
-            </li>
-          );
-        })}
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(doubleCondition([state.items.data, 'WOMEN', 'FORMAL']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Women's Formal
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(doubleCondition([state.items.data, 'MEN', 'FORMAL']));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
+            Men's Formal
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a className='reset-anchor' href='#!'>
+            Limited Edition
+          </a>
+        </li>
       </ul>
     </>
   );
@@ -333,7 +476,7 @@ function PageButtons(props) {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
   let itemsPerPage = state.page.itemsPerPage;
-  let pageCount = Math.round(props.items.length / itemsPerPage);
+  let pageCount = Math.ceil(props.items.length / itemsPerPage);
 
   return (
     <nav aria-label='Page navigation example'>
