@@ -134,12 +134,26 @@ function ProductCard(props) {
 }
 
 function ShopHeader() {
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+
   return (
     <section className='py-5 bg-light'>
       <div className='container'>
         <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
           <div className='col-lg-6'>
-            <h1 className='h2 text-uppercase mb-0'>Shop</h1>
+            <h1 className='h2 mb-0 '>
+              <span
+                className='shop-header'
+                onClick={() => {
+                  dispatch(setItems(state.items.data));
+                  dispatch(setPage(1));
+                  dispatch(setTIndex());
+                }}
+              >
+                SHOP
+              </span>
+            </h1>
           </div>
           <div className='col-lg-6 text-lg-end'>
             <nav aria-label='breadcrumb'>

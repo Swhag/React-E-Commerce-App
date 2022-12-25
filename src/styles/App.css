@@ -371,6 +371,10 @@
 /* ----------------------------------------- */
 /* Shop Page styling */
 /* ----------------------------------------- */
+.shop-header:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+}
 
 .reset-anchor {
   color: inherit;
