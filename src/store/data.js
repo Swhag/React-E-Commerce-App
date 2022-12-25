@@ -53,6 +53,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/019/367/662/original/484799_00.png.png',
     slug: 'air-force-1-low-gs-have-a-nike-day-white-af1-gs-hand-wht',
+    limited: true,
   },
   {
     id: 54,
@@ -64,6 +65,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/018/898/008/original/482531_00.png.png',
     slug: 'air-force-1-07-low-university-blue-ao2423-100',
+    limited: true,
   },
   {
     id: 55,
@@ -75,6 +77,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/010/222/352/original/240_00.png.png',
     slug: 'nike-air-force-1-315122-111',
+    limited: true,
   },
   {
     id: 56,
@@ -86,6 +89,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/021/562/245/original/480142_00.png.png',
     slug: 'air-max-97-game-royal-921826-404',
+    limited: true,
   },
   {
     id: 79,
@@ -97,6 +101,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/020/249/956/original/EF3326.png.png',
     slug: 'nmd_r1-speckle-pack-white-ef3326',
+    limited: true,
   },
   {
     id: 80,
@@ -108,6 +113,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/012/598/505/original/348063_00.png.png',
     slug: 'yeezy-boost-350-v2-ice-yellow-f36980',
+    limited: true,
   },
   {
     id: 81,
@@ -119,6 +125,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/016/928/118/original/155573_00.png.png',
     slug: 'yeezy-boost-350-v2-b37572',
+    limited: true,
   },
   {
     id: 82,
@@ -130,6 +137,7 @@ let trendingOne = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/011/292/904/original/298048_00.png.png',
     slug: 'nmd_r1-blizzard-b79759',
+    limited: true,
   },
 ];
 
