@@ -9,8 +9,6 @@ import shoes8 from '../images/shoes8.PNG';
 import shoes9 from '../images/shoes9.PNG';
 
 import banner from '../images/banner.jpg';
-import banner2 from '../images/banner2.jpg';
-import banner3 from '../images/banner3.jpg';
 
 import casual from '../images/casual.jpg';
 import sports from '../images/sports.jpg';
@@ -132,4 +130,4 @@ let shoesData = [
   },
 ];
 
-export { shoesImage, shoesData, banner3, categoryImage };
+export { shoesImage, shoesData, banner, categoryImage };

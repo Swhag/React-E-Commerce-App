@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { banner3 } from '../store/data';
+import { banner } from '../store/data';
 
 function Hero() {
   let [fadeIn, setFadeIn] = useState('');
@@ -16,7 +16,7 @@ function Hero() {
     <div className={`hero-container start ${fadeIn}`}>
       <section
         className='hero pb-3 bg-cover bg-center d-flex align-items-center'
-        style={{ backgroundImage: 'url(' + banner3 + ')' }}
+        style={{ backgroundImage: 'url(' + banner + ')' }}
       >
         <div className='container py-5'>
           <div className='row px-4 px-lg-5'>
