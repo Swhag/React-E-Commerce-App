@@ -67,7 +67,7 @@ function TopNavbar() {
                 <a
                   className='nav-link'
                   onClick={() => {
-                    navigate('/detail/0');
+                    navigate('/detail/1');
                   }}
                 >
                   Product detail
