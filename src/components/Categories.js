@@ -39,7 +39,7 @@ function Categories() {
                 src={categoryImage[0]}
                 alt='#'
               />
-              <strong className='category-item-title'>Running</strong>
+              <strong className='category-item-title'>ATHLETIC</strong>
             </a>
             <a className='category-item mb-4' href='#!'>
               <img
