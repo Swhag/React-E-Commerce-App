@@ -7,6 +7,7 @@ import {
   setItems,
   sortByBrand,
   sortByGender,
+  sortByLimited,
   doubleCondition,
   multipleCondition,
 } from '../store/itemSlice';
@@ -375,7 +376,15 @@ function ShopMenu3() {
           </a>
         </li>
         <li className='mb-2'>
-          <a className='reset-anchor' href='#!'>
+          <a
+            className='reset-anchor'
+            href='#!'
+            onClick={() => {
+              dispatch(sortByLimited(state.items.data));
+              dispatch(setPage(1));
+              dispatch(setTIndex());
+            }}
+          >
             Limited Edition
           </a>
         </li>

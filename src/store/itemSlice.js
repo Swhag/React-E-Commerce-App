@@ -40,6 +40,19 @@ let items = createSlice({
       state.sorted = newArr;
     },
 
+    sortByLimited(state, a) {
+      let items = a.payload[0];
+      let newArr = [];
+
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].limited === true) {
+          newArr.push(items[i]);
+        }
+      }
+      console.log(newArr);
+      state.sorted = newArr;
+    },
+
     doubleCondition(state, a) {
       let items = a.payload[0];
       let gender = a.payload[1];
@@ -81,6 +94,7 @@ export let {
   setItems,
   sortByBrand,
   sortByGender,
+  sortByLimited,
   doubleCondition,
   multipleCondition,
 } = items.actions;
