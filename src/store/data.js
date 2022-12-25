@@ -42,7 +42,7 @@ let categoryImage = [
   shoesModel5,
 ];
 
-let shoesData = [
+let trendingOne = [
   {
     id: 0,
     name: 'White and Black',
@@ -130,4 +130,95 @@ let shoesData = [
   },
 ];
 
-export { shoesImage, shoesData, banner, categoryImage };
+let trendingTwo = [
+  {
+    id: 53,
+    name: "AF1 Low 'Have a Nike Day'",
+    brand: 'NIKE',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 100,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/019/367/662/original/484799_00.png.png',
+    slug: 'air-force-1-low-gs-have-a-nike-day-white-af1-gs-hand-wht',
+  },
+  {
+    id: 54,
+    name: "AF1 '07 Low 'University Blue'",
+    brand: 'NIKE',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 90,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/018/898/008/original/482531_00.png.png',
+    slug: 'air-force-1-07-low-university-blue-ao2423-100',
+  },
+  {
+    id: 55,
+    name: "AF1 '07 'White'",
+    brand: 'NIKE',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 90,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/010/222/352/original/240_00.png.png',
+    slug: 'nike-air-force-1-315122-111',
+  },
+  {
+    id: 56,
+    name: "Air Max 97 'All Star Jersey'",
+    brand: 'NIKE',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 160,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/021/562/245/original/480142_00.png.png',
+    slug: 'air-max-97-game-royal-921826-404',
+  },
+  {
+    id: 79,
+    name: "NMD_R1 'Speckle Pack - White'",
+    brand: 'ADIDAS',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 130,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/020/249/956/original/EF3326.png.png',
+    slug: 'nmd_r1-speckle-pack-white-ef3326',
+  },
+  {
+    id: 80,
+    name: "Yeezy 'Butter'",
+    brand: 'ADIDAS',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 220,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/012/598/505/original/348063_00.png.png',
+    slug: 'yeezy-boost-350-v2-ice-yellow-f36980',
+  },
+  {
+    id: 81,
+    name: "Yeezy 'Semi Frozen Yellow'",
+    brand: 'ADIDAS',
+    gender: 'MEN',
+    category: 'CASUAL',
+    price: 220,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/016/928/118/original/155573_00.png.png',
+    slug: 'yeezy-boost-350-v2-b37572',
+  },
+  {
+    id: 82,
+    name: "NMD_R1 'Blizzard'",
+    brand: 'ADIDAS',
+    gender: 'MEN',
+    category: 'RUNNING',
+    price: 130,
+    imageURL:
+      'https://image.goat.com/attachments/product_template_pictures/images/011/292/904/original/298048_00.png.png',
+    slug: 'nmd_r1-blizzard-b79759',
+  },
+];
+
+export { shoesImage, trendingOne, trendingTwo, banner, categoryImage };

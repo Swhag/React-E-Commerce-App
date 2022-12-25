@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { shoesImage, shoesData } from '../store/data';
+import { shoesImage, trendingOne, trendingTwo } from '../store/data';
 import { addItem } from '../store/cartSlice';
 import '../styles/App.css';
 
@@ -17,7 +17,7 @@ import DetailsPage from '../pages/Detail';
 import Cart from '../pages/Cart';
 
 function App() {
-  let [shoes] = useState(shoesData);
+  let [shoes, setShoes] = useState(trendingOne);
 
   return (
     <div className='App'>
@@ -31,7 +31,59 @@ function App() {
                 <Hero></Hero>
                 <Categories></Categories>
                 <Products shoes={shoes}></Products>
-                <PageButtons></PageButtons>
+                <Products shoes={shoes}></Products>
+                <div className='button-container'>
+                  <nav aria-label='Page navigation example'>
+                    <ul className='pagination justify-content-center justify-content-lg-end'>
+                      <li className='page-item mx-1'>
+                        <a
+                          className='page-link'
+                          href='#!'
+                          aria-label='Previous'
+                          onClick={() => {
+                            setShoes(trendingOne);
+                          }}
+                        >
+                          <span aria-hidden='true'>«</span>
+                        </a>
+                      </li>
+                      <li className='page-item mx-1 active'>
+                        <a
+                          className='page-link'
+                          href='#!'
+                          onClick={() => {
+                            setShoes(trendingOne);
+                          }}
+                        >
+                          1
+                        </a>
+                      </li>
+                      <li className='page-item mx-1'>
+                        <a
+                          className='page-link'
+                          href='#!'
+                          onClick={() => {
+                            setShoes(trendingTwo);
+                          }}
+                        >
+                          2
+                        </a>
+                      </li>
+                      <li className='page-item ms-1'>
+                        <a
+                          className='page-link'
+                          href='#!'
+                          aria-label='Next'
+                          onClick={() => {
+                            setShoes(trendingTwo);
+                          }}
+                        >
+                          <span aria-hidden='true'>»</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
                 <Services></Services>
               </>
             }
@@ -147,74 +199,6 @@ function ProductCard(props) {
           </span>
         </a>
       </div>
-    </div>
-  );
-}
-
-function PageButtons() {
-  return (
-    <div className='button-container'>
-      <nav aria-label='Page navigation example'>
-        <ul className='pagination justify-content-center justify-content-lg-end'>
-          <li className='page-item mx-1'>
-            <a
-              className='page-link'
-              href='#!'
-              aria-label='Previous'
-              onClick={() => {
-                console.log('clicked prev');
-              }}
-            >
-              <span aria-hidden='true'>«</span>
-            </a>
-          </li>
-          <li className='page-item mx-1 active'>
-            <a
-              className='page-link'
-              href='#!'
-              onClick={() => {
-                console.log('clicked 1');
-              }}
-            >
-              1
-            </a>
-          </li>
-          <li className='page-item mx-1'>
-            <a
-              className='page-link'
-              href='#!'
-              onClick={() => {
-                console.log('clicked 2');
-              }}
-            >
-              2
-            </a>
-          </li>
-          <li className='page-item mx-1'>
-            <a
-              className='page-link'
-              href='#!'
-              onClick={() => {
-                console.log('clicked 3');
-              }}
-            >
-              3
-            </a>
-          </li>
-          <li className='page-item ms-1'>
-            <a
-              className='page-link'
-              href='#!'
-              aria-label='Next'
-              onClick={() => {
-                console.log('clicked next');
-              }}
-            >
-              <span aria-hidden='true'>»</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </div>
   );
 }
