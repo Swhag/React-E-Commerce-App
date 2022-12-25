@@ -1,7 +1,9 @@
-import { Routes, Route, useNavigate, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function TopNavbar() {
   let navigate = useNavigate();
+  let [navToggle, setNavToggle] = useState('hidden');
 
   return (
     <header className='header bg-white'>
@@ -24,9 +26,20 @@ function TopNavbar() {
             aria-expanded='false'
             aria-label='Toggle navigation'
           >
-            <span className='navbar-toggler-icon'></span>
+            <span
+              className='navbar-toggler-icon'
+              onClick={() => {
+                navToggle === 'hidden'
+                  ? setNavToggle('show')
+                  : setNavToggle('hidden');
+              }}
+            ></span>
           </button>
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+
+          <div
+            className={`collapse navbar-collapse ${navToggle}`}
+            id='navbarSupportedContent'
+          >
             <ul className='navbar-nav me-auto'>
               <li className='nav-item top-nav-item'>
                 <a

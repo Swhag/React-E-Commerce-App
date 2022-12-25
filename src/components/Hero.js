@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { banner } from '../store/data';
 
 function Hero() {
   let [fadeIn, setFadeIn] = useState('');
+  let navigate = useNavigate();
 
   useEffect(() => {
     setFadeIn('end');
@@ -25,7 +27,13 @@ function Hero() {
                 New Inspiration 2023
               </p>
               <h1 className='h2 text-uppercase mb-3'>20% off on new season</h1>
-              <a className='btn btn-dark' href='#!'>
+              <a
+                className='btn btn-dark'
+                href='#!'
+                onClick={() => {
+                  navigate('/shop');
+                }}
+              >
                 Browse collections
               </a>
             </div>

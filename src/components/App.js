@@ -31,7 +31,6 @@ function App() {
                 <Hero></Hero>
                 <Categories></Categories>
                 <Products shoes={shoes}></Products>
-                <Products shoes={shoes}></Products>
                 <div className='button-container'>
                   <nav aria-label='Page navigation example'>
                     <ul className='pagination justify-content-center justify-content-lg-end'>
@@ -47,28 +46,7 @@ function App() {
                           <span aria-hidden='true'>«</span>
                         </a>
                       </li>
-                      <li className='page-item mx-1 active'>
-                        <a
-                          className='page-link'
-                          href='#!'
-                          onClick={() => {
-                            setShoes(trendingOne);
-                          }}
-                        >
-                          1
-                        </a>
-                      </li>
-                      <li className='page-item mx-1'>
-                        <a
-                          className='page-link'
-                          href='#!'
-                          onClick={() => {
-                            setShoes(trendingTwo);
-                          }}
-                        >
-                          2
-                        </a>
-                      </li>
+
                       <li className='page-item ms-1'>
                         <a
                           className='page-link'

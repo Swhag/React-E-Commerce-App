@@ -44,94 +44,6 @@ let categoryImage = [
 
 let trendingOne = [
   {
-    id: 0,
-    name: 'White and Black',
-    brand: 'NOBRAND',
-    price: 70,
-    gender: 'MEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes1.jpg',
-  },
-
-  {
-    id: 1,
-    name: 'Red Knit',
-    brand: 'NOBRAND',
-    price: 110,
-    gender: 'MEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes2.jpg',
-  },
-
-  {
-    id: 2,
-    name: 'Gray Jordan',
-    brand: 'AIR JORDAN',
-    price: 130,
-    gender: 'MEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes3.jpg',
-  },
-  {
-    id: 3,
-    name: 'Vans Fresh',
-    brand: 'VANS',
-    price: 50,
-    gender: 'MEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes4.PNG',
-  },
-
-  {
-    id: 4,
-    name: 'FitVille Runner',
-    brand: 'FitVille',
-    price: 65,
-    gender: 'WOMEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes5.PNG',
-  },
-
-  {
-    id: 5,
-    name: 'Adidas Originals',
-    brand: 'ADIDAS',
-    price: 80,
-    gender: 'WOMEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes6.PNG',
-  },
-  {
-    id: 6,
-    name: 'Lite Racer',
-    brand: 'NOBRAND',
-    price: 60,
-    gender: 'WOMEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes7.PNG',
-  },
-
-  {
-    id: 7,
-    name: 'Afterburner 8 Turf',
-    brand: 'NOBRAND',
-    price: 85,
-    gender: 'WOMEN',
-    category: 'CASUAL',
-    imageURL:
-      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes8.PNG',
-  },
-];
-
-let trendingTwo = [
-  {
     id: 53,
     name: "AF1 Low 'Have a Nike Day'",
     brand: 'NIKE',
@@ -218,6 +130,94 @@ let trendingTwo = [
     imageURL:
       'https://image.goat.com/attachments/product_template_pictures/images/011/292/904/original/298048_00.png.png',
     slug: 'nmd_r1-blizzard-b79759',
+  },
+];
+
+let trendingTwo = [
+  {
+    id: 0,
+    name: 'White and Black',
+    brand: 'NOBRAND',
+    price: 70,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes1.jpg',
+  },
+
+  {
+    id: 1,
+    name: 'Red Knit',
+    brand: 'NOBRAND',
+    price: 110,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes2.jpg',
+  },
+
+  {
+    id: 2,
+    name: 'Gray Jordan',
+    brand: 'AIR JORDAN',
+    price: 130,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes3.jpg',
+  },
+  {
+    id: 3,
+    name: 'Vans Fresh',
+    brand: 'VANS',
+    price: 50,
+    gender: 'MEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes4.PNG',
+  },
+
+  {
+    id: 4,
+    name: 'FitVille Runner',
+    brand: 'FitVille',
+    price: 65,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes5.PNG',
+  },
+
+  {
+    id: 5,
+    name: 'Adidas Originals',
+    brand: 'ADIDAS',
+    price: 80,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes6.PNG',
+  },
+  {
+    id: 6,
+    name: 'Lite Racer',
+    brand: 'NOBRAND',
+    price: 60,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes7.PNG',
+  },
+
+  {
+    id: 7,
+    name: 'Afterburner 8 Turf',
+    brand: 'NOBRAND',
+    price: 85,
+    gender: 'WOMEN',
+    category: 'CASUAL',
+    imageURL:
+      'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes8.PNG',
   },
 ];
 
