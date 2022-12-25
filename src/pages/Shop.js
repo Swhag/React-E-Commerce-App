@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { addItem } from '../store/cartSlice';
+import { setItems } from '../store/itemSlice';
 import { setPage, setTIndex } from '../store/pageSlice';
 
 import axios from 'axios';
 
 function ShopPage() {
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+
   let [fadeIn, setFadeIn] = useState('');
-  let [shoes, setShoes] = useState([]);
 
   useEffect(() => {
     setFadeIn('end');
@@ -23,7 +26,8 @@ function ShopPage() {
     const fetchShoes = async () => {
       const res = await axios.get('https://Swhag.github.io/shoesData1.json');
       let shoesDataCopy = [...res.data];
-      setShoes(shoesDataCopy);
+
+      dispatch(setItems(shoesDataCopy));
     };
     fetchShoes();
   }, []);
@@ -36,9 +40,9 @@ function ShopPage() {
           <div className='row'>
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
-              <ProductHeader shoes={shoes}></ProductHeader>
-              <Products shoes={shoes}></Products>
-              <PageButtons shoes={shoes}></PageButtons>
+              <ProductHeader items={state.items}></ProductHeader>
+              <Products items={state.items}></Products>
+              <PageButtons items={state.items}></PageButtons>
             </div>
           </div>
         </div>
@@ -49,7 +53,7 @@ function ShopPage() {
 
 function Products(props) {
   let state = useSelector((state) => state);
-  let shoes = props.shoes;
+  let items = props.items;
   let index = state.page.index;
   let itemsPerPage = state.page.itemsPerPage;
 
@@ -59,9 +63,9 @@ function Products(props) {
         <div className='container page-wrapper shop-page-wrapper'>
           <div className='page-inner'>
             <div className='row'>
-              {shoes.slice(index, index + itemsPerPage).map((shoe, i) => {
+              {items.slice(index, index + itemsPerPage).map((item, i) => {
                 return (
-                  <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
+                  <ProductCard key={i} id={item.id} item={item}></ProductCard>
                 );
               })}
             </div>
@@ -75,14 +79,14 @@ function Products(props) {
 function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let shoes = props.shoes;
+  let item = props.item;
 
   return (
     <div className='el-wrapper shop-el-wrapper '>
       <div className='box-up'>
         <img
           className='img product-image'
-          src={shoes.imageURL}
+          src={item.imageURL}
           alt='#'
           width='70%'
           onClick={() => {
@@ -91,8 +95,8 @@ function ProductCard(props) {
         />
         <div className='img-info'>
           <div className='info-inner'>
-            <span className='p-name'>{shoes.name}</span>
-            <span className='p-company'>{shoes.brand}</span>
+            <span className='p-name'>{item.name}</span>
+            <span className='p-company'>{item.brand}</span>
           </div>
           <div className='a-size'>
             Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
@@ -109,10 +113,10 @@ function ProductCard(props) {
           className='cart'
           href='#!'
           onClick={() => {
-            dispatch(addItem(shoes));
+            dispatch(addItem(item));
           }}
         >
-          <span className='price'>${shoes.price}</span>
+          <span className='price'>${item.price}</span>
           <span className='add-to-cart'>
             <span className='txt'>Add in cart</span>
           </span>
@@ -150,14 +154,6 @@ function ShopHeader() {
   );
 }
 function ShopMenu() {
-  let [menu] = useState([
-    `Women's Casual`,
-    `Men's Casual`,
-    `Women's athletic`,
-    `Men's athletic`,
-    `Kids`,
-  ]);
-
   return (
     <div className='col-lg-3 order-2 order-lg-1'>
       <h5 className='text-uppercase mb-4'>Categories</h5>
@@ -167,15 +163,31 @@ function ShopMenu() {
         </strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
-        {menu.map((item, i) => {
-          return (
-            <li className='mb-2' key={i}>
-              <a className='reset-anchor' href='#!' key={i}>
-                {item}
-              </a>
-            </li>
-          );
-        })}
+        <li className='mb-2'>
+          <a className='reset-anchor' href='#!'>
+            Women's Casual
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a className='reset-anchor' href='#!'>
+            Men's Casual
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a className='reset-anchor' href='#!'>
+            Women's athletic
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a className='reset-anchor' href='#!'>
+            Men's athletic
+          </a>
+        </li>
+        <li className='mb-2'>
+          <a className='reset-anchor' href='#!'>
+            Kids
+          </a>
+        </li>
       </ul>
       <ShopMenu2></ShopMenu2>
       <ShopMenu3></ShopMenu3>
@@ -284,12 +296,12 @@ function MenuRadio() {
 
 function ProductHeader(props) {
   let state = useSelector((state) => state);
-  let total = props.shoes.length;
+  let total = props.items.length;
   let startIndex = state.page.index + 1;
   let endIndex = state.page.index + state.page.itemsPerPage;
 
   if (endIndex > total) {
-    endIndex = props.shoes.length;
+    endIndex = props.items.length;
   }
 
   return (
@@ -321,7 +333,7 @@ function PageButtons(props) {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
   let itemsPerPage = state.page.itemsPerPage;
-  let pageCount = Math.round(props.shoes.length / itemsPerPage);
+  let pageCount = Math.round(props.items.length / itemsPerPage);
 
   return (
     <nav aria-label='Page navigation example'>
