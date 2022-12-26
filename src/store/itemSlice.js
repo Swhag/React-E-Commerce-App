@@ -41,7 +41,7 @@ let items = createSlice({
     },
 
     sortByLimited(state, a) {
-      let items = a.payload[0];
+      let items = a.payload;
       let newArr = [];
 
       for (let i = 0; i < items.length; i++) {
