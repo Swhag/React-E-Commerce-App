@@ -58,7 +58,7 @@ let cart = createSlice({
       if (item) {
         item.count++;
       } else {
-        // newItem.count = 1;
+        // newItem.count = 1; will cause "object is not extensible" error
         let newItem = Object.assign({ count: 1 }, a.payload);
         state.items.push(newItem);
       }

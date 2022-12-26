@@ -8,7 +8,6 @@ import {
   setItems,
   sortByBrand,
   sortByGender,
-  sortByCategory,
   sortByLimited,
   doubleCondition,
   multipleCondition,
@@ -124,6 +123,7 @@ function ProductCard(props) {
 
 function ShopHeader() {
   let state = useSelector((state) => state);
+  let navigate = useNavigate();
   let dispatch = useDispatch();
 
   return (
@@ -148,7 +148,13 @@ function ShopHeader() {
             <nav aria-label='breadcrumb'>
               <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
                 <li className='breadcrumb-item'>
-                  <a className='text-dark' href='index.html'>
+                  <a
+                    className='text-dark'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/');
+                    }}
+                  >
                     Home
                   </a>
                 </li>

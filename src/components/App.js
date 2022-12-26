@@ -86,12 +86,12 @@ function App() {
             }
           />
           ---------------------------------------------------
+          <Route path='/shop' element={<ShopPage></ShopPage>}></Route>
+          ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={<DetailsPage items={state.items.data}></DetailsPage>}
+            element={<DetailsPage></DetailsPage>}
           ></Route>
-          ---------------------------------------------------
-          <Route path='/shop' element={<ShopPage></ShopPage>}></Route>
           ---------------------------------------------------
           <Route
             path='/cart'
