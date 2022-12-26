@@ -5,10 +5,10 @@ import { Nav } from 'react-bootstrap';
 function Details(props) {
   let { id } = useParams();
   let [fadeIn, setFadeIn] = useState('');
-  let currentShoes = props.shoes.find((x) => x.id === parseInt(id));
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(60);
   let [tab, setTab] = useState(0);
+  let currentShoes = props.shoes.find((shoe) => shoe.id === parseInt(id));
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,7 +37,7 @@ function Details(props) {
       ) : null}
       <div className='row'>
         <div className='col-md-6'>
-          <img src={props.shoesImage[id]} alt='#' width='100%' />
+          <img src={currentShoes.imageURL} alt='#' width='90%' />
         </div>
         <div className='col-md-6 product-card'>
           <h4 className='pt-5'>{currentShoes.name}</h4>

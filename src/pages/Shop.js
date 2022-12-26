@@ -3,21 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { addItem } from '../store/cartSlice';
+import { setPage, setTIndex } from '../store/pageSlice';
 import {
   setItems,
   sortByBrand,
   sortByGender,
+  sortByCategory,
   sortByLimited,
   doubleCondition,
   multipleCondition,
 } from '../store/itemSlice';
-import { setPage, setTIndex } from '../store/pageSlice';
-
-import axios from 'axios';
 
 function ShopPage() {
   let state = useSelector((state) => state);
-  let dispatch = useDispatch();
 
   let [fadeIn, setFadeIn] = useState('');
 
@@ -27,16 +25,6 @@ function ShopPage() {
     return () => {
       setFadeIn('');
     };
-  }, []);
-
-  useEffect(() => {
-    const fetchShoes = async () => {
-      const res = await axios.get('https://Swhag.github.io/shoesData1.json');
-      let shoesDataCopy = [...res.data];
-
-      dispatch(setItems(shoesDataCopy));
-    };
-    fetchShoes();
   }, []);
 
   return (

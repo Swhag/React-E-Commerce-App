@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPage, setTIndex } from '../store/pageSlice';
+import {
+  setItems,
+  sortByBrand,
+  sortByGender,
+  sortByCategory,
+  sortByLimited,
+  doubleCondition,
+  multipleCondition,
+} from '../store/itemSlice';
 
 function TopNavbar() {
+  let state = useSelector((state) => state);
   let navigate = useNavigate();
+  let dispatch = useDispatch();
   let [navToggle, setNavToggle] = useState('hidden');
 
   return (
@@ -57,6 +70,9 @@ function TopNavbar() {
                   className='nav-link'
                   onClick={() => {
                     navigate('/shop');
+                    dispatch(setItems(state.items.data));
+                    dispatch(setPage(1));
+                    dispatch(setTIndex());
                   }}
                 >
                   Shop
@@ -67,7 +83,7 @@ function TopNavbar() {
                 <a
                   className='nav-link'
                   onClick={() => {
-                    navigate('/detail/1');
+                    navigate('/detail/53');
                   }}
                 >
                   Product detail

@@ -143,7 +143,7 @@ let trendingOne = [
 
 let trendingTwo = [
   {
-    id: 0,
+    id: 99,
     name: 'White and Black',
     brand: 'NOBRAND',
     price: 70,
@@ -154,7 +154,7 @@ let trendingTwo = [
   },
 
   {
-    id: 1,
+    id: 100,
     name: 'Red Knit',
     brand: 'NOBRAND',
     price: 110,
@@ -165,7 +165,7 @@ let trendingTwo = [
   },
 
   {
-    id: 2,
+    id: 101,
     name: 'Gray Jordan',
     brand: 'AIR JORDAN',
     price: 130,
@@ -175,7 +175,7 @@ let trendingTwo = [
       'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes3.jpg',
   },
   {
-    id: 3,
+    id: 102,
     name: 'Vans Fresh',
     brand: 'VANS',
     price: 50,
@@ -186,7 +186,7 @@ let trendingTwo = [
   },
 
   {
-    id: 4,
+    id: 103,
     name: 'FitVille Runner',
     brand: 'FitVille',
     price: 65,
@@ -197,7 +197,7 @@ let trendingTwo = [
   },
 
   {
-    id: 5,
+    id: 104,
     name: 'Adidas Originals',
     brand: 'ADIDAS',
     price: 80,
@@ -207,7 +207,7 @@ let trendingTwo = [
       'https://raw.githubusercontent.com/Swhag/store-app-project/main/src/images/shoes6.PNG',
   },
   {
-    id: 6,
+    id: 105,
     name: 'Lite Racer',
     brand: 'NOBRAND',
     price: 60,
@@ -218,7 +218,7 @@ let trendingTwo = [
   },
 
   {
-    id: 7,
+    id: 106,
     name: 'Afterburner 8 Turf',
     brand: 'NOBRAND',
     price: 85,

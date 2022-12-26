@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
-import { shoesImage, trendingOne, trendingTwo } from '../store/data';
+import { trendingOne, trendingTwo } from '../store/data';
 import { addItem } from '../store/cartSlice';
+import {
+  setItems,
+  sortByBrand,
+  sortByGender,
+  sortByLimited,
+  doubleCondition,
+  multipleCondition,
+} from '../store/itemSlice';
 import '../styles/App.css';
 
 import TopNavbar from './Navbar';
@@ -18,6 +27,17 @@ import Cart from '../pages/Cart';
 
 function App() {
   let [shoes, setShoes] = useState(trendingOne);
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchShoes = async () => {
+      const res = await axios.get('https://Swhag.github.io/shoesData1.json');
+      let shoesDataCopy = [...res.data];
+
+      dispatch(setItems(shoesDataCopy));
+    };
+    fetchShoes();
+  }, []);
 
   return (
     <div className='App'>
@@ -69,17 +89,10 @@ function App() {
           ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={
-              <DetailsPage shoes={shoes} shoesImage={shoesImage}></DetailsPage>
-            }
+            element={<DetailsPage shoes={shoes}></DetailsPage>}
           ></Route>
           ---------------------------------------------------
-          <Route
-            path='/shop'
-            element={
-              <ShopPage shoes={shoes} shoesImage={shoesImage}></ShopPage>
-            }
-          ></Route>
+          <Route path='/shop' element={<ShopPage></ShopPage>}></Route>
           ---------------------------------------------------
           <Route
             path='/cart'

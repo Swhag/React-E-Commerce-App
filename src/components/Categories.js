@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { shoesImage, categoryImage } from '../store/data';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { categoryImage } from '../store/data';
+import { setPage, setTIndex } from '../store/pageSlice';
+import {
+  setItems,
+  sortByBrand,
+  sortByGender,
+  sortByCategory,
+  sortByLimited,
+  doubleCondition,
+  multipleCondition,
+} from '../store/itemSlice';
 
 function Categories() {
   let [fadeIn, setFadeIn] = useState('');
+  let state = useSelector((state) => state);
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   useEffect(() => {
     setFadeIn('end');
@@ -29,7 +44,17 @@ function Categories() {
                 src={categoryImage[4]}
                 alt='#'
               />
-              <strong className='category-item-title'>Limited</strong>
+              <strong
+                className='category-item-title'
+                onClick={() => {
+                  navigate('/shop');
+                  dispatch(sortByLimited(state.items.data));
+                  dispatch(setPage(1));
+                  dispatch(setTIndex());
+                }}
+              >
+                Limited
+              </strong>
             </a>
           </div>
           <div className='col-md-4 col-stacked'>
@@ -39,7 +64,17 @@ function Categories() {
                 src={categoryImage[0]}
                 alt='#'
               />
-              <strong className='category-item-title'>ATHLETIC</strong>
+              <strong
+                className='category-item-title'
+                onClick={() => {
+                  navigate('/shop');
+                  dispatch(sortByCategory([state.items.data, 'RUNNING']));
+                  dispatch(setPage(1));
+                  dispatch(setTIndex());
+                }}
+              >
+                RUNNING
+              </strong>
             </a>
             <a className='category-item mb-4' href='#!'>
               <img
@@ -47,7 +82,18 @@ function Categories() {
                 src={categoryImage[5]}
                 alt='#'
               />
-              <strong className='category-item-title'>Formal</strong>
+              <strong
+                className='category-item-title'
+                onClick={() => {
+                  navigate('/shop');
+                  navigate('/shop');
+                  dispatch(sortByCategory([state.items.data, 'FORMAL']));
+                  dispatch(setPage(1));
+                  dispatch(setTIndex());
+                }}
+              >
+                Formal
+              </strong>
             </a>
           </div>
           <div className='col-md-4'>
@@ -57,7 +103,17 @@ function Categories() {
                 src={categoryImage[7]}
                 alt='#'
               />
-              <strong className='category-item-title'>Casual</strong>
+              <strong
+                className='category-item-title'
+                onClick={() => {
+                  navigate('/shop');
+                  dispatch(sortByCategory([state.items.data, 'CASUAL']));
+                  dispatch(setPage(1));
+                  dispatch(setTIndex());
+                }}
+              >
+                Casual
+              </strong>
             </a>
           </div>
         </div>

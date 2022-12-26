@@ -22,7 +22,6 @@ let items = createSlice({
           newArr.push(items[i]);
         }
       }
-      console.log(newArr);
       state.sorted = newArr;
     },
 
@@ -33,6 +32,19 @@ let items = createSlice({
 
       for (let i = 0; i < items.length; i++) {
         if (items[i].gender === gender) {
+          newArr.push(items[i]);
+        }
+      }
+      state.sorted = newArr;
+    },
+
+    sortByCategory(state, a) {
+      let items = a.payload[0];
+      let category = a.payload[1];
+      let newArr = [];
+
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].category === category) {
           newArr.push(items[i]);
         }
       }
@@ -49,7 +61,6 @@ let items = createSlice({
           newArr.push(items[i]);
         }
       }
-      console.log(newArr);
       state.sorted = newArr;
     },
 
@@ -64,7 +75,6 @@ let items = createSlice({
           newArr.push(items[i]);
         }
       }
-      console.log(newArr);
       state.sorted = newArr;
     },
 
@@ -83,7 +93,6 @@ let items = createSlice({
           newArr.push(items[i]);
         }
       }
-      console.log(newArr);
       state.sorted = newArr;
     },
   },
@@ -94,6 +103,7 @@ export let {
   setItems,
   sortByBrand,
   sortByGender,
+  sortByCategory,
   sortByLimited,
   doubleCondition,
   multipleCondition,
