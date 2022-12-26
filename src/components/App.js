@@ -6,7 +6,7 @@ import axios from 'axios';
 import { trendingOne, trendingTwo } from '../store/data';
 import { addItem } from '../store/cartSlice';
 import { setItems } from '../store/itemSlice';
-import { getItemCount } from '../store/cartSlice';
+import { updateCartCount } from '../store/cartSlice';
 import '../styles/App.css';
 
 import TopNavbar from './Navbar';
@@ -32,6 +32,10 @@ function App() {
       dispatch(setItems(itemsDataCopy));
     };
     fetchShoes();
+  }, []);
+
+  useEffect(() => {
+    dispatch(updateCartCount());
   }, []);
 
   return (
@@ -179,7 +183,7 @@ function ProductCard(props) {
           href='#!'
           onClick={() => {
             dispatch(addItem(item));
-            dispatch(getItemCount());
+            dispatch(updateCartCount());
           }}
         >
           <span className='price'>${item.price}</span>
