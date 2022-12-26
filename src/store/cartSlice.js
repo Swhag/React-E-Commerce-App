@@ -34,6 +34,7 @@ let cart = createSlice({
     subtotal: 0,
     tax: 0,
     total: 0,
+    itemCount: 0,
   },
 
   reducers: {
@@ -53,12 +54,14 @@ let cart = createSlice({
 
     addItem(state, a) {
       let item = state.items.find((item) => item.id === a.payload.id);
+      let newItem = a.payload;
 
       if (item) {
         item.count++;
       } else {
-        a.payload.count = 1;
-        state.items.push(a.payload);
+        // newItem.count = 1;
+        newItem.map((item) => Object.assign({}, item, { count: 1 }));
+        state.items.push(newItem);
       }
     },
 
@@ -90,6 +93,17 @@ let cart = createSlice({
       let newTotal = parseFloat(state.subtotal) + parseFloat(state.tax);
       state.total = newTotal.toFixed(2);
     },
+
+    getItemCount(state) {
+      let items = state.items;
+      let newItemCount = 0;
+
+      for (let i = 0; i < items.length; i++) {
+        newItemCount += items[i].count;
+      }
+
+      state.itemCount = newItemCount;
+    },
   },
 });
 
@@ -102,4 +116,5 @@ export let {
   getSubtotal,
   getTax,
   getTotal,
+  getItemCount,
 } = cart.actions;

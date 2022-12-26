@@ -7,6 +7,7 @@ import {
   getSubtotal,
   getTax,
   getTotal,
+  getItemCount,
 } from '../store/cartSlice';
 
 function Cart() {
@@ -25,6 +26,7 @@ function Cart() {
     dispatch(getSubtotal());
     dispatch(getTax());
     dispatch(getTotal());
+    dispatch(getItemCount());
   }, []);
 
   return (
@@ -105,6 +107,7 @@ function CartItems() {
                   dispatch(getSubtotal());
                   dispatch(getTax());
                   dispatch(getTotal());
+                  dispatch(getItemCount());
                 }}
               >
                 −
@@ -117,6 +120,7 @@ function CartItems() {
                   dispatch(getSubtotal());
                   dispatch(getTax());
                   dispatch(getTotal());
+                  dispatch(getItemCount());
                 }}
               >
                 +
@@ -130,6 +134,7 @@ function CartItems() {
                   dispatch(getSubtotal());
                   dispatch(getTax());
                   dispatch(getTotal());
+                  dispatch(getItemCount());
                 }}
               ></i>
             </td>

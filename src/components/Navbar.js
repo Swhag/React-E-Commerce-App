@@ -2,15 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPage, setTIndex } from '../store/pageSlice';
-import {
-  setItems,
-  sortByBrand,
-  sortByGender,
-  sortByCategory,
-  sortByLimited,
-  doubleCondition,
-  multipleCondition,
-} from '../store/itemSlice';
+import { setItems } from '../store/itemSlice';
 
 function TopNavbar() {
   let state = useSelector((state) => state);
@@ -145,14 +137,17 @@ function TopNavbar() {
                     navigate('/cart');
                   }}
                 >
-                  <i className='fas fa-dolly-flatbed me-1 text-gray'></i>Cart
-                  <small className='text-gray fw-normal'>(2)</small>
+                  <i className='fas fa-dolly-flatbed me-1 text-gray'></i>
+                  Cart
+                  <small className='text-gray fw-normal cart-count'>
+                    ({state.cart.itemCount})
+                  </small>
                 </a>
               </li>
               <li className='nav-item top-nav-item'>
                 <a className='nav-link' href='#!'>
                   <i className='far fa-heart me-1'></i>
-                  <small className='text-gray fw-normal'> (0)</small>
+                  <small className='text-gray fw-normal'>(0)</small>
                 </a>
               </li>
               <li className='nav-item top-nav-item'>

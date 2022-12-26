@@ -5,14 +5,8 @@ import axios from 'axios';
 
 import { trendingOne, trendingTwo } from '../store/data';
 import { addItem } from '../store/cartSlice';
-import {
-  setItems,
-  sortByBrand,
-  sortByGender,
-  sortByLimited,
-  doubleCondition,
-  multipleCondition,
-} from '../store/itemSlice';
+import { setItems } from '../store/itemSlice';
+import { getItemCount } from '../store/cartSlice';
 import '../styles/App.css';
 
 import TopNavbar from './Navbar';
@@ -62,7 +56,6 @@ function App() {
                           aria-label='Previous'
                           onClick={() => {
                             setTrending(trendingOne);
-                            console.log(trendingOne);
                           }}
                         >
                           <span aria-hidden='true'>«</span>
@@ -75,8 +68,7 @@ function App() {
                           href='#!'
                           aria-label='Next'
                           onClick={() => {
-                            setItems(trendingTwo);
-                            console.log(trendingTwo);
+                            setTrending(trendingTwo);
                           }}
                         >
                           <span aria-hidden='true'>»</span>
@@ -187,6 +179,7 @@ function ProductCard(props) {
           href='#!'
           onClick={() => {
             dispatch(addItem(item));
+            dispatch(getItemCount());
           }}
         >
           <span className='price'>${item.price}</span>

@@ -37,6 +37,9 @@
   font-weight: 700;
   cursor: pointer;
 }
+.cart-count {
+  margin-left: 5px;
+}
 
 /* ----------------------------------------- */
 /* Hero styling */

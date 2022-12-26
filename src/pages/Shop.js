@@ -13,6 +13,7 @@ import {
   doubleCondition,
   multipleCondition,
 } from '../store/itemSlice';
+import { getItemCount } from '../store/cartSlice';
 
 function ShopPage() {
   let state = useSelector((state) => state);
@@ -108,6 +109,8 @@ function ProductCard(props) {
           href='#!'
           onClick={() => {
             dispatch(addItem(item));
+            dispatch(getItemCount());
+            console.log(item);
           }}
         >
           <span className='price'>${item.price}</span>
