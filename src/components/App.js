@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { trendingOne, trendingTwo } from '../store/data';
@@ -26,15 +26,16 @@ import DetailsPage from '../pages/Detail';
 import Cart from '../pages/Cart';
 
 function App() {
-  let [shoes, setShoes] = useState(trendingOne);
+  let [trending, setTrending] = useState(trendingOne);
+  let state = useSelector((state) => state);
   let dispatch = useDispatch();
 
   useEffect(() => {
     const fetchShoes = async () => {
       const res = await axios.get('https://Swhag.github.io/shoesData1.json');
-      let shoesDataCopy = [...res.data];
+      let itemsDataCopy = [...res.data];
 
-      dispatch(setItems(shoesDataCopy));
+      dispatch(setItems(itemsDataCopy));
     };
     fetchShoes();
   }, []);
@@ -50,7 +51,7 @@ function App() {
               <>
                 <Hero></Hero>
                 <Categories></Categories>
-                <Products shoes={shoes}></Products>
+                <Products items={trending}></Products>
                 <div className='button-container'>
                   <nav aria-label='Page navigation example'>
                     <ul className='pagination justify-content-center justify-content-lg-end'>
@@ -60,7 +61,8 @@ function App() {
                           href='#!'
                           aria-label='Previous'
                           onClick={() => {
-                            setShoes(trendingOne);
+                            setTrending(trendingOne);
+                            console.log(trendingOne);
                           }}
                         >
                           <span aria-hidden='true'>«</span>
@@ -73,7 +75,8 @@ function App() {
                           href='#!'
                           aria-label='Next'
                           onClick={() => {
-                            setShoes(trendingTwo);
+                            setItems(trendingTwo);
+                            console.log(trendingTwo);
                           }}
                         >
                           <span aria-hidden='true'>»</span>
@@ -89,7 +92,7 @@ function App() {
           ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={<DetailsPage shoes={shoes}></DetailsPage>}
+            element={<DetailsPage items={state.items.data}></DetailsPage>}
           ></Route>
           ---------------------------------------------------
           <Route path='/shop' element={<ShopPage></ShopPage>}></Route>
@@ -119,6 +122,8 @@ function App() {
 }
 
 function Products(props) {
+  let items = props.items;
+
   return (
     <section className='pt-5 product-container'>
       <header className='text-center'>
@@ -131,9 +136,9 @@ function Products(props) {
         <div className='container page-wrapper'>
           <div className='page-inner'>
             <div className='row'>
-              {props.shoes.map((shoe, i) => {
+              {items.map((item, i) => {
                 return (
-                  <ProductCard key={i} id={shoe.id} shoes={shoe}></ProductCard>
+                  <ProductCard key={i} id={item.id} item={item}></ProductCard>
                 );
               })}
             </div>
@@ -147,7 +152,7 @@ function Products(props) {
 function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let item = props.shoes;
+  let item = props.item;
 
   return (
     <div className='el-wrapper'>

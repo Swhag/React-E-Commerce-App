@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { shoesImage } from '../store/data';
-import { addCount, minusCount, removeItem } from '../store/cartSlice';
+import {
+  addCount,
+  minusCount,
+  removeItem,
+  getSubtotal,
+  getTax,
+  getTotal,
+} from '../store/cartSlice';
 
 function Cart() {
+  let dispatch = useDispatch();
   let [fadeIn, setFadeIn] = useState('');
 
   useEffect(() => {
@@ -12,6 +19,12 @@ function Cart() {
     return () => {
       setFadeIn('');
     };
+  }, []);
+
+  useEffect(() => {
+    dispatch(getSubtotal());
+    dispatch(getTax());
+    dispatch(getTotal());
   }, []);
 
   return (
@@ -58,13 +71,13 @@ function CartItems() {
 
   return (
     <tbody>
-      {state.cart.map((item, i) => {
+      {state.cart.items.map((item, i) => {
         return (
           <tr key={i}>
             <th scope='row'>
               <div className='p-2'>
                 <img
-                  src={shoesImage[item.id]}
+                  src={item.imageURL}
                   alt=''
                   width='70'
                   className='img-fluid rounded shadow-sm cart-img'
@@ -89,6 +102,9 @@ function CartItems() {
                 className='count-btn'
                 onClick={() => {
                   dispatch(minusCount(item));
+                  dispatch(getSubtotal());
+                  dispatch(getTax());
+                  dispatch(getTotal());
                 }}
               >
                 −
@@ -98,6 +114,9 @@ function CartItems() {
                 className='count-btn'
                 onClick={() => {
                   dispatch(addCount(item));
+                  dispatch(getSubtotal());
+                  dispatch(getTax());
+                  dispatch(getTotal());
                 }}
               >
                 +
@@ -108,6 +127,9 @@ function CartItems() {
                 className='fa fa-trash cart-delete-icon'
                 onClick={() => {
                   dispatch(removeItem(item));
+                  dispatch(getSubtotal());
+                  dispatch(getTax());
+                  dispatch(getTotal());
                 }}
               ></i>
             </td>
@@ -118,7 +140,12 @@ function CartItems() {
   );
 }
 
-function OrderSummary() {
+function OrderSummary(props) {
+  let state = useSelector((state) => state);
+  let subtotal = state.cart.subtotal;
+  let tax = state.cart.tax;
+  let total = state.cart.total;
+
   return (
     <div className='row py-5 p-4 bg-white rounded shadow-sm'>
       <div className='col-lg-6'>
@@ -175,7 +202,7 @@ function OrderSummary() {
           <ul className='list-unstyled mb-4'>
             <li className='d-flex justify-content-between py-3 border-bottom'>
               <strong className='text-muted'>Order Subtotal </strong>
-              <strong>$390.00</strong>
+              <strong>${subtotal}</strong>
             </li>
             <li className='d-flex justify-content-between py-3 border-bottom'>
               <strong className='text-muted'>Shipping and handling</strong>
@@ -183,14 +210,14 @@ function OrderSummary() {
             </li>
             <li className='d-flex justify-content-between py-3 border-bottom'>
               <strong className='text-muted'>Tax</strong>
-              <strong>$0.00</strong>
+              <strong>${tax}</strong>
             </li>
             <li className='d-flex justify-content-between py-3 border-bottom'>
               <strong className='text-muted'>Total</strong>
-              <h5 className='font-weight-bold'>$400.00</h5>
+              <h5 className='font-weight-bold'>${total}</h5>
             </li>
           </ul>
-          <a href='#' className='btn btn-dark rounded-pill py-2 btn-block'>
+          <a href='#!' className='btn btn-dark rounded-pill py-2 btn-block'>
             Proceed to checkout
           </a>
         </div>

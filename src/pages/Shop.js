@@ -16,7 +16,6 @@ import {
 
 function ShopPage() {
   let state = useSelector((state) => state);
-
   let [fadeIn, setFadeIn] = useState('');
 
   useEffect(() => {

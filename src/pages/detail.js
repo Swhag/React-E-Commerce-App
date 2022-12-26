@@ -8,7 +8,7 @@ function Details(props) {
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(60);
   let [tab, setTab] = useState(0);
-  let currentShoes = props.shoes.find((shoe) => shoe.id === parseInt(id));
+  let item = props.items.find((item) => item.id === parseInt(id));
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,12 +37,12 @@ function Details(props) {
       ) : null}
       <div className='row'>
         <div className='col-md-6'>
-          <img src={currentShoes.imageURL} alt='#' width='90%' />
+          <img src={item.imageURL} alt='#' width='90%' />
         </div>
         <div className='col-md-6 product-card'>
-          <h4 className='pt-5'>{currentShoes.name}</h4>
-          <p>{currentShoes.content}</p>
-          <p>${currentShoes.price}</p>
+          <h4 className='pt-5'>{item.name}</h4>
+          <p>{item.content}</p>
+          <p>${item.price}</p>
 
           <button className='btn btn-danger'>Add to Cart</button>
         </div>
@@ -81,7 +81,7 @@ function Details(props) {
         </Nav.Item>
       </Nav>
 
-      <TabContent tab={tab} shoes={currentShoes}></TabContent>
+      <TabContent tab={tab} shoes={item}></TabContent>
     </div>
   );
 }
