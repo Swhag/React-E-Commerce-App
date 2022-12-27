@@ -21,7 +21,6 @@ import Cart from '../pages/Cart';
 
 function App() {
   let [trending, setTrending] = useState(trendingOne);
-  let state = useSelector((state) => state);
   let dispatch = useDispatch();
 
   useEffect(() => {

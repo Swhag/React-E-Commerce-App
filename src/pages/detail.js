@@ -1,43 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import axios from 'axios';
-// import { setItems } from '../store/itemSlice';
 
 function Details() {
   let { id } = useParams();
-  let state = useSelector((state) => state);
-  let dispatch = useDispatch();
-
   let [fadeIn, setFadeIn] = useState('');
   let [alert, setAlert] = useState(true);
   let [count, setCount] = useState(60);
   let [tab, setTab] = useState(0);
-  let [items, setItems] = useState([]);
-
-  let test = items.find((item) => item.id === parseInt(id));
-  // let item = state.items.data.find((item) => item.id === parseInt(id));
-  let item = {
-    id: 53,
-    name: "AF1 Low 'Have a Nike Day'",
-    brand: 'NIKE',
-    gender: 'MEN',
-    category: 'CASUAL',
-    price: 100,
-    imageURL:
-      'https://image.goat.com/attachments/product_template_pictures/images/019/367/662/original/484799_00.png.png',
-    slug: 'air-force-1-low-gs-have-a-nike-day-white-af1-gs-hand-wht',
-    limited: false,
-  };
+  let [item, setItem] = useState({});
 
   useEffect(() => {
     const fetchShoes = async () => {
       const res = await axios.get('https://Swhag.github.io/shoesData1.json');
       let itemsDataCopy = [...res.data];
 
-      setItems(itemsDataCopy);
+      // finds item from fetched data using the ID received as URL parameter
+      let item = itemsDataCopy.find((item) => item.id === parseInt(id));
+      setItem(item);
     };
+
     fetchShoes();
   }, []);
 
@@ -57,13 +40,6 @@ function Details() {
     return () => {
       setFadeIn('');
     };
-  }, []);
-
-  useEffect(() => {
-    console.log(item);
-    console.log(id);
-    console.log(test);
-    // console.log(state.items.data);
   }, []);
 
   return (
