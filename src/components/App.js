@@ -40,7 +40,7 @@ function App() {
   return (
     <div className='App'>
       <TopNavbar></TopNavbar>
-      <div className='container'>
+      <div className='container main-container'>
         <Routes>
           <Route
             path='/'

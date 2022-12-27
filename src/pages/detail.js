@@ -24,7 +24,6 @@ function Details() {
       setItem(currentItem);
 
       let moreItems = [];
-
       for (let i = 0; i < itemsDataCopy.length; i++) {
         if (
           itemsDataCopy[i].category === currentItem.category &&
@@ -52,7 +51,7 @@ function Details() {
   return (
     <>
       <div className='alert alert-warning-custom'>
-        20% holiday discount ends in 5 days
+        20% holiday discount ends in 7 days
       </div>
 
       <div className={`container bg-light detail-container start ${fadeIn}`}>
@@ -91,7 +90,7 @@ function Details() {
           </Nav.Item>
         </Nav>
         <TabContent tab={tab} shoes={item}></TabContent>
-        <MoreProducts item={moreItems}></MoreProducts>
+        <MoreProducts item={moreItems} setItem={setItem}></MoreProducts>
       </div>
     </>
   );
@@ -272,13 +271,16 @@ function TabContent({ tab, shoes }) {
 
 function MoreProducts(props) {
   let moreItems = props.item;
+  let setItem = props.setItem;
 
   return (
     <div className='more-products-container'>
-      <h2 className='h5 text-uppercase mb-4'>More products</h2>
+      <h2 className='h5 text-uppercase mb-4'>Related products</h2>
       <div className='row'>
         {moreItems.map((item, i) => {
-          return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+          return (
+            <ProductCard key={i} item={item} setItem={setItem}></ProductCard>
+          );
         })}
       </div>
     </div>
@@ -289,6 +291,7 @@ function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let item = props.item;
+  let setItem = props.setItem;
 
   return (
     <div className='col-lg-3 col-sm-6'>
@@ -301,6 +304,7 @@ function ProductCard(props) {
             width='80%'
             onClick={() => {
               navigate(`/detail/` + item.id);
+              setItem(item);
             }}
           />
           <div className='img-info'>

@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+.main-container {
+  width: 100vw;
+}
+
 /* ----------------------------------------- */
 /* Transition styling */
 /* ----------------------------------------- */
@@ -477,6 +481,18 @@
   }
 }
 
+@media (max-width: 430px) {
+  .shop-el-wrapper {
+    width: 310px;
+  }
+}
+
+@media (max-width: 360px) {
+  .shop-el-wrapper {
+    width: 270px;
+  }
+}
+
 /* ----------------------------------------- */
 /* Page Buttons styling */
 /* ----------------------------------------- */
@@ -693,6 +709,18 @@
 @media (max-width: 580px) {
   .detail-el-wrapper {
     width: 360px;
+  }
+}
+
+@media (max-width: 400px) {
+  .detail-el-wrapper {
+    width: 300px;
+  }
+}
+
+@media (max-width: 360px) {
+  .detail-el-wrapper {
+    width: 270px;
   }
 }
 
