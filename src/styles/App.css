@@ -577,6 +577,12 @@
   padding-top: 20px;
 }
 
+.detail-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .tab-content-header {
   margin: 20px 0 20px 0;
   font-size: 1.2rem;
@@ -595,7 +601,7 @@
 .detail-el-wrapper {
   border: 5px solid rgb(248, 249, 250);
   background-color: #fff;
-  width: 300px;
+  width: 290px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -624,9 +630,9 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 580px) {
   .detail-el-wrapper {
-    width: 330px;
+    width: 360px;
   }
 }
 

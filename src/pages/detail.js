@@ -10,8 +10,6 @@ import { updateCartCount } from '../store/cartSlice';
 function Details() {
   let { id } = useParams();
   let [fadeIn, setFadeIn] = useState('');
-  let [alert, setAlert] = useState(true);
-  let [count, setCount] = useState(60);
   let [tab, setTab] = useState(0);
   let [item, setItem] = useState({});
   let [moreItems, setMoreItems] = useState([]);
@@ -22,22 +20,26 @@ function Details() {
       let itemsDataCopy = [...res.data];
 
       // finds item from fetched data using the ID received as URL parameter
-      let item = itemsDataCopy.find((item) => item.id === parseInt(id));
-      setItem(item);
+      let currentItem = itemsDataCopy.find((item) => item.id === parseInt(id));
+      setItem(currentItem);
+
+      let moreItems = [];
+
+      for (let i = 0; i < itemsDataCopy.length; i++) {
+        if (
+          itemsDataCopy[i].category === currentItem.category &&
+          itemsDataCopy[i].id !== currentItem.id &&
+          itemsDataCopy[i].gender === currentItem.gender
+        ) {
+          moreItems.push(itemsDataCopy[i]);
+        }
+      }
+
+      setMoreItems(moreItems.slice(0, 4));
     };
 
     fetchShoes();
   }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAlert(false);
-    }, 60000);
-
-    setTimeout(() => {
-      return count > 0 ? setCount(count - 1) : 0;
-    }, 1000);
-  });
 
   useEffect(() => {
     setFadeIn('end');
@@ -49,26 +51,12 @@ function Details() {
 
   return (
     <>
-      {alert ? (
-        <div className='alert alert-warning-custom'>
-          20% holiday discount ends in {count} seconds
-        </div>
-      ) : null}
+      <div className='alert alert-warning-custom'>
+        20% holiday discount ends in 5 days
+      </div>
 
       <div className={`container bg-light detail-container start ${fadeIn}`}>
         <MainDetails item={item}></MainDetails>
-
-        {/* <div className='row'>
-        <div className='col-md-6'>
-          <img src={item.imageURL} alt='#' width='90%' />
-        </div>
-        <div className='col-md-6 product-card'>
-          <h4 className='pt-5'>{item.name}</h4>
-          <p>${item.price}</p>
-
-          <button className='btn btn-danger'>Add to Cart</button>
-        </div>
-      </div> */}
 
         <Nav variant='tabs' defaultActiveKey='link0'>
           <Nav.Item>
@@ -103,7 +91,7 @@ function Details() {
           </Nav.Item>
         </Nav>
         <TabContent tab={tab} shoes={item}></TabContent>
-        <RelatedProducts item={item}></RelatedProducts>
+        <MoreProducts item={moreItems}></MoreProducts>
       </div>
     </>
   );
@@ -116,89 +104,13 @@ function MainDetails(props) {
     // <section className='py-5'>
     <div className='container'>
       <div className='row mb-5'>
-        <div className='col-lg-6'>
-          {/* <!-- PRODUCT SLIDER--> */}
-          <div className='row m-sm-0'>
-            <div className='col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2'>
-              <div className='swiper product-slider-thumbs'>
-                <div className='swiper-wrapper'>
-                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
-                    <img className='w-100' src={item.imageURL} alt='#'></img>
-                  </div>
-                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
-                    <img className='w-100' src={item.imageURL} alt='#'></img>
-                  </div>
-                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
-                    <img className='w-100' src={item.imageURL} alt='#'></img>
-                  </div>
-                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
-                    <img className='w-100' src={item.imageURL} alt='#'></img>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='col-sm-10 order-1 order-sm-2'>
-              <div className='swiper product-slider'>
-                <div className='swiper-wrapper'>
-                  <div className='swiper-slide h-auto'>
-                    <a
-                      className='glightbox product-view'
-                      href='#!'
-                      data-gallery='gallery2'
-                      data-glightbox='Product item 1'
-                    >
-                      <img
-                        className='img-fluid'
-                        src={item.imageURL}
-                        alt='#'
-                      ></img>
-                    </a>
-                  </div>
-                  {/* <div className='swiper-slide h-auto'>
-                      <a
-                        className='glightbox product-view'
-                        href='img/product-detail-2.jpg'
-                        data-gallery='gallery2'
-                        data-glightbox='Product item 2'
-                      >
-                        <img
-                          className='img-fluid'
-                          src={item.imageURL}
-                          alt='#'
-                        ></img>
-                      </a>
-                    </div>
-                    <div className='swiper-slide h-auto'>
-                      <a
-                        className='glightbox product-view'
-                        href='img/product-detail-3.jpg'
-                        data-gallery='gallery2'
-                        data-glightbox='Product item 3'
-                      >
-                        <img
-                          className='img-fluid'
-                          src={item.imageURL}
-                          alt='#'
-                        ></img>
-                      </a>
-                    </div>
-                    <div className='swiper-slide h-auto'>
-                      <a
-                        className='glightbox product-view'
-                        href='img/product-detail-4.jpg'
-                        data-gallery='gallery2'
-                        data-glightbox='Product item 4'
-                      >
-                        <img
-                          className='img-fluid'
-                          src={item.imageURL}
-                          alt='#'
-                        ></img>
-                      </a>
-                    </div> */}
-                </div>
-              </div>
-            </div>
+        <div className='col-lg-6 detail-image-container'>
+          <div className='col-sm-10 order-1 order-sm-2'>
+            <img
+              className='img-fluid detail-image'
+              src={item.imageURL}
+              alt='#'
+            ></img>
           </div>
         </div>
         {/* <!-- PRODUCT DETAILS--> */}
@@ -220,8 +132,8 @@ function MainDetails(props) {
               <i className='fas fa-star small text-warning'></i>
             </li>
           </ul>
-          <h1>Red digital smartwatch</h1>
-          <p className='text-muted lead'>$250</p>
+          <h1>{item.name}</h1>
+          <p className='lead'>${item.price}</p>
           <p className='text-sm mb-4'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
             ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et
@@ -265,18 +177,18 @@ function MainDetails(props) {
           <ul className='list-unstyled small d-inline-block'>
             <li className='px-3 py-2 mb-1 bg-white'>
               <strong className='text-uppercase'>SKU:</strong>
-              <span className='ms-2 text-muted'>039</span>
+              <span className='ms-2 text-muted'>00{item.id}</span>
             </li>
             <li className='px-3 py-2 mb-1 bg-white text-muted'>
               <strong className='text-uppercase text-dark'>Category:</strong>
               <a className='reset-anchor ms-2' href='#!'>
-                Demo Products
+                {item.category}
               </a>
             </li>
             <li className='px-3 py-2 mb-1 bg-white text-muted'>
               <strong className='text-uppercase text-dark'>Gender:</strong>
               <a className='reset-anchor ms-2' href='#!'>
-                MEN
+                {item.gender}
               </a>
             </li>
           </ul>
@@ -303,10 +215,18 @@ function TabContent({ tab, shoes }) {
     <>
       <div className='tab-content-header'>{shoes.name}</div>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut,
+        Genuine Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut,
         asperiores necessitatibus nulla error dolore magni. Lorem ipsum dolor
         sit amet, consectetur adipisicing elit. Dolore vitae odio consequuntur
         pariatur repellat facilis facere ipsam recusandae aliquam aliquid.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+        deserunt amet rem unde odit aliquam nobis pariatur in libero
+        praesentium, iure qui quis non dolore ad sint nostrum et fuga ut
+        aspernatur ab natus labore. Ipsa sit nostrum et debitis cupiditate,
+        laborum natus deleniti perspiciatis.
       </p>
     </>,
 
@@ -314,9 +234,16 @@ function TabContent({ tab, shoes }) {
     <>
       <div className='tab-content-header'>Shipping Info</div>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quaerat
-        necessitatibus magni veritatis harum! Fuga exercitationem accusantium
-        neque vitae assumenda!
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid
+        ducimus voluptas voluptate vero reprehenderit eos quaerat nostrum esse
+        eum.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem fugiat
+        labore, voluptas corporis deserunt esse tempore blanditiis reprehenderit
+        cum culpa aspernatur maxime aliquid magni voluptatum incidunt dicta
+        atque? Ducimus, nemo.
       </p>
     </>,
 
@@ -343,15 +270,14 @@ function TabContent({ tab, shoes }) {
   );
 }
 
-function RelatedProducts(props) {
-  let item = props.item;
-  let moreItem = [item, item, item, item];
+function MoreProducts(props) {
+  let moreItems = props.item;
 
   return (
     <div className='more-products-container'>
-      <h2 class='h5 text-uppercase mb-4'>Related products</h2>
-      <div class='row'>
-        {moreItem.map((item, i) => {
+      <h2 className='h5 text-uppercase mb-4'>More products</h2>
+      <div className='row'>
+        {moreItems.map((item, i) => {
           return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
         })}
       </div>
@@ -365,7 +291,7 @@ function ProductCard(props) {
   let item = props.item;
 
   return (
-    <div class='col-lg-3 col-sm-6'>
+    <div className='col-lg-3 col-sm-6'>
       <div className='el-wrapper detail-el-wrapper'>
         <div className='box-up'>
           <img
