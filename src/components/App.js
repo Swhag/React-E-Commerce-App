@@ -50,35 +50,31 @@ function App() {
                 <Categories></Categories>
                 <Products items={trending}></Products>
                 <div className='button-container'>
-                  <nav aria-label='Page navigation example'>
-                    <ul className='pagination justify-content-center justify-content-lg-end'>
-                      <li className='page-item mx-1'>
-                        <a
-                          className='page-link'
-                          href='#!'
-                          aria-label='Previous'
-                          onClick={() => {
-                            setTrending(trendingOne);
-                          }}
-                        >
-                          <span aria-hidden='true'>«</span>
-                        </a>
-                      </li>
+                  <ul className='pagination justify-content-center justify-content-lg-end'>
+                    <li className='page-item mx-1'>
+                      <a
+                        className='page-link'
+                        href='#!'
+                        onClick={() => {
+                          setTrending(trendingOne);
+                        }}
+                      >
+                        <span>«</span>
+                      </a>
+                    </li>
 
-                      <li className='page-item ms-1'>
-                        <a
-                          className='page-link'
-                          href='#!'
-                          aria-label='Next'
-                          onClick={() => {
-                            setTrending(trendingTwo);
-                          }}
-                        >
-                          <span aria-hidden='true'>»</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
+                    <li className='page-item ms-1'>
+                      <a
+                        className='page-link'
+                        href='#!'
+                        onClick={() => {
+                          setTrending(trendingTwo);
+                        }}
+                      >
+                        <span>»</span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
                 <Services></Services>
               </>
@@ -127,17 +123,11 @@ function Products(props) {
         </p>
         <h2 className='h5 text-uppercase mb-4'>TOP TRENDING PRODUCTS </h2>
       </header>
-      <div className='row'>
-        <div className='container page-wrapper'>
-          <div className='page-inner'>
-            <div className='row'>
-              {items.map((item, i) => {
-                return (
-                  <ProductCard key={i} id={item.id} item={item}></ProductCard>
-                );
-              })}
-            </div>
-          </div>
+      <div className='container'>
+        <div className='row'>
+          {items.map((item, i) => {
+            return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+          })}
         </div>
       </div>
     </section>
@@ -150,46 +140,48 @@ function ProductCard(props) {
   let item = props.item;
 
   return (
-    <div className='el-wrapper'>
-      <div className='box-up'>
-        <img
-          className='img product-image'
-          src={item.imageURL}
-          alt='#'
-          width='80%'
-          onClick={() => {
-            navigate(`/detail/` + item.id);
-          }}
-        />
-        <div className='img-info'>
-          <div className='info-inner'>
-            <span className='p-name'>{item.name}</span>
-            <span className='p-company'>{item.brand}</span>
-          </div>
-          <div className='a-size'>
-            Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+    <div className='col-lg-3 col-sm-6'>
+      <div className='el-wrapper home-el-wrapper'>
+        <div className='box-up'>
+          <img
+            className='img product-image'
+            src={item.imageURL}
+            alt='#'
+            width='80%'
+            onClick={() => {
+              navigate(`/detail/` + item.id);
+            }}
+          />
+          <div className='img-info'>
+            <div className='info-inner'>
+              <span className='p-name'>{item.name}</span>
+              <span className='p-company'>{item.brand}</span>
+            </div>
+            <div className='a-size'>
+              Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className='box-down'>
-        <div className='h-bg'>
-          <div className='h-bg-inner'></div>
+        <div className='box-down'>
+          <div className='h-bg'>
+            <div className='h-bg-inner'></div>
+          </div>
+
+          <a
+            className='cart'
+            href='#!'
+            onClick={() => {
+              dispatch(addItem(item));
+              dispatch(updateCartCount());
+            }}
+          >
+            <span className='price'>${item.price}</span>
+            <span className='add-to-cart'>
+              <span className='txt'>Add in cart</span>
+            </span>
+          </a>
         </div>
-
-        <a
-          className='cart'
-          href='#!'
-          onClick={() => {
-            dispatch(addItem(item));
-            dispatch(updateCartCount());
-          }}
-        >
-          <span className='price'>${item.price}</span>
-          <span className='add-to-cart'>
-            <span className='txt'>Add in cart</span>
-          </span>
-        </a>
       </div>
     </div>
   );

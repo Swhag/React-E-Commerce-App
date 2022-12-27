@@ -52,21 +52,13 @@ function Products(props) {
   let itemsPerPage = state.page.itemsPerPage;
 
   return (
-    <section className='pt-5 shop-product-container'>
+    <div className='container'>
       <div className='row'>
-        <div className='container page-wrapper shop-page-wrapper'>
-          <div className='page-inner'>
-            <div className='row'>
-              {items.slice(index, index + itemsPerPage).map((item, i) => {
-                return (
-                  <ProductCard key={i} id={item.id} item={item}></ProductCard>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        {items.slice(index, index + itemsPerPage).map((item, i) => {
+          return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+        })}
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -76,46 +68,48 @@ function ProductCard(props) {
   let item = props.item;
 
   return (
-    <div className='el-wrapper shop-el-wrapper '>
-      <div className='box-up'>
-        <img
-          className='img product-image'
-          src={item.imageURL}
-          alt='#'
-          width='70%'
-          onClick={() => {
-            navigate(`/detail/` + props.id);
-          }}
-        />
-        <div className='img-info'>
-          <div className='info-inner'>
-            <span className='p-name'>{item.name}</span>
-            <span className='p-company'>{item.brand}</span>
-          </div>
-          <div className='a-size'>
-            Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+    <div className='col-lg-4 col-sm-6'>
+      <div className='el-wrapper shop-el-wrapper '>
+        <div className='box-up'>
+          <img
+            className='img product-image'
+            src={item.imageURL}
+            alt='#'
+            width='70%'
+            onClick={() => {
+              navigate(`/detail/` + props.id);
+            }}
+          />
+          <div className='img-info'>
+            <div className='info-inner'>
+              <span className='p-name'>{item.name}</span>
+              <span className='p-company'>{item.brand}</span>
+            </div>
+            <div className='a-size'>
+              Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className='box-down'>
-        <div className='h-bg'>
-          <div className='h-bg-inner'></div>
+        <div className='box-down'>
+          <div className='h-bg'>
+            <div className='h-bg-inner'></div>
+          </div>
+
+          <a
+            className='cart'
+            href='#!'
+            onClick={() => {
+              dispatch(addItem(item));
+              dispatch(updateCartCount());
+            }}
+          >
+            <span className='price'>${item.price}</span>
+            <span className='add-to-cart'>
+              <span className='txt'>Add in cart</span>
+            </span>
+          </a>
         </div>
-
-        <a
-          className='cart'
-          href='#!'
-          onClick={() => {
-            dispatch(addItem(item));
-            dispatch(updateCartCount());
-          }}
-        >
-          <span className='price'>${item.price}</span>
-          <span className='add-to-cart'>
-            <span className='txt'>Add in cart</span>
-          </span>
-        </a>
       </div>
     </div>
   );
@@ -145,24 +139,20 @@ function ShopHeader() {
             </h1>
           </div>
           <div className='col-lg-6 text-lg-end'>
-            <nav aria-label='breadcrumb'>
-              <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
-                <li className='breadcrumb-item'>
-                  <a
-                    className='text-dark'
-                    href='#!'
-                    onClick={() => {
-                      navigate('/');
-                    }}
-                  >
-                    Home
-                  </a>
-                </li>
-                <li className='breadcrumb-item active' aria-current='page'>
-                  Shop
-                </li>
-              </ol>
-            </nav>
+            <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
+              <li className='breadcrumb-item'>
+                <a
+                  className='text-dark'
+                  href='#!'
+                  onClick={() => {
+                    navigate('/');
+                  }}
+                >
+                  Home
+                </a>
+              </li>
+              <li className='breadcrumb-item active'>Shop</li>
+            </ol>
           </div>
         </div>
       </div>
@@ -497,11 +487,11 @@ function PageButtons(props) {
   let pageCount = Math.ceil(props.items.length / itemsPerPage);
 
   return (
-    <nav aria-label='Page navigation example'>
+    <div className='button-container'>
       <ul className='pagination justify-content-center justify-content-lg-end'>
         <li className='page-item mx-1'>
-          <a className='page-link' href='#!' aria-label='Previous'>
-            <span aria-hidden='true'>«</span>
+          <a className='page-link' href='#!'>
+            «
           </a>
         </li>
 
@@ -523,12 +513,12 @@ function PageButtons(props) {
           );
         })}
         <li className='page-item ms-1'>
-          <a className='page-link' href='#!' aria-label='Next'>
-            <span aria-hidden='true'>»</span>
+          <a className='page-link' href='#!'>
+            »
           </a>
         </li>
       </ul>
-    </nav>
+    </div>
   );
 }
 
