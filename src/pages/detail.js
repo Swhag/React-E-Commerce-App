@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import axios from 'axios';
+
+import { addItem } from '../store/cartSlice';
+import { updateCartCount } from '../store/cartSlice';
 
 function Details() {
   let { id } = useParams();
@@ -10,6 +14,7 @@ function Details() {
   let [count, setCount] = useState(60);
   let [tab, setTab] = useState(0);
   let [item, setItem] = useState({});
+  let [moreItems, setMoreItems] = useState([]);
 
   useEffect(() => {
     const fetchShoes = async () => {
@@ -43,14 +48,17 @@ function Details() {
   }, []);
 
   return (
-    <div className={`container start ${fadeIn}`}>
+    <>
       {alert ? (
         <div className='alert alert-warning-custom'>
           20% holiday discount ends in {count} seconds
         </div>
       ) : null}
 
-      <div className='row'>
+      <div className={`container bg-light detail-container start ${fadeIn}`}>
+        <MainDetails item={item}></MainDetails>
+
+        {/* <div className='row'>
         <div className='col-md-6'>
           <img src={item.imageURL} alt='#' width='90%' />
         </div>
@@ -60,43 +68,222 @@ function Details() {
 
           <button className='btn btn-danger'>Add to Cart</button>
         </div>
+      </div> */}
+
+        <Nav variant='tabs' defaultActiveKey='link0'>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setTab(0);
+              }}
+              eventKey='link0'
+            >
+              Specification
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setTab(1);
+              }}
+              eventKey='link1'
+            >
+              Shipping Info
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setTab(2);
+              }}
+              eventKey='link2'
+            >
+              Q&A
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <TabContent tab={tab} shoes={item}></TabContent>
+        <RelatedProducts item={item}></RelatedProducts>
       </div>
+    </>
+  );
+}
 
-      <Nav variant='tabs' defaultActiveKey='link0'>
-        <Nav.Item>
-          <Nav.Link
-            onClick={() => {
-              setTab(0);
-            }}
-            eventKey='link0'
-          >
-            Specification
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            onClick={() => {
-              setTab(1);
-            }}
-            eventKey='link1'
-          >
-            Shipping Info
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            onClick={() => {
-              setTab(2);
-            }}
-            eventKey='link2'
-          >
-            Q&A
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
+function MainDetails(props) {
+  let item = props.item;
 
-      <TabContent tab={tab} shoes={item}></TabContent>
+  return (
+    // <section className='py-5'>
+    <div className='container'>
+      <div className='row mb-5'>
+        <div className='col-lg-6'>
+          {/* <!-- PRODUCT SLIDER--> */}
+          <div className='row m-sm-0'>
+            <div className='col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2'>
+              <div className='swiper product-slider-thumbs'>
+                <div className='swiper-wrapper'>
+                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
+                    <img className='w-100' src={item.imageURL} alt='#'></img>
+                  </div>
+                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
+                    <img className='w-100' src={item.imageURL} alt='#'></img>
+                  </div>
+                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
+                    <img className='w-100' src={item.imageURL} alt='#'></img>
+                  </div>
+                  <div className='swiper-slide h-auto swiper-thumb-item mb-3'>
+                    <img className='w-100' src={item.imageURL} alt='#'></img>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-sm-10 order-1 order-sm-2'>
+              <div className='swiper product-slider'>
+                <div className='swiper-wrapper'>
+                  <div className='swiper-slide h-auto'>
+                    <a
+                      className='glightbox product-view'
+                      href='#!'
+                      data-gallery='gallery2'
+                      data-glightbox='Product item 1'
+                    >
+                      <img
+                        className='img-fluid'
+                        src={item.imageURL}
+                        alt='#'
+                      ></img>
+                    </a>
+                  </div>
+                  {/* <div className='swiper-slide h-auto'>
+                      <a
+                        className='glightbox product-view'
+                        href='img/product-detail-2.jpg'
+                        data-gallery='gallery2'
+                        data-glightbox='Product item 2'
+                      >
+                        <img
+                          className='img-fluid'
+                          src={item.imageURL}
+                          alt='#'
+                        ></img>
+                      </a>
+                    </div>
+                    <div className='swiper-slide h-auto'>
+                      <a
+                        className='glightbox product-view'
+                        href='img/product-detail-3.jpg'
+                        data-gallery='gallery2'
+                        data-glightbox='Product item 3'
+                      >
+                        <img
+                          className='img-fluid'
+                          src={item.imageURL}
+                          alt='#'
+                        ></img>
+                      </a>
+                    </div>
+                    <div className='swiper-slide h-auto'>
+                      <a
+                        className='glightbox product-view'
+                        href='img/product-detail-4.jpg'
+                        data-gallery='gallery2'
+                        data-glightbox='Product item 4'
+                      >
+                        <img
+                          className='img-fluid'
+                          src={item.imageURL}
+                          alt='#'
+                        ></img>
+                      </a>
+                    </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <!-- PRODUCT DETAILS--> */}
+        <div className='col-lg-6'>
+          <ul className='list-inline mb-2 text-sm'>
+            <li className='list-inline-item m-0'>
+              <i className='fas fa-star small text-warning'></i>
+            </li>
+            <li className='list-inline-item m-0 1'>
+              <i className='fas fa-star small text-warning'></i>
+            </li>
+            <li className='list-inline-item m-0 2'>
+              <i className='fas fa-star small text-warning'></i>
+            </li>
+            <li className='list-inline-item m-0 3'>
+              <i className='fas fa-star small text-warning'></i>
+            </li>
+            <li className='list-inline-item m-0 4'>
+              <i className='fas fa-star small text-warning'></i>
+            </li>
+          </ul>
+          <h1>Red digital smartwatch</h1>
+          <p className='text-muted lead'>$250</p>
+          <p className='text-sm mb-4'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
+            ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et
+            magnis dis parturient montes nascetur ridiculus mus. Vestibulum
+            ultricies aliquam convallis.
+          </p>
+          <div className='row align-items-stretch mb-4'>
+            <div className='col-sm-5 pr-sm-0'>
+              <div className='border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white'>
+                <span className='small text-uppercase text-gray mr-4 no-select'>
+                  Quantity
+                </span>
+                <div className='quantity'>
+                  <button className='dec-btn p-0'>
+                    <i className='fas fa-caret-left'></i>
+                  </button>
+                  <input
+                    className='form-control border-0 shadow-0 p-0'
+                    type='text'
+                    // value='1'
+                  ></input>
+                  <button className='inc-btn p-0'>
+                    <i className='fas fa-caret-right'></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className='col-sm-3 pl-sm-0'>
+              <a
+                className='btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0'
+                href='#!'
+              >
+                Add to cart
+              </a>
+            </div>
+          </div>
+          <a className='text-dark p-0 mb-4 d-inline-block' href='#!'>
+            <i className='far fa-heart me-2'></i>Add to wish list
+          </a>
+          <br></br>
+          <ul className='list-unstyled small d-inline-block'>
+            <li className='px-3 py-2 mb-1 bg-white'>
+              <strong className='text-uppercase'>SKU:</strong>
+              <span className='ms-2 text-muted'>039</span>
+            </li>
+            <li className='px-3 py-2 mb-1 bg-white text-muted'>
+              <strong className='text-uppercase text-dark'>Category:</strong>
+              <a className='reset-anchor ms-2' href='#!'>
+                Demo Products
+              </a>
+            </li>
+            <li className='px-3 py-2 mb-1 bg-white text-muted'>
+              <strong className='text-uppercase text-dark'>Gender:</strong>
+              <a className='reset-anchor ms-2' href='#!'>
+                MEN
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+    // </section>
   );
 }
 
@@ -125,7 +312,7 @@ function TabContent({ tab, shoes }) {
 
     // ---------------------------------------------------
     <>
-      <div className='tab-content-header'>Shipping Info Content</div>
+      <div className='tab-content-header'>Shipping Info</div>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quaerat
         necessitatibus magni veritatis harum! Fuga exercitationem accusantium
@@ -151,7 +338,78 @@ function TabContent({ tab, shoes }) {
     </>,
   ];
 
-  return <div className={`tab-content start ${fadeIn}`}>{content[tab]}</div>;
+  return (
+    <div className={`tab-content bg-white start ${fadeIn}`}>{content[tab]}</div>
+  );
+}
+
+function RelatedProducts(props) {
+  let item = props.item;
+  let moreItem = [item, item, item, item];
+
+  return (
+    <div className='more-products-container'>
+      <h2 class='h5 text-uppercase mb-4'>Related products</h2>
+      <div class='row'>
+        {moreItem.map((item, i) => {
+          return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ProductCard(props) {
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+  let item = props.item;
+
+  return (
+    <div class='col-lg-3 col-sm-6'>
+      <div className='el-wrapper detail-el-wrapper'>
+        <div className='box-up'>
+          <img
+            className='img product-image'
+            src={item.imageURL}
+            alt='#'
+            width='80%'
+            onClick={() => {
+              navigate(`/detail/` + item.id);
+            }}
+          />
+          <div className='img-info'>
+            <div className='info-inner'>
+              <span className='p-name'>{item.name}</span>
+              <span className='p-company'>{item.brand}</span>
+            </div>
+            <div className='a-size'>
+              Available sizes :<span className='size'>8.5 / 9 / 10 / 11</span>
+            </div>
+          </div>
+        </div>
+
+        <div className='box-down'>
+          <div className='h-bg'>
+            <div className='h-bg-inner'></div>
+          </div>
+
+          <a
+            className='cart'
+            href='#!'
+            onClick={() => {
+              dispatch(addItem(item));
+              dispatch(updateCartCount());
+            }}
+          >
+            <span className='price'>${item.price}</span>
+            <span className='add-to-cart'>
+              <span className='txt'>Add in cart</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Details;
