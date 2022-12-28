@@ -375,6 +375,10 @@
   white-space: nowrap;
 }
 
+.p-name:hover {
+  cursor: pointer;
+}
+
 /* ----------------------------------------- */
 /* Home Page Product Card styling */
 /* ----------------------------------------- */
@@ -422,6 +426,13 @@
 /* ----------------------------------------- */
 .shop-header:hover {
   cursor: pointer;
+}
+
+/* this applies to Headers in Shop / Checkout Page */
+.breadcrumb-item {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .reset-anchor {
@@ -750,15 +761,6 @@
 /* Cart styling */
 /* ----------------------------------------- */
 
-.cart-bg {
-  background: #f8f9fa;
-  min-height: 100vh;
-}
-
-.cart-top {
-  margin-top: 50px;
-}
-
 .section-title {
   font-weight: 600;
 }
@@ -789,6 +791,39 @@
 
 .cart-img {
   margin-right: 20px;
+}
+
+/* ----------------------------------------- */
+/* Checkout styling */
+/* ----------------------------------------- */
+
+.checkout-header:hover {
+  cursor: pointer;
+}
+
+.form-control-lg {
+  min-height: calc(1.5em + 1.2rem + 2px);
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 0;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /* ----------------------------------------- */

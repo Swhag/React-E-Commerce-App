@@ -133,6 +133,7 @@ function TopNavbar() {
               <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
+                  href='#!'
                   onClick={() => {
                     navigate('/cart');
                   }}

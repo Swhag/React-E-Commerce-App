@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   addCount,
@@ -31,10 +32,11 @@ function Cart() {
 
   return (
     <div className={`px-4 px-lg-0 start ${fadeIn}`}>
-      <div className='pb-5 cart-bg'>
+      <div className='pb-5'>
         <div className='container'>
+          <CartHeader></CartHeader>
           <div className='row'>
-            <div className='col-lg-12 p-5 bg-white rounded shadow-sm mb-5 cart-top'>
+            <div className='col-lg-12 p-5 bg-white rounded shadow-sm mb-5'>
               <div className='table-responsive'>
                 <table className='table'>
                   <CartTableHead></CartTableHead>
@@ -47,6 +49,40 @@ function Cart() {
         </div>
       </div>
     </div>
+  );
+}
+
+function CartHeader() {
+  let navigate = useNavigate();
+
+  return (
+    <section className='py-5 bg-light'>
+      <div className='container'>
+        <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
+          <div className='col-lg-6'>
+            <h1 className='h2 text-uppercase mb-0'>Cart</h1>
+          </div>
+          <div className='col-lg-6 text-lg-end'>
+            <nav aria-label='breadcrumb'>
+              <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
+                <li className='breadcrumb-item'>
+                  <a
+                    className='text-dark'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/');
+                    }}
+                  >
+                    Home
+                  </a>
+                </li>
+                <li class='breadcrumb-item active'>Cart</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -70,6 +106,7 @@ function CartTableHead() {
 function CartItems() {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   return (
     <tbody>
@@ -86,7 +123,13 @@ function CartItems() {
                 />
                 <div className='ml-3 d-inline-block align-middle'>
                   <h5 className='mb-0'>
-                    <a href='#!' className='text-dark d-inline-block'>
+                    <a
+                      href='#!'
+                      className='text-dark d-inline-block'
+                      onClick={() => {
+                        navigate(`/detail/` + item.id);
+                      }}
+                    >
                       {item.name}
                     </a>
                   </h5>
@@ -147,6 +190,7 @@ function CartItems() {
 
 function OrderSummary(props) {
   let state = useSelector((state) => state);
+  let navigate = useNavigate();
   let subtotal = state.cart.subtotal;
   let tax = state.cart.tax;
   let total = state.cart.total;
@@ -201,8 +245,8 @@ function OrderSummary(props) {
         </div>
         <div className='p-4'>
           <p className='font-italic mb-4'>
-            Shipping and additional costs are calculated based on values you
-            have entered.
+            Tax and additional costs are calculated based on values you have
+            entered.
           </p>
           <ul className='list-unstyled mb-4'>
             <li className='d-flex justify-content-between py-3 border-bottom'>
@@ -222,7 +266,13 @@ function OrderSummary(props) {
               <h5 className='font-weight-bold'>${total}</h5>
             </li>
           </ul>
-          <a href='#!' className='btn btn-dark rounded-pill py-2 btn-block'>
+          <a
+            href='#!'
+            className='btn btn-dark rounded-pill py-2 btn-block'
+            onClick={() => {
+              navigate('/checkout/');
+            }}
+          >
             Proceed to checkout
           </a>
         </div>

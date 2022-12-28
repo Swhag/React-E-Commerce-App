@@ -13,28 +13,35 @@ function Details() {
   let [tab, setTab] = useState(0);
   let [item, setItem] = useState({});
   let [moreItems, setMoreItems] = useState([]);
+  let [ItemsData, setItemsData] = useState([]);
+
+  function getMoreItems(itemsDataCopy) {
+    let currentItem = itemsDataCopy.find((item) => item.id === parseInt(id));
+    let moreItems = [];
+
+    for (let i = 0; i < itemsDataCopy.length; i++) {
+      if (
+        itemsDataCopy[i].category === currentItem.category &&
+        itemsDataCopy[i].id !== currentItem.id &&
+        itemsDataCopy[i].gender === currentItem.gender
+      ) {
+        moreItems.push(itemsDataCopy[i]);
+      }
+    }
+
+    setMoreItems(moreItems.slice(0, 4));
+  }
 
   useEffect(() => {
     const fetchShoes = async () => {
       const res = await axios.get('https://Swhag.github.io/shoesData1.json');
       let itemsDataCopy = [...res.data];
+      setItemsData(itemsDataCopy);
 
       // finds item from fetched data using the ID received as URL parameter
       let currentItem = itemsDataCopy.find((item) => item.id === parseInt(id));
       setItem(currentItem);
-
-      let moreItems = [];
-      for (let i = 0; i < itemsDataCopy.length; i++) {
-        if (
-          itemsDataCopy[i].category === currentItem.category &&
-          itemsDataCopy[i].id !== currentItem.id &&
-          itemsDataCopy[i].gender === currentItem.gender
-        ) {
-          moreItems.push(itemsDataCopy[i]);
-        }
-      }
-
-      setMoreItems(moreItems.slice(0, 4));
+      getMoreItems(itemsDataCopy);
     };
 
     fetchShoes();
@@ -90,7 +97,12 @@ function Details() {
           </Nav.Item>
         </Nav>
         <TabContent tab={tab} shoes={item}></TabContent>
-        <MoreProducts item={moreItems} setItem={setItem}></MoreProducts>
+        <MoreProducts
+          item={moreItems}
+          setItem={setItem}
+          ItemsData={ItemsData}
+          getMoreItems={getMoreItems}
+        ></MoreProducts>
       </div>
     </>
   );
@@ -317,6 +329,8 @@ function ProductCard(props) {
   let dispatch = useDispatch();
   let item = props.item;
   let setItem = props.setItem;
+  let ItemsData = props.ItemsData;
+  let getMoreItems = props.getMoreItems;
 
   return (
     <div className='col-lg-3 col-sm-6'>
@@ -327,14 +341,19 @@ function ProductCard(props) {
             src={item.imageURL}
             alt='#'
             width='80%'
-            onClick={() => {
-              navigate(`/detail/` + item.id);
-              setItem(item);
-            }}
           />
           <div className='img-info'>
             <div className='info-inner'>
-              <span className='p-name'>{item.name}</span>
+              <span
+                className='p-name'
+                onClick={() => {
+                  navigate(`/detail/` + item.id);
+                  setItem(item);
+                  getMoreItems(ItemsData);
+                }}
+              >
+                {item.name}
+              </span>
               <span className='p-company'>{item.brand}</span>
             </div>
             <div className='a-size'>

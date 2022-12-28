@@ -18,6 +18,7 @@ import Footer from './Footer';
 import ShopPage from '../pages/Shop';
 import DetailsPage from '../pages/Detail';
 import Cart from '../pages/Cart';
+import Checkout from '../pages/Checkout';
 
 function App() {
   let [trending, setTrending] = useState(trendingOne);
@@ -88,6 +89,8 @@ function App() {
             element={<DetailsPage></DetailsPage>}
           ></Route>
           ---------------------------------------------------
+          <Route path='/checkout' element={<Checkout></Checkout>}></Route>
+          ---------------------------------------------------
           <Route
             path='/cart'
             element={
@@ -146,13 +149,17 @@ function ProductCard(props) {
             src={item.imageURL}
             alt='#'
             width='80%'
-            onClick={() => {
-              navigate(`/detail/` + item.id);
-            }}
           />
           <div className='img-info'>
             <div className='info-inner'>
-              <span className='p-name'>{item.name}</span>
+              <span
+                className='p-name'
+                onClick={() => {
+                  navigate(`/detail/` + props.id);
+                }}
+              >
+                {item.name}
+              </span>
               <span className='p-company'>{item.brand}</span>
             </div>
             <div className='a-size'>

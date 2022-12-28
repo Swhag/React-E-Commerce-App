@@ -76,13 +76,17 @@ function ProductCard(props) {
             src={item.imageURL}
             alt='#'
             width='70%'
-            onClick={() => {
-              navigate(`/detail/` + props.id);
-            }}
           />
           <div className='img-info'>
             <div className='info-inner'>
-              <span className='p-name'>{item.name}</span>
+              <span
+                className='p-name'
+                onClick={() => {
+                  navigate(`/detail/` + props.id);
+                }}
+              >
+                {item.name}
+              </span>
               <span className='p-company'>{item.brand}</span>
             </div>
             <div className='a-size'>
