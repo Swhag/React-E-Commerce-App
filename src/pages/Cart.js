@@ -86,12 +86,12 @@ function CartItems() {
                 />
                 <div className='ml-3 d-inline-block align-middle'>
                   <h5 className='mb-0'>
-                    <a href='#' className='text-dark d-inline-block'>
+                    <a href='#!' className='text-dark d-inline-block'>
                       {item.name}
                     </a>
                   </h5>
                   <span className='text-muted font-weight-normal font-italic'>
-                    Size: 9
+                    SKU: 00{item.id}
                   </span>
                 </div>
               </div>

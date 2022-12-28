@@ -64,6 +64,20 @@ let cart = createSlice({
       }
     },
 
+    addItemWithQuantity(state, a) {
+      let currentItem = a.payload[0];
+      let quantity = a.payload[1];
+      let item = state.items.find((item) => item.id === currentItem.id);
+
+      if (item) {
+        item.count += quantity;
+      } else {
+        // newItem.count = 1; will cause "object is not extensible" error
+        let newItem = Object.assign({ count: quantity }, currentItem);
+        state.items.push(newItem);
+      }
+    },
+
     removeItem(state, a) {
       state.items.forEach((item, index) => {
         if (item.id === a.payload.id) {
@@ -111,6 +125,7 @@ export let {
   addCount,
   minusCount,
   addItem,
+  addItemWithQuantity,
   removeItem,
   getSubtotal,
   getTax,

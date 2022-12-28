@@ -100,9 +100,7 @@ function App() {
           <Route
             path='*'
             element={
-              <>
-                Error 404: Unable to reach this page - still working on it bruh
-              </>
+              <>Error 404: Unable to reach this page - still working on it</>
             }
           />
         </Routes>

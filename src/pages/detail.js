@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import axios from 'axios';
 
-import { addItem } from '../store/cartSlice';
+import { addItem, addItemWithQuantity } from '../store/cartSlice';
 import { updateCartCount } from '../store/cartSlice';
 
 function Details() {
@@ -97,7 +97,27 @@ function Details() {
 }
 
 function MainDetails(props) {
+  let dispatch = useDispatch();
+  let [quantity, setQuantity] = useState(1);
   let item = props.item;
+
+  function decreaseQuantity() {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  }
+
+  function increaseQuantity() {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  }
+
+  function setQuantityValue(value) {
+    if (/^[0-9]+$/.test(value) && value.length < 2) {
+      setQuantity(parseFloat(value));
+    } else if (value === '') {
+      setQuantity('');
+    }
+  }
 
   return (
     // <section className='py-5'>
@@ -146,15 +166,16 @@ function MainDetails(props) {
                   Quantity
                 </span>
                 <div className='quantity'>
-                  <button className='dec-btn p-0'>
+                  <button className='dec-btn p-0' onClick={decreaseQuantity}>
                     <i className='fas fa-caret-left'></i>
                   </button>
                   <input
                     className='form-control border-0 shadow-0 p-0'
                     type='text'
-                    // value='1'
+                    value={quantity}
+                    onChange={(e) => setQuantityValue(e.target.value)}
                   ></input>
-                  <button className='inc-btn p-0'>
+                  <button className='inc-btn p-0' onClick={increaseQuantity}>
                     <i className='fas fa-caret-right'></i>
                   </button>
                 </div>
@@ -164,6 +185,10 @@ function MainDetails(props) {
               <a
                 className='btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0'
                 href='#!'
+                onClick={() => {
+                  dispatch(addItemWithQuantity([item, quantity]));
+                  dispatch(updateCartCount());
+                }}
               >
                 Add to cart
               </a>
