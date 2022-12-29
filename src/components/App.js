@@ -42,8 +42,8 @@ function App() {
 
   return (
     <div className='App'>
-      <TopNavbar setLogin={setLogin}></TopNavbar>
       <LoginModal login={login} setLogin={setLogin}></LoginModal>
+      <TopNavbar setLogin={setLogin}></TopNavbar>
       <div className='container main-container'>
         <Routes>
           <Route

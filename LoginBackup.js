@@ -4,36 +4,19 @@ function LoginModal(props) {
   let login = props.login;
   let setLogin = props.setLogin;
 
-  const exitPrompt = (e) => {
-    if (e.target.classList.contains('exit-zone')) {
-      setLogin('');
-    }
-  };
-
   return (
-    <div
-      className={`black-bg ${login} exit-zone`}
-      onMouseDown={(e) => {
-        e.stopPropagation();
-        exitPrompt(e);
-      }}
-    >
+    <div className={`black-bg ${login}`}>
       <div className='container login-container'>
-        <div className='row exit-zone'>
-          <div className='col-lg-10 col-xl-9 mx-auto '>
+        <div className='row'>
+          <div className='col-lg-10 col-xl-9 mx-auto'>
             <div className='card flex-row my-5 border-0 shadow rounded-3 overflow-hidden'>
               <div className='card-img-left d-none d-md-flex'>
                 {/* <!-- Background image for card set in CSS! --> */}
               </div>
               <div className='card-body p-4 p-sm-5'>
-                <h5 className='card-title text-center mb-5 fs-5 '>
+                <h5 className='card-title text-center mb-5 fs-5'>
                   Login to continue
-                  <i
-                    className='fa-solid fa-xmark login-close-icon'
-                    onClick={() => {
-                      setLogin('');
-                    }}
-                  ></i>
+                  <i className='fa-regular fa-circle-xmark'></i>
                 </h5>
 
                 <form>

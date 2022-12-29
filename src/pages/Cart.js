@@ -76,7 +76,7 @@ function CartHeader() {
                     Home
                   </a>
                 </li>
-                <li class='breadcrumb-item active'>Cart</li>
+                <li className='breadcrumb-item active'>Cart</li>
               </ol>
             </nav>
           </div>
