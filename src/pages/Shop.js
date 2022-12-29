@@ -17,6 +17,7 @@ import { updateCartCount } from '../store/cartSlice';
 function ShopPage() {
   let state = useSelector((state) => state);
   let [fadeIn, setFadeIn] = useState('');
+  let [login, setLogin] = useState('');
 
   useEffect(() => {
     setFadeIn('end');

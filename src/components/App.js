@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { trendingOne, trendingTwo } from '../store/data';
@@ -10,6 +10,7 @@ import { updateCartCount } from '../store/cartSlice';
 import '../styles/App.css';
 
 import TopNavbar from './Navbar';
+import LoginModal from './Login';
 import Hero from './Hero';
 import Categories from './Categories';
 import Services from './Services';
@@ -21,8 +22,9 @@ import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 
 function App() {
-  let [trending, setTrending] = useState(trendingOne);
   let dispatch = useDispatch();
+  let [trending, setTrending] = useState(trendingOne);
+  let [login, setLogin] = useState('');
 
   useEffect(() => {
     const fetchShoes = async () => {
@@ -40,7 +42,8 @@ function App() {
 
   return (
     <div className='App'>
-      <TopNavbar></TopNavbar>
+      <TopNavbar setLogin={setLogin}></TopNavbar>
+      <LoginModal login={login} setLogin={setLogin}></LoginModal>
       <div className='container main-container'>
         <Routes>
           <Route

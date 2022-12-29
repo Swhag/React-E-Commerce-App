@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPage, setTIndex } from '../store/pageSlice';
 import { setItems } from '../store/itemSlice';
 
-function TopNavbar() {
+function TopNavbar(props) {
   let state = useSelector((state) => state);
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let [navToggle, setNavToggle] = useState('hidden');
+  let setLogin = props.setLogin;
 
   return (
     <header className='header bg-white'>
@@ -16,6 +17,7 @@ function TopNavbar() {
         <nav className='navbar navbar-expand-lg navbar-light py-3 px-lg-0'>
           <a
             className='navbar-brand top-navbar-brand'
+            href='#!'
             onClick={() => {
               navigate('/');
             }}
@@ -49,6 +51,7 @@ function TopNavbar() {
               <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
+                  href='#!'
                   onClick={() => {
                     navigate('/');
                   }}
@@ -60,6 +63,7 @@ function TopNavbar() {
               <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
+                  href='#!'
                   onClick={() => {
                     navigate('/shop');
                     dispatch(setItems(state.items.data));
@@ -74,6 +78,7 @@ function TopNavbar() {
               <li className='nav-item top-nav-item'>
                 <a
                   className='nav-link'
+                  href='#!'
                   onClick={() => {
                     navigate('/detail/53');
                   }}
@@ -85,7 +90,7 @@ function TopNavbar() {
                 <a
                   className='nav-link dropdown-toggle'
                   id='pagesDropdown'
-                  href='#'
+                  href='#!'
                   data-bs-toggle='dropdown'
                   aria-haspopup='true'
                   aria-expanded='false'
@@ -152,7 +157,13 @@ function TopNavbar() {
                 </a>
               </li>
               <li className='nav-item top-nav-item'>
-                <a className='nav-link' href='#!'>
+                <a
+                  className='nav-link'
+                  href='#!'
+                  onClick={() => {
+                    setLogin('show-login');
+                  }}
+                >
                   <i className='fas fa-user me-1 text-gray fw-normal'></i>Login
                 </a>
               </li>
