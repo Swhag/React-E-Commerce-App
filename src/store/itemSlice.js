@@ -87,8 +87,8 @@ let items = createSlice({
       for (let i = 0; i < items.length; i++) {
         if (
           (items[i].gender === gender && items[i].category === category[0]) ||
-          items[i].category === category[1] ||
-          items[i].category === category[2]
+          (items[i].gender === gender && items[i].category === category[1]) ||
+          (items[i].gender === gender && items[i].category === category[2])
         ) {
           newArr.push(items[i]);
         }
