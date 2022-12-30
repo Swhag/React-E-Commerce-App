@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { addItem } from '../store/cartSlice';
-import { setPage, setTIndex } from '../store/pageSlice';
+import { addItem } from '../redux/cartSlice';
+import { setPage, setTIndex } from '../redux/pageSlice';
 import {
   setItems,
   sortByBrand,
@@ -11,8 +11,8 @@ import {
   sortByLimited,
   doubleCondition,
   multipleCondition,
-} from '../store/itemSlice';
-import { updateCartCount } from '../store/cartSlice';
+} from '../redux/itemSlice';
+import { updateCartCount } from '../redux/cartSlice';
 
 function ShopPage() {
   let state = useSelector((state) => state);

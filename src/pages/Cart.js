@@ -9,7 +9,7 @@ import {
   getTax,
   getTotal,
   updateCartCount,
-} from '../store/cartSlice';
+} from '../redux/cartSlice';
 
 function Cart() {
   let dispatch = useDispatch();

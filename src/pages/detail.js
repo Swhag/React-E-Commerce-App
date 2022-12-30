@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import axios from 'axios';
 
-import { addItem, addItemWithQuantity } from '../store/cartSlice';
-import { updateCartCount } from '../store/cartSlice';
+import { addItem, addItemWithQuantity } from '../redux/cartSlice';
+import { updateCartCount } from '../redux/cartSlice';
 
 function Details() {
   let { id } = useParams();

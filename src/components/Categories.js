@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { categoryImage } from '../store/data';
-import { setPage, setTIndex } from '../store/pageSlice';
+import { categoryImage } from '../redux/data';
+import { setPage, setTIndex } from '../redux/pageSlice';
 import {
   setItems,
   sortByBrand,
@@ -11,7 +11,7 @@ import {
   sortByLimited,
   doubleCondition,
   multipleCondition,
-} from '../store/itemSlice';
+} from '../redux/itemSlice';
 
 function Categories() {
   let [fadeIn, setFadeIn] = useState('');

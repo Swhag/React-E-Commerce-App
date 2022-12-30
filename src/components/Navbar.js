@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPage, setTIndex } from '../store/pageSlice';
-import { setItems } from '../store/itemSlice';
+import { setPage, setTIndex } from '../redux/pageSlice';
+import { setItems } from '../redux/itemSlice';
 
 function TopNavbar(props) {
   let state = useSelector((state) => state);

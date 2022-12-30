@@ -3,10 +3,10 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { trendingOne, trendingTwo } from '../store/data';
-import { addItem } from '../store/cartSlice';
-import { setItems } from '../store/itemSlice';
-import { updateCartCount } from '../store/cartSlice';
+import { trendingOne, trendingTwo } from '../redux/data';
+import { addItem } from '../redux/cartSlice';
+import { setItems } from '../redux/itemSlice';
+import { updateCartCount } from '../redux/cartSlice';
 import '../styles/App.css';
 
 import TopNavbar from './Navbar';
