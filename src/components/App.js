@@ -14,6 +14,7 @@ import LoginModal from './Login';
 import Hero from './Hero';
 import Categories from './Categories';
 import Services from './Services';
+import Sidebar from './Sidebar';
 import Footer from './Footer';
 
 import ShopPage from '../pages/Shop';
@@ -89,6 +90,7 @@ function App() {
                     </li>
                   </ul>
                 </div>
+                <Sidebar></Sidebar>
                 <Services></Services>
               </>
             }
