@@ -48,7 +48,6 @@ let items = createSlice({
           newArr.push(items[i]);
         }
       }
-      console.log(newArr);
       state.sorted = newArr;
     },
 
