@@ -46,14 +46,7 @@ function App() {
 
     if (localStorage.getItem('cart')) {
       dispatch(setCart(JSON.parse(localStorage.getItem('cart'))));
-      console.log('cart found');
     } else localStorage.setItem('cart', JSON.stringify(cartState));
-  };
-
-  const updateCart = () => {
-    console.log(' redux cartState moved to local storage');
-    let cartState = state.cart.items;
-    localStorage.setItem('cart', JSON.stringify(cartState));
   };
 
   return (
@@ -68,7 +61,7 @@ function App() {
               <>
                 <Hero></Hero>
                 <Categories></Categories>
-                <Products items={trending} updateCart={updateCart}></Products>
+                <Products items={trending}></Products>
                 <div className='button-container'>
                   <ul className='pagination justify-content-center justify-content-lg-end'>
                     <li className='page-item mx-1'>
@@ -149,14 +142,7 @@ function Products(props) {
       <div className='container'>
         <div className='row'>
           {items.map((item, i) => {
-            return (
-              <ProductCard
-                key={i}
-                id={item.id}
-                item={item}
-                updateCart={props.updateCart}
-              ></ProductCard>
-            );
+            return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
           })}
         </div>
       </div>
@@ -208,7 +194,6 @@ function ProductCard(props) {
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
-              props.updateCart();
             }}
           >
             <span className='price'>${item.price}</span>
