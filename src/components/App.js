@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { trendingOne, trendingTwo } from '../redux/data';
-import { addItem } from '../redux/cartSlice';
+import { setCart, addItem } from '../redux/cartSlice';
 import { setItems } from '../redux/itemSlice';
 import { updateCartCount } from '../redux/cartSlice';
 import '../styles/App.css';
@@ -18,10 +18,11 @@ import Footer from './Footer';
 
 import ShopPage from '../pages/Shop';
 import DetailsPage from '../pages/Detail';
-import Cart from '../pages/Cart';
-import Checkout from '../pages/Checkout';
+import CartPage from '../pages/Cart';
+import CheckoutPage from '../pages/Checkout';
 
 function App() {
+  let state = useSelector((state) => state);
   let dispatch = useDispatch();
   let [trending, setTrending] = useState(trendingOne);
   let [login, setLogin] = useState('');
@@ -40,10 +41,25 @@ function App() {
     dispatch(updateCartCount());
   }, []);
 
+  const getCart = () => {
+    let cartState = state.cart.items;
+
+    if (localStorage.getItem('cart')) {
+      dispatch(setCart(JSON.parse(localStorage.getItem('cart'))));
+      console.log('cart found');
+    } else localStorage.setItem('cart', JSON.stringify(cartState));
+  };
+
+  const updateCart = () => {
+    console.log(' redux cartState moved to local storage');
+    let cartState = state.cart.items;
+    localStorage.setItem('cart', JSON.stringify(cartState));
+  };
+
   return (
     <div className='App'>
       <LoginModal login={login} setLogin={setLogin}></LoginModal>
-      <TopNavbar setLogin={setLogin}></TopNavbar>
+      <TopNavbar setLogin={setLogin} getCart={getCart}></TopNavbar>
       <div className='container main-container'>
         <Routes>
           <Route
@@ -52,7 +68,7 @@ function App() {
               <>
                 <Hero></Hero>
                 <Categories></Categories>
-                <Products items={trending}></Products>
+                <Products items={trending} updateCart={updateCart}></Products>
                 <div className='button-container'>
                   <ul className='pagination justify-content-center justify-content-lg-end'>
                     <li className='page-item mx-1'>
@@ -92,13 +108,16 @@ function App() {
             element={<DetailsPage></DetailsPage>}
           ></Route>
           ---------------------------------------------------
-          <Route path='/checkout' element={<Checkout></Checkout>}></Route>
+          <Route
+            path='/checkout'
+            element={<CheckoutPage></CheckoutPage>}
+          ></Route>
           ---------------------------------------------------
           <Route
             path='/cart'
             element={
               <>
-                <Cart></Cart>
+                <CartPage></CartPage>
               </>
             }
           ></Route>
@@ -130,7 +149,14 @@ function Products(props) {
       <div className='container'>
         <div className='row'>
           {items.map((item, i) => {
-            return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+            return (
+              <ProductCard
+                key={i}
+                id={item.id}
+                item={item}
+                updateCart={props.updateCart}
+              ></ProductCard>
+            );
           })}
         </div>
       </div>
@@ -182,6 +208,7 @@ function ProductCard(props) {
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
+              props.updateCart();
             }}
           >
             <span className='price'>${item.price}</span>

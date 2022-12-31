@@ -38,6 +38,10 @@ let cart = createSlice({
   },
 
   reducers: {
+    setCart(state, a) {
+      state.items = a.payload;
+    },
+
     addCount(state, a) {
       let item = state.items.find((item) => item.id === a.payload.id);
       item.count++;
@@ -122,6 +126,7 @@ let cart = createSlice({
 
 export default cart;
 export let {
+  setCart,
   addCount,
   minusCount,
   addItem,

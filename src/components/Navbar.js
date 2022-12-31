@@ -11,6 +11,24 @@ function TopNavbar(props) {
   let [navToggle, setNavToggle] = useState('hidden');
   let setLogin = props.setLogin;
 
+  // useEffect(() => {
+  //   function updateCart() {
+  //     let cart;
+  //     let defaultItems = state.cart.items;
+
+  //     if (localStorage.getItem('cart')) {
+  //       cart = JSON.parse(localStorage.getItem('cart'));
+  //       console.log('cart found');
+  //     } else localStorage.setItem('cart', JSON.stringify(defaultItems));
+  //   }
+
+  //   updateCart();
+  // }, []);
+
+  useEffect(() => {
+    props.getCart();
+  }, []);
+
   return (
     <header className='header bg-white'>
       <div className='container px-lg-3'>
