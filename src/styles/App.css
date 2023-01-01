@@ -708,48 +708,65 @@
   top: 0px;
   right: 0px;
   width: 400px;
-  height: 100%;
+  min-height: 600px;
   transition: all 200ms linear;
+  z-index: 10;
 }
 
 .sidebar.hidden {
-  right: -390px;
+  right: -400px;
 }
 
 .sidebar .toggle-btn {
   position: absolute;
-  right: 400px;
-  top: 45%;
+  right: 410px;
+  top: 75%;
   cursor: pointer;
 }
 
 .toggle-btn {
-  border: 1px solid #000;
+  background-color: #343a40;
+  color: #fff;
   padding: 5px;
-  font-size: 1.7rem;
-  border-radius: 20px;
+  font-size: 1.6rem;
+}
+
+.toggle-btn:hover {
+  background-color: #494949;
 }
 
 /* ----------------------------------------- */
 /* Sidebar=content styling */
 /* ----------------------------------------- */
 
-.main-section {
-  background-color: #f8f8f8;
+.dropdown-menu {
   margin-top: 20px;
+  min-height: 600px;
+  border-radius: 0px;
 }
 
-.cart-empty {
-  width: 400px;
-  height: 100px;
+.sidebar-header {
+  background-color: #343a40;
+  font-size: 1.6rem;
+  height: 60px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.btn {
-  border: 0px;
-  margin: 10px 0px;
+.sidebar-header h3 {
+  color: #fff;
+}
+
+.cart-empty {
+  width: 400px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-detail {
@@ -778,14 +795,24 @@
   font-weight: 500;
 }
 
+.sidebar-total {
+  font-weight: 500;
+}
+
 .checkout {
-  border-top: 1px solid #d2d2d2;
+  border-top: 1px solid #bdbdbd;
   padding-top: 15px;
 }
 
-.checkout .btn-primary {
-  border-radius: 50px;
-  height: 50px;
+.checkout button {
+  background-color: #343a40;
+  border: none;
+  padding: 8px;
+  width: 95%;
+}
+
+.checkout button:hover {
+  background-color: #494949;
 }
 
 /* Use code below if sidebar needs to be located under the navbar */

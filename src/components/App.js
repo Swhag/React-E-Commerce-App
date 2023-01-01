@@ -54,7 +54,11 @@ function App() {
   return (
     <div className='App'>
       <LoginModal login={login} setLogin={setLogin}></LoginModal>
-      <TopNavbar setLogin={setLogin} getCart={getCart}></TopNavbar>
+      <TopNavbar
+        setLogin={setLogin}
+        getCart={getCart}
+        setSidebar={setSidebar}
+      ></TopNavbar>
       <div className='container main-container'>
         <Routes>
           <Route

@@ -159,6 +159,7 @@ function TopNavbar(props) {
                   href='#!'
                   onClick={() => {
                     navigate('/cart');
+                    props.setSidebar('hidden');
                   }}
                 >
                   <i className='fas fa-dolly-flatbed me-1 text-gray'></i>
