@@ -342,7 +342,7 @@ function ProductCard(props) {
           <img
             className='img product-image'
             src={item.imageURL}
-            alt='#'
+            alt='#!'
             width='80%'
           />
           <div className='img-info'>
