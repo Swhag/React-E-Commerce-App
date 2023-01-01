@@ -27,6 +27,7 @@ function App() {
   let dispatch = useDispatch();
   let [trending, setTrending] = useState(trendingOne);
   let [login, setLogin] = useState('');
+  let [sidebar, setSidebar] = useState('hidden');
 
   useEffect(() => {
     const fetchShoes = async () => {
@@ -62,7 +63,7 @@ function App() {
               <>
                 <Hero></Hero>
                 <Categories></Categories>
-                <Products items={trending}></Products>
+                <Products items={trending} setSidebar={setSidebar}></Products>
                 <div className='button-container'>
                   <ul className='pagination justify-content-center justify-content-lg-end'>
                     <li className='page-item mx-1'>
@@ -90,17 +91,19 @@ function App() {
                     </li>
                   </ul>
                 </div>
-                <Sidebar></Sidebar>
                 <Services></Services>
               </>
             }
           />
           ---------------------------------------------------
-          <Route path='/shop' element={<ShopPage></ShopPage>}></Route>
+          <Route
+            path='/shop'
+            element={<ShopPage setSidebar={setSidebar}></ShopPage>}
+          ></Route>
           ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={<DetailsPage></DetailsPage>}
+            element={<DetailsPage setSidebar={setSidebar}></DetailsPage>}
           ></Route>
           ---------------------------------------------------
           <Route
@@ -125,6 +128,7 @@ function App() {
           />
         </Routes>
       </div>
+      <Sidebar sidebar={sidebar} setSidebar={setSidebar}></Sidebar>
       <Footer></Footer>
     </div>
   );
@@ -132,6 +136,7 @@ function App() {
 
 function Products(props) {
   let items = props.items;
+  let setSidebar = props.setSidebar;
 
   return (
     <section className='pt-5 product-container'>
@@ -144,7 +149,14 @@ function Products(props) {
       <div className='container'>
         <div className='row'>
           {items.map((item, i) => {
-            return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+            return (
+              <ProductCard
+                key={i}
+                id={item.id}
+                item={item}
+                setSidebar={setSidebar}
+              ></ProductCard>
+            );
           })}
         </div>
       </div>
@@ -156,6 +168,7 @@ function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let item = props.item;
+  let setSidebar = props.setSidebar;
 
   return (
     <div className='col-lg-3 col-sm-6'>
@@ -196,6 +209,7 @@ function ProductCard(props) {
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
+              setSidebar('show');
             }}
           >
             <span className='price'>${item.price}</span>

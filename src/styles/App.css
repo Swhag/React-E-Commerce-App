@@ -705,34 +705,43 @@
 
 .sidebar {
   position: fixed;
-
-  bottom: 0%;
-  right: 0%;
-}
-.sidebar-button {
-  color: #fff;
-  background-color: blue;
-  position: fixed;
-  width: 50px;
-  height: 180px;
-  line-height: 45px;
-  /* bottom: 40%;
-  right: 20%; */
+  top: 0px;
+  right: 0px;
+  width: 300px;
+  height: 100%;
+  background: #151719;
+  transition: all 300ms linear;
 }
 
-.sidebar-button:hover {
+.sidebar.hidden {
+  right: -300px;
+}
+
+.sidebar .toggle-btn {
+  position: absolute;
+  right: 320px;
+  top: 45%;
   cursor: pointer;
 }
 
-.sidebar-content {
-  color: #fff;
-  background-color: green;
-  position: fixed;
-  width: 20vw;
-  height: 100vh;
-  line-height: 45px;
-  /* bottom: 0%;
-  right: 0%; */
+.toggle-btn {
+  border: 1px solid #000;
+  padding: 5px;
+  font-size: 1.7rem;
+  border-radius: 20px;
+}
+
+.sidebar div.list div.item {
+  padding: 15px 10px;
+  border-bottom: 1px solid #444;
+  color: #fcfcfc;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.sidebar div.list div.item a {
+  color: #fcfcfc;
+  text-decoration: none;
 }
 
 /* ----------------------------------------- */

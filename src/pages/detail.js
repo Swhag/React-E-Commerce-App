@@ -7,13 +7,14 @@ import axios from 'axios';
 import { addItem, addItemWithQuantity } from '../redux/cartSlice';
 import { updateCartCount } from '../redux/cartSlice';
 
-function Details() {
+function Details(props) {
   let { id } = useParams();
   let [fadeIn, setFadeIn] = useState('');
   let [tab, setTab] = useState(0);
   let [item, setItem] = useState({});
   let [moreItems, setMoreItems] = useState([]);
   let [ItemsData, setItemsData] = useState([]);
+  let setSidebar = props.setSidebar;
 
   function getMoreItems(itemsDataCopy) {
     let currentItem = itemsDataCopy.find((item) => item.id === parseInt(id));
@@ -62,7 +63,7 @@ function Details() {
       </div>
 
       <div className={`container bg-light detail-container start ${fadeIn}`}>
-        <MainDetails item={item}></MainDetails>
+        <MainDetails item={item} setSidebar={setSidebar}></MainDetails>
 
         <Nav variant='tabs' defaultActiveKey='link0'>
           <Nav.Item>
@@ -112,6 +113,7 @@ function MainDetails(props) {
   let dispatch = useDispatch();
   let [quantity, setQuantity] = useState(1);
   let item = props.item;
+  let setSidebar = props.setSidebar;
 
   function decreaseQuantity() {
     if (quantity > 1) {
@@ -200,6 +202,7 @@ function MainDetails(props) {
                 onClick={() => {
                   dispatch(addItemWithQuantity([item, quantity]));
                   dispatch(updateCartCount());
+                  setSidebar('show');
                 }}
               >
                 Add to cart

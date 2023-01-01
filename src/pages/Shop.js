@@ -14,9 +14,10 @@ import {
 } from '../redux/itemSlice';
 import { updateCartCount } from '../redux/cartSlice';
 
-function ShopPage() {
+function ShopPage(props) {
   let state = useSelector((state) => state);
   let [fadeIn, setFadeIn] = useState('');
+  let setSidebar = props.setSidebar;
 
   useEffect(() => {
     setFadeIn('end');
@@ -35,7 +36,10 @@ function ShopPage() {
             <ShopMenu></ShopMenu>
             <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
               <ProductHeader items={state.items.sorted}></ProductHeader>
-              <Products items={state.items.sorted}></Products>
+              <Products
+                items={state.items.sorted}
+                setSidebar={setSidebar}
+              ></Products>
               <PageButtons items={state.items.sorted}></PageButtons>
             </div>
           </div>
@@ -50,12 +54,20 @@ function Products(props) {
   let items = props.items;
   let index = state.page.index;
   let itemsPerPage = state.page.itemsPerPage;
+  let setSidebar = props.setSidebar;
 
   return (
     <div className='container'>
       <div className='row'>
         {items.slice(index, index + itemsPerPage).map((item, i) => {
-          return <ProductCard key={i} id={item.id} item={item}></ProductCard>;
+          return (
+            <ProductCard
+              key={i}
+              id={item.id}
+              item={item}
+              setSidebar={setSidebar}
+            ></ProductCard>
+          );
         })}
       </div>
     </div>
@@ -66,6 +78,7 @@ function ProductCard(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let item = props.item;
+  let setSidebar = props.setSidebar;
 
   return (
     <div className='col-lg-4 col-sm-6'>
@@ -106,6 +119,7 @@ function ProductCard(props) {
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
+              setSidebar('show');
             }}
           >
             <span className='price'>${item.price}</span>

@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Sidebar() {
-  let [sideCart, setSideCart] = useState('closed');
+function Sidebar(props) {
+  let sidebar = props.sidebar;
+  let setSidebar = props.setSidebar;
 
   return (
-    <div className='sidebar'>
-      THIS
+    <div className={`sidebar ${sidebar}`}>
       <div
-        className='sidebar-button'
+        className='toggle-btn'
         onClick={() => {
-          console.log('side menu clicked');
+          sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
         }}
       >
-        Sidebar cart
+        <i className='fa-solid fa-angle-left'></i>
       </div>
-      <div className='sidebar-content'>Sidebar content</div>
+      <div className='list'>
+        <div className='item'>
+          <a href='#!' target='_blank'>
+            Sidebar content
+          </a>
+        </div>
+        <div className='item'>About us</div>
+        <div className='item'>Gallery</div>
+        <div className='item'>Contact us</div>
+      </div>
     </div>
   );
 }
