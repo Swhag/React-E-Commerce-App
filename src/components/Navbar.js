@@ -9,21 +9,8 @@ function TopNavbar(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let [navToggle, setNavToggle] = useState('hidden');
+  let [pages, setPages] = useState('hidden');
   let setLogin = props.setLogin;
-
-  // useEffect(() => {
-  //   function updateCart() {
-  //     let cart;
-  //     let defaultItems = state.cart.items;
-
-  //     if (localStorage.getItem('cart')) {
-  //       cart = JSON.parse(localStorage.getItem('cart'));
-  //       console.log('cart found');
-  //     } else localStorage.setItem('cart', JSON.stringify(defaultItems));
-  //   }
-
-  //   updateCart();
-  // }, []);
 
   useEffect(() => {
     props.getCart();
@@ -104,24 +91,30 @@ function TopNavbar(props) {
                   Product detail
                 </a>
               </li>
+
               <li className='nav-item top-nav-item dropdown'>
                 <a
                   className='nav-link dropdown-toggle'
-                  id='pagesDropdown'
                   href='#!'
-                  data-bs-toggle='dropdown'
-                  aria-haspopup='true'
-                  aria-expanded='false'
+                  onMouseEnter={() => {
+                    setPages('show-pages');
+                  }}
                 >
                   Pages
                 </a>
+
                 <div
-                  className='dropdown-menu mt-3 shadow-sm'
-                  aria-labelledby='pagesDropdown'
+                  className={`dropdown-menu mt-3 shadow-sm navbar-dropdown-menu ${pages}`}
+                  onMouseLeave={() => {
+                    setPages('');
+                  }}
                 >
                   <a
                     className='dropdown-item border-0 transition-link'
-                    href='index.html'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/');
+                    }}
                   >
                     Homepage
                   </a>

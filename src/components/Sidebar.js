@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSubtotal } from '../redux/cartSlice';
@@ -9,18 +9,27 @@ function Sidebar(props) {
   let setDetailItem = props.setDetailItem;
 
   const closeSidebar = (e) => {
-    if (e.target.classList.contains('exit-zone')) {
+    if (e.target.classList.contains('sidebar-bg')) {
       setSidebar('hidden');
     }
   };
 
   return (
-    <div className='sidebar-bg1'>
+    <>
+      <div
+        className={`sidebar-bg ${sidebar}`}
+        onClick={(e) => {
+          closeSidebar(e);
+        }}
+      ></div>
+
       <div className={`sidebar ${sidebar}`}>
         <div
           className='toggle-btn'
           onClick={() => {
-            sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
+            {
+              sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
+            }
           }}
         >
           <i className='fa-solid fa-angle-left toggle-btn-icon'></i>
@@ -30,7 +39,7 @@ function Sidebar(props) {
           setDetailItem={setDetailItem}
         ></SidebarContent>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -47,7 +56,7 @@ function SidebarContent(props) {
   }, [cartItems, dispatch]);
 
   return (
-    <div className='dropdown-menu show'>
+    <div className='dropdown-menu sidebar-dropdown'>
       <div className='text-center sidebar-header'>
         <h3 className='text-info'>Cart</h3>
       </div>
@@ -84,25 +93,27 @@ function SidebarContent(props) {
         );
       })}
 
-      <div className='col-lg-12 col-sm-12 col-12 text-center checkout'>
-        <p>
-          Subtotal:
-          <span className='text-info sidebar-total'>
-            {' '}
-            ${state.cart.subtotal}
-          </span>
-        </p>
-      </div>
-      <div className='col-lg-12 col-sm-12 col-12 text-center checkout'>
-        <button
-          className='btn btn-primary btn-block'
-          onClick={() => {
-            navigate('/cart');
-            setSidebar('hidden');
-          }}
-        >
-          Checkout
-        </button>
+      <div>
+        <div className='col-lg-12 col-sm-12 col-12 text-center checkout'>
+          <p>
+            Subtotal:
+            <span className='text-info sidebar-total'>
+              {' '}
+              ${state.cart.subtotal}
+            </span>
+          </p>
+        </div>
+        <div className='col-lg-12 col-sm-12 col-12 text-center checkout'>
+          <button
+            className='btn btn-primary btn-block'
+            onClick={() => {
+              navigate('/cart');
+              setSidebar('hidden');
+            }}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     </div>
   );

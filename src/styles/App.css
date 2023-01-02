@@ -34,15 +34,27 @@
 .top-navbar-brand:hover {
   cursor: pointer;
 }
+
 .top-nav-item {
   font-weight: 500;
 }
+
 .top-nav-item:hover {
   font-weight: 700;
   cursor: pointer;
 }
+
 .cart-count {
   margin-left: 5px;
+}
+
+.navbar-dropdown-menu {
+  display: none;
+}
+
+.show-pages {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ----------------------------------------- */
@@ -711,19 +723,19 @@
   position: fixed;
   top: 0px;
   right: 0px;
-  width: 400px;
+  width: 500px;
   min-height: 600px;
   transition: all 200ms ease-in-out;
   z-index: 10;
 }
 
 .sidebar.hidden {
-  right: -400px;
+  right: -500px;
 }
 
 .sidebar .toggle-btn {
   position: absolute;
-  right: 410px;
+  right: 510px;
   top: 65%;
   opacity: 0.85;
   cursor: pointer;
@@ -742,34 +754,19 @@
 }
 
 .sidebar-bg {
-  border: 5px solid red;
   width: 100%;
   height: 100%;
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 5;
   padding: 30px;
   visibility: hidden;
   opacity: 0;
   transition: all 0.2s;
-
-  visibility: visible;
-  opacity: 1;
+  top: 0px;
 }
 
-.black-bg {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 5;
-  padding: 30px;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.2s;
-}
-
-.show-login {
+.show {
   visibility: visible;
   opacity: 1;
 }
@@ -778,10 +775,14 @@
 /* Sidebar=content styling */
 /* ----------------------------------------- */
 
-.dropdown-menu {
+.sidebar-dropdown {
   margin-top: 20px;
   min-height: 600px;
   border-radius: 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar-header {
@@ -801,8 +802,8 @@
 }
 
 .cart-empty {
-  width: 400px;
-  height: 150px;
+  width: 500px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
