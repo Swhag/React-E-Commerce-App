@@ -48,13 +48,17 @@
   margin-left: 5px;
 }
 
-.navbar-dropdown-menu {
+.hide-pages {
   display: none;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .show-pages {
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
 /* ----------------------------------------- */
@@ -797,6 +801,10 @@
   align-items: center;
 }
 
+.sidebar-header h3:hover {
+  cursor: pointer;
+}
+
 .sidebar-header h3 {
   color: #fff;
 }
@@ -811,6 +819,9 @@
 
 .cart-detail {
   padding: 15px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-detail-img img {

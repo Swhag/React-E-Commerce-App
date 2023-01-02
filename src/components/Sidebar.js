@@ -58,7 +58,15 @@ function SidebarContent(props) {
   return (
     <div className='dropdown-menu sidebar-dropdown'>
       <div className='text-center sidebar-header'>
-        <h3 className='text-info'>Cart</h3>
+        <h3
+          className='text-info'
+          onClick={() => {
+            navigate('/cart');
+            setSidebar('hidden');
+          }}
+        >
+          Cart
+        </h3>
       </div>
 
       {cartItems.length === 0 ? (

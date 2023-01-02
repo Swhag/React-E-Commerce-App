@@ -9,7 +9,7 @@ function TopNavbar(props) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let [navToggle, setNavToggle] = useState('hidden');
-  let [pages, setPages] = useState('hidden');
+  let [pages, setPages] = useState('hide-pages');
   let setLogin = props.setLogin;
 
   useEffect(() => {
@@ -19,7 +19,12 @@ function TopNavbar(props) {
   return (
     <header className='header bg-white'>
       <div className='container px-lg-3'>
-        <nav className='navbar navbar-expand-lg navbar-light py-3 px-lg-0'>
+        <nav
+          className='navbar navbar-expand-lg navbar-light py-3 px-lg-0'
+          onMouseLeave={() => {
+            setPages('hide-pages');
+          }}
+        >
           <a
             className='navbar-brand top-navbar-brand'
             href='#!'
@@ -106,7 +111,7 @@ function TopNavbar(props) {
                 <div
                   className={`dropdown-menu mt-3 shadow-sm navbar-dropdown-menu ${pages}`}
                   onMouseLeave={() => {
-                    setPages('');
+                    setPages('hide-pages');
                   }}
                 >
                   <a
@@ -120,25 +125,38 @@ function TopNavbar(props) {
                   </a>
                   <a
                     className='dropdown-item border-0 transition-link'
-                    href='shop.html'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/Shop');
+                    }}
                   >
-                    Category
+                    Shop
                   </a>
                   <a
                     className='dropdown-item border-0 transition-link'
-                    href='detail.html'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/detail/53');
+                    }}
                   >
                     Product detail
                   </a>
                   <a
                     className='dropdown-item border-0 transition-link'
-                    href='cart.html'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/cart');
+                      props.setSidebar('hidden');
+                    }}
                   >
                     Shopping cart
                   </a>
                   <a
                     className='dropdown-item border-0 transition-link'
-                    href='checkout.html'
+                    href='#!'
+                    onClick={() => {
+                      navigate('/checkout/');
+                    }}
                   >
                     Checkout
                   </a>
