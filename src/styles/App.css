@@ -807,8 +807,8 @@
 .checkout button {
   background-color: #343a40;
   border: none;
-  padding: 8px;
-  width: 95%;
+  padding: 10px;
+  width: 97%;
 }
 
 .checkout button:hover {

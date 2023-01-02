@@ -312,6 +312,8 @@ function TabContent({ tab, shoes }) {
 function MoreProducts(props) {
   let moreItems = props.item;
   let setItem = props.setItem;
+  let ItemsData = props.ItemsData;
+  let getMoreItems = props.getMoreItems;
 
   return (
     <div className='more-products-container'>
@@ -319,7 +321,13 @@ function MoreProducts(props) {
       <div className='row'>
         {moreItems.map((item, i) => {
           return (
-            <ProductCard key={i} item={item} setItem={setItem}></ProductCard>
+            <ProductCard
+              key={i}
+              item={item}
+              setItem={setItem}
+              ItemsData={ItemsData}
+              getMoreItems={getMoreItems}
+            ></ProductCard>
           );
         })}
       </div>
