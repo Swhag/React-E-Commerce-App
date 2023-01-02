@@ -96,7 +96,7 @@ function SidebarContent(props) {
             <div className='col-lg-8 col-sm-8 col-8 cart-detail-product'>
               <p>{item.name}</p>
               <span className='price text-info'> ${item.price}</span>
-              <span> Quantity: {item.count}</span>
+              <span> Qty: {item.count}</span>
             </div>
           </div>
         );
