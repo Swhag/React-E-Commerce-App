@@ -28,6 +28,7 @@ function App() {
   let [trending, setTrending] = useState(trendingOne);
   let [login, setLogin] = useState('');
   let [sidebar, setSidebar] = useState('hidden');
+  let [detailItem, setDetailItem] = useState({});
 
   useEffect(() => {
     const fetchShoes = async () => {
@@ -107,7 +108,13 @@ function App() {
           ---------------------------------------------------
           <Route
             path='/detail/:id'
-            element={<DetailsPage setSidebar={setSidebar}></DetailsPage>}
+            element={
+              <DetailsPage
+                setSidebar={setSidebar}
+                detailItem={detailItem}
+                setDetailItem={setDetailItem}
+              ></DetailsPage>
+            }
           ></Route>
           ---------------------------------------------------
           <Route
@@ -132,7 +139,13 @@ function App() {
           />
         </Routes>
       </div>
-      <Sidebar sidebar={sidebar} setSidebar={setSidebar}></Sidebar>
+
+      <Sidebar
+        sidebar={sidebar}
+        setSidebar={setSidebar}
+        setDetailItem={setDetailItem}
+      ></Sidebar>
+
       <Footer></Footer>
     </div>
   );

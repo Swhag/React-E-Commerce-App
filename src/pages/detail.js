@@ -11,10 +11,11 @@ function Details(props) {
   let { id } = useParams();
   let [fadeIn, setFadeIn] = useState('');
   let [tab, setTab] = useState(0);
-  let [item, setItem] = useState({});
   let [moreItems, setMoreItems] = useState([]);
   let [ItemsData, setItemsData] = useState([]);
   let setSidebar = props.setSidebar;
+  let item = props.detailItem;
+  let setItem = props.setDetailItem;
 
   function getMoreItems(itemsDataCopy) {
     let currentItem = itemsDataCopy.find((item) => item.id === parseInt(id));

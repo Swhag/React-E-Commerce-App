@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+.main-container {
+  padding: 0px;
+}
+
 /* ----------------------------------------- */
 /* Transition styling */
 /* ----------------------------------------- */
@@ -473,7 +477,7 @@
 .home-el-wrapper {
   border: 5px solid rgb(248, 249, 250);
   background-color: #fff;
-  width: 330px;
+  width: 310px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -709,7 +713,7 @@
   right: 0px;
   width: 400px;
   min-height: 600px;
-  transition: all 200ms linear;
+  transition: all 200ms ease-in-out;
   z-index: 10;
 }
 
@@ -720,7 +724,8 @@
 .sidebar .toggle-btn {
   position: absolute;
   right: 410px;
-  top: 75%;
+  top: 65%;
+  opacity: 0.85;
   cursor: pointer;
 }
 
@@ -733,6 +738,40 @@
 
 .toggle-btn:hover {
   background-color: #494949;
+  opacity: 1;
+}
+
+.sidebar-bg {
+  border: 5px solid red;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  padding: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+
+  visibility: visible;
+  opacity: 1;
+}
+
+.black-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  padding: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.show-login {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* ----------------------------------------- */
@@ -807,7 +846,7 @@
 .checkout button {
   background-color: #343a40;
   border: none;
-  padding: 10px;
+  padding: 12px;
   width: 97%;
 }
 

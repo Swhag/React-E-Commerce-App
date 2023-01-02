@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSubtotal } from '../redux/cartSlice';
@@ -7,18 +6,30 @@ import { getSubtotal } from '../redux/cartSlice';
 function Sidebar(props) {
   let sidebar = props.sidebar;
   let setSidebar = props.setSidebar;
+  let setDetailItem = props.setDetailItem;
+
+  const closeSidebar = (e) => {
+    if (e.target.classList.contains('exit-zone')) {
+      setSidebar('hidden');
+    }
+  };
 
   return (
-    <div className={`sidebar ${sidebar}`}>
-      <div
-        className='toggle-btn'
-        onClick={() => {
-          sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
-        }}
-      >
-        <i className='fa-solid fa-angle-left'></i>
+    <div className='sidebar-bg1'>
+      <div className={`sidebar ${sidebar}`}>
+        <div
+          className='toggle-btn'
+          onClick={() => {
+            sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
+          }}
+        >
+          <i className='fa-solid fa-angle-left toggle-btn-icon'></i>
+        </div>
+        <SidebarContent
+          setSidebar={setSidebar}
+          setDetailItem={setDetailItem}
+        ></SidebarContent>
       </div>
-      <SidebarContent setSidebar={setSidebar}></SidebarContent>
     </div>
   );
 }
@@ -29,6 +40,7 @@ function SidebarContent(props) {
   let navigate = useNavigate();
   let setSidebar = props.setSidebar;
   let cartItems = state.cart.items;
+  let setDetailItem = props.setDetailItem;
 
   useEffect(() => {
     dispatch(getSubtotal());
@@ -57,6 +69,7 @@ function SidebarContent(props) {
             key={i}
             onClick={() => {
               navigate(`/detail/` + item.id);
+              setDetailItem(item);
             }}
           >
             <div className='col-lg-4 col-sm-4 col-4 cart-detail-img'>

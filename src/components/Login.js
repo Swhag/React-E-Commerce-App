@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function LoginModal(props) {
   let login = props.login;
@@ -14,12 +14,11 @@ function LoginModal(props) {
     <div
       className={`black-bg ${login} exit-zone`}
       onMouseDown={(e) => {
-        e.stopPropagation();
         exitPrompt(e);
       }}
     >
       <div className='container login-container'>
-        <div className='row exit-zone'>
+        <div className='row'>
           <div className='col-lg-10 col-xl-9 mx-auto '>
             <div className='card flex-row my-5 border-0 shadow rounded-3 overflow-hidden'>
               <div className='card-img-left d-none d-md-flex'>
@@ -101,45 +100,5 @@ function LoginModal(props) {
     </div>
   );
 }
-
-// --------------------------------------------------------------------------------
-// --------------------------------------------------------------------------------
-
-// function LoginModal(props) {
-//   let login = props.login;
-//   let setLogin = props.setLogin;
-
-//   return (
-//     <div className={`black-bg ${login}`}>
-//       <div className='white-bg'>
-//         <h4>Please login</h4>
-
-//         <form action='#!'>
-//           <div className='my-3'>
-//             <label htmlFor='username'>Username</label>
-//             <input id='username' type='text' className='form-control' />
-//           </div>
-//           <div className='my-3'>
-//             <label htmlFor='password'>Password</label>
-//             <input id='password' type='password' className='form-control' />
-//           </div>
-//           <button id='send' type='submit' className='btn btn-primary'>
-//             Send
-//           </button>
-//           <button
-//             id='close'
-//             type='button'
-//             className='btn btn-danger'
-//             onClick={() => {
-//               setLogin('');
-//             }}
-//           >
-//             Close
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default LoginModal;
