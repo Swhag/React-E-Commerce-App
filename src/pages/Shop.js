@@ -28,20 +28,18 @@ function ShopPage(props) {
   }, []);
 
   return (
-    <div className={`container start ${fadeIn}`}>
+    <div className={`container start ${fadeIn} main-container`}>
       <ShopHeader></ShopHeader>
       <section className='py-5'>
-        <div className='container p-0'>
-          <div className='row'>
-            <ShopMenu></ShopMenu>
-            <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
-              <ProductHeader items={state.items.sorted}></ProductHeader>
-              <Products
-                items={state.items.sorted}
-                setSidebar={setSidebar}
-              ></Products>
-              <PageButtons items={state.items.sorted}></PageButtons>
-            </div>
+        <div className='row'>
+          <ShopMenu></ShopMenu>
+          <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
+            <ProductHeader items={state.items.sorted}></ProductHeader>
+            <Products
+              items={state.items.sorted}
+              setSidebar={setSidebar}
+            ></Products>
+            <PageButtons items={state.items.sorted}></PageButtons>
           </div>
         </div>
       </section>

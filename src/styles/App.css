@@ -85,7 +85,7 @@
 /* ------------------------ */
 
 .login-container {
-  margin-top: 100px;
+  margin-top: 200px;
   position: relative;
 }
 
@@ -787,6 +787,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sidebar-header {
@@ -841,12 +845,13 @@
 }
 
 .cart-detail .price {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-right: 10px;
   font-weight: 500;
 }
 
 .sidebar-total {
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -864,6 +869,61 @@
 
 .checkout button:hover {
   background-color: #494949;
+}
+
+@media (max-width: 600px) {
+  /* .sidebar {
+    width: 450px;
+    min-height: 500px;
+  }
+
+  .sidebar.hidden {
+    right: -450px;
+  }
+
+  .sidebar .toggle-btn {
+    right: 460px;
+  }
+
+  .cart-empty {
+    width: 460px;
+  } */
+
+  .sidebar {
+    width: 330px;
+    min-height: 500px;
+  }
+
+  .sidebar.hidden {
+    right: -330px;
+  }
+
+  .sidebar .toggle-btn {
+    right: 330px;
+  }
+
+  .cart-empty {
+    width: 330px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    width: 330px;
+    min-height: 500px;
+  }
+
+  .sidebar.hidden {
+    right: -330px;
+  }
+
+  .sidebar .toggle-btn {
+    right: 330px;
+  }
+
+  .cart-empty {
+    width: 330px;
+  }
 }
 
 /* Use code below if sidebar needs to be located under the navbar */

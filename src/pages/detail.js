@@ -104,6 +104,7 @@ function Details(props) {
           setItem={setItem}
           ItemsData={ItemsData}
           getMoreItems={getMoreItems}
+          setSidebar={setSidebar}
         ></MoreProducts>
       </div>
     </>
@@ -315,6 +316,7 @@ function MoreProducts(props) {
   let setItem = props.setItem;
   let ItemsData = props.ItemsData;
   let getMoreItems = props.getMoreItems;
+  let setSidebar = props.setSidebar;
 
   return (
     <div className='more-products-container'>
@@ -328,6 +330,7 @@ function MoreProducts(props) {
               setItem={setItem}
               ItemsData={ItemsData}
               getMoreItems={getMoreItems}
+              setSidebar={setSidebar}
             ></ProductCard>
           );
         })}
@@ -343,6 +346,7 @@ function ProductCard(props) {
   let setItem = props.setItem;
   let ItemsData = props.ItemsData;
   let getMoreItems = props.getMoreItems;
+  let setSidebar = props.setSidebar;
 
   return (
     <div className='col-lg-3 col-sm-6'>
@@ -385,6 +389,7 @@ function ProductCard(props) {
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
+              setSidebar('show');
             }}
           >
             <span className='price'>${item.price}</span>

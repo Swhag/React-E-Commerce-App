@@ -145,7 +145,6 @@ function App() {
         setSidebar={setSidebar}
         setDetailItem={setDetailItem}
       ></Sidebar>
-
       <Footer></Footer>
     </div>
   );

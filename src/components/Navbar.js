@@ -164,7 +164,7 @@ function TopNavbar(props) {
               </li>
             </ul>
             <ul className='navbar-nav ms-auto'>
-              <li className='nav-item top-nav-item'>
+              <li className='nav-item top-nav-item navbar-cart'>
                 <a
                   className='nav-link'
                   href='#!'
@@ -173,9 +173,9 @@ function TopNavbar(props) {
                     props.setSidebar('hidden');
                   }}
                 >
-                  <i className='fas fa-dolly-flatbed me-1 text-gray'></i>
+                  <i className='fas fa-dolly-flatbed me-1 cart-icon'></i>
                   Cart
-                  <small className='text-gray fw-normal cart-count'>
+                  <small className='fw-normal cart-count'>
                     ({state.cart.itemCount})
                   </small>
                 </a>
@@ -194,7 +194,7 @@ function TopNavbar(props) {
                     setLogin('show-login');
                   }}
                 >
-                  <i className='fas fa-user me-1 text-gray fw-normal'></i>Login
+                  <i className='fas fa-user me-1  fw-normal'></i>Login
                 </a>
               </li>
             </ul>

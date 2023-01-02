@@ -86,6 +86,7 @@ function SidebarContent(props) {
             key={i}
             onClick={() => {
               navigate(`/detail/` + item.id);
+              setSidebar('hidden');
               setDetailItem(item);
             }}
           >
@@ -102,13 +103,10 @@ function SidebarContent(props) {
       })}
 
       <div>
-        <div className='col-lg-12 col-sm-12 col-12 text-center checkout'>
+        <div className='col-lg-12 col-sm-12 col-12 text-center checkout sidebar-total'>
           <p>
             Subtotal:
-            <span className='text-info sidebar-total'>
-              {' '}
-              ${state.cart.subtotal}
-            </span>
+            <span className='text-info'> ${state.cart.subtotal}</span>
           </p>
         </div>
         <div className='col-lg-12 col-sm-12 col-12 text-center checkout'>
