@@ -216,9 +216,15 @@ function CartNav() {
     <div className='bg-light px-4 py-3'>
       <div className='row align-items-center text-center'>
         <div className='col-md-6 mb-3 mb-md-0 text-md-start'>
-          <a className='btn btn-link p-0 text-dark btn-sm' href='#!'>
-            <i className='fas fa-long-arrow-alt-left me-2'> </i>Continue
-            shopping
+          <a
+            className='btn btn-link p-0 text-dark btn-sm'
+            href='#!'
+            onClick={() => {
+              navigate('/Shop');
+            }}
+          >
+            <i className='fas fa-long-arrow-alt-left me-2'></i>
+            Continue shopping
           </a>
         </div>
         <div className='col-md-6 text-md-end'>

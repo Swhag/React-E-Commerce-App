@@ -1,9 +1,20 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Checkout() {
+  let [fadeIn, setFadeIn] = useState('');
+
+  useEffect(() => {
+    setFadeIn('end');
+
+    return () => {
+      setFadeIn('');
+    };
+  }, []);
+
   return (
-    <div className='container'>
+    <div className={`container checkout-container start ${fadeIn}`}>
       <CheckoutHeader></CheckoutHeader>
 
       <section className='py-5'>

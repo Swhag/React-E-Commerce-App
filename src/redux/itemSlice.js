@@ -94,6 +94,54 @@ let items = createSlice({
       }
       state.sorted = newArr;
     },
+
+    sortDefault(state, a) {
+      items = [...a.payload];
+
+      items.sort((a, b) => {
+        if (a.id < b.id) {
+          return -1;
+        }
+        if (a.id > b.id) {
+          return 1;
+        }
+        return 0;
+      });
+
+      state.sorted = items;
+    },
+
+    sortLowToHigh(state, a) {
+      items = [...a.payload];
+
+      items.sort((a, b) => {
+        if (a.price < b.price) {
+          return -1;
+        }
+        if (a.price > b.price) {
+          return 1;
+        }
+        return 0;
+      });
+
+      state.sorted = items;
+    },
+
+    sortHighToLow(state, a) {
+      items = [...a.payload];
+
+      items.sort((a, b) => {
+        if (a.price < b.price) {
+          return 1;
+        }
+        if (a.price > b.price) {
+          return -1;
+        }
+        return 0;
+      });
+
+      state.sorted = items;
+    },
   },
 });
 
@@ -106,4 +154,7 @@ export let {
   sortByLimited,
   doubleCondition,
   multipleCondition,
+  sortDefault,
+  sortLowToHigh,
+  sortHighToLow,
 } = items.actions;

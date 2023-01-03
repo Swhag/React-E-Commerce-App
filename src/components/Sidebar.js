@@ -81,20 +81,19 @@ function SidebarContent(props) {
 
       {cartItems.map((item, i) => {
         return (
-          <div
-            className='row cart-detail'
-            key={i}
-            onClick={() => {
-              navigate(`/detail/` + item.id);
-              setSidebar('hidden');
-              setDetailItem(item);
-            }}
-          >
+          <div className='row cart-detail' key={i}>
             <div className='col-lg-4 col-sm-4 col-4 cart-detail-img'>
               <img src={item.imageURL} alt='#!'></img>
             </div>
-            <div className='col-lg-8 col-sm-8 col-8 cart-detail-product'>
-              <p>{item.name}</p>
+            <div
+              className='col-lg-8 col-sm-8 col-8 cart-detail-product'
+              onClick={() => {
+                navigate(`/detail/` + item.id);
+                setSidebar('hidden');
+                setDetailItem(item);
+              }}
+            >
+              <p className='sidebar-product-name'>{item.name}</p>
               <span className='price text-info'> ${item.price}</span>
               <span> Qty: {item.count}</span>
             </div>

@@ -11,12 +11,16 @@ import {
   sortByLimited,
   doubleCondition,
   multipleCondition,
+  sortDefault,
+  sortLowToHigh,
+  sortHighToLow,
 } from '../redux/itemSlice';
 import { updateCartCount } from '../redux/cartSlice';
 
 function ShopPage(props) {
   let state = useSelector((state) => state);
   let [fadeIn, setFadeIn] = useState('');
+  let [sortOption, setSortOption] = useState('Sort By');
   let setSidebar = props.setSidebar;
 
   useEffect(() => {
@@ -32,9 +36,13 @@ function ShopPage(props) {
       <ShopHeader></ShopHeader>
       <section className='py-5'>
         <div className='row'>
-          <ShopMenu></ShopMenu>
+          <ShopMenu setSortOption={setSortOption}></ShopMenu>
           <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
-            <ProductHeader items={state.items.sorted}></ProductHeader>
+            <ProductHeader
+              items={state.items.sorted}
+              sortOption={sortOption}
+              setSortOption={setSortOption}
+            ></ProductHeader>
             <Products
               items={state.items.sorted}
               setSidebar={setSidebar}
@@ -47,11 +55,119 @@ function ShopPage(props) {
   );
 }
 
+function ShopHeader() {
+  let state = useSelector((state) => state);
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+
+  return (
+    <section className='py-5 bg-light'>
+      <div className='container'>
+        <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
+          <div className='col-lg-6'>
+            <h1 className='h2 mb-0 '>
+              <span
+                className='shop-header'
+                onClick={() => {
+                  dispatch(setItems(state.items.data));
+                  dispatch(setPage(1));
+                  dispatch(setTIndex());
+                }}
+              >
+                SHOP
+              </span>
+            </h1>
+          </div>
+          <div className='col-lg-6 text-lg-end'>
+            <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
+              <li className='breadcrumb-item'>
+                <a
+                  className='text-dark'
+                  href='#!'
+                  onClick={() => {
+                    navigate('/');
+                  }}
+                >
+                  Home
+                </a>
+              </li>
+              <li className='breadcrumb-item active'>Shop</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductHeader(props) {
+  let state = useSelector((state) => state);
+  let dispatch = useDispatch();
+  let total = props.items.length;
+  let startIndex = state.page.index + 1;
+  let endIndex = state.page.index + state.page.itemsPerPage;
+  let sortOption = props.sortOption;
+  let setSortOption = props.setSortOption;
+
+  if (endIndex > total) {
+    endIndex = props.items.length;
+  }
+
+  let options = [
+    'Sort By',
+    'Default',
+    'Price: Low to High',
+    'Price: High to Low',
+  ];
+
+  function sortItems(e) {
+    if (e.target.value === 'Default') {
+      dispatch(sortDefault(state.items.sorted));
+    } else if (e.target.value === 'Price: Low to High') {
+      dispatch(sortLowToHigh(state.items.sorted));
+    } else if (e.target.value === 'Price: High to Low') {
+      dispatch(sortHighToLow(state.items.sorted));
+    }
+  }
+
+  return (
+    <div className='row mb-3 align-items-center'>
+      <div className='col-lg-6 mb-2 mb-lg-0'>
+        <p className='text-sm text-muted mb-0'>
+          {`Showing ${startIndex}-${endIndex} of
+          ${total} results`}
+        </p>
+      </div>
+      <div className='col-lg-6'>
+        <ul className='list-inline d-flex align-items-center justify-content-lg-end mb-0'>
+          <li className='list-inline-item'>
+            <select
+              className='selectpicker form-control form-control-sm'
+              value={sortOption}
+              onChange={(e) => {
+                sortItems(e);
+                setSortOption(e.target.value);
+              }}
+            >
+              {options.map((option, i) => (
+                <option key={i} value={option}>
+                  {options[i]}
+                </option>
+              ))}
+            </select>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 function Products(props) {
   let state = useSelector((state) => state);
   let items = props.items;
   let index = state.page.index;
   let itemsPerPage = state.page.itemsPerPage;
+  let setSortOption = props.setSortOption;
   let setSidebar = props.setSidebar;
 
   return (
@@ -131,53 +247,10 @@ function ProductCard(props) {
   );
 }
 
-function ShopHeader() {
-  let state = useSelector((state) => state);
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
-
-  return (
-    <section className='py-5 bg-light'>
-      <div className='container'>
-        <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
-          <div className='col-lg-6'>
-            <h1 className='h2 mb-0 '>
-              <span
-                className='shop-header'
-                onClick={() => {
-                  dispatch(setItems(state.items.data));
-                  dispatch(setPage(1));
-                  dispatch(setTIndex());
-                }}
-              >
-                SHOP
-              </span>
-            </h1>
-          </div>
-          <div className='col-lg-6 text-lg-end'>
-            <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
-              <li className='breadcrumb-item'>
-                <a
-                  className='text-dark'
-                  href='#!'
-                  onClick={() => {
-                    navigate('/');
-                  }}
-                >
-                  Home
-                </a>
-              </li>
-              <li className='breadcrumb-item active'>Shop</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-function ShopMenu() {
+function ShopMenu(props) {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
+  let setSortOption = props.setSortOption;
 
   return (
     <div className='col-lg-3 order-2 order-lg-1'>
@@ -196,6 +269,7 @@ function ShopMenu() {
               dispatch(doubleCondition([state.items.data, 'WOMEN', 'CASUAL']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Women's Casual
@@ -209,6 +283,7 @@ function ShopMenu() {
               dispatch(doubleCondition([state.items.data, 'MEN', 'CASUAL']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Men's Casual
@@ -228,6 +303,7 @@ function ShopMenu() {
               );
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Women's athletic
@@ -247,6 +323,7 @@ function ShopMenu() {
               );
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Men's athletic
@@ -260,23 +337,25 @@ function ShopMenu() {
               dispatch(sortByGender([state.items.data, 'KIDS']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Kids
           </a>
         </li>
       </ul>
-      <ShopMenu2></ShopMenu2>
-      <ShopMenu3></ShopMenu3>
+      <ShopMenu2 setSortOption={setSortOption}></ShopMenu2>
+      <ShopMenu3 setSortOption={setSortOption}></ShopMenu3>
       <MenuCheckBox></MenuCheckBox>
       <MenuRadio></MenuRadio>
     </div>
   );
 }
 
-function ShopMenu2() {
+function ShopMenu2(props) {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
+  let setSortOption = props.setSortOption;
 
   return (
     <>
@@ -292,6 +371,7 @@ function ShopMenu2() {
               dispatch(sortByBrand([state.items.data, 'NIKE']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Nike
@@ -305,6 +385,7 @@ function ShopMenu2() {
               dispatch(sortByBrand([state.items.data, 'ADIDAS']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Adidas
@@ -318,6 +399,7 @@ function ShopMenu2() {
               dispatch(sortByBrand([state.items.data, 'HUSHPUPPIES']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Hush Puppies
@@ -331,6 +413,7 @@ function ShopMenu2() {
               dispatch(sortByBrand([state.items.data, 'VANS']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Vans
@@ -344,6 +427,7 @@ function ShopMenu2() {
               dispatch(sortByBrand([state.items.data, 'AIR JORDAN']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Air Jordan
@@ -354,9 +438,10 @@ function ShopMenu2() {
   );
 }
 
-function ShopMenu3() {
+function ShopMenu3(props) {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
+  let setSortOption = props.setSortOption;
 
   return (
     <>
@@ -372,6 +457,7 @@ function ShopMenu3() {
               dispatch(doubleCondition([state.items.data, 'WOMEN', 'FORMAL']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Women's Formal
@@ -385,6 +471,7 @@ function ShopMenu3() {
               dispatch(doubleCondition([state.items.data, 'MEN', 'FORMAL']));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Men's Formal
@@ -398,6 +485,7 @@ function ShopMenu3() {
               dispatch(sortByLimited(state.items.data));
               dispatch(setPage(1));
               dispatch(setTIndex());
+              setSortOption('Sort By');
             }}
           >
             Limited Edition
@@ -458,40 +546,6 @@ function MenuRadio() {
         );
       })}
     </ul>
-  );
-}
-
-function ProductHeader(props) {
-  let state = useSelector((state) => state);
-  let total = props.items.length;
-  let startIndex = state.page.index + 1;
-  let endIndex = state.page.index + state.page.itemsPerPage;
-
-  if (endIndex > total) {
-    endIndex = props.items.length;
-  }
-
-  return (
-    <div className='row mb-3 align-items-center'>
-      <div className='col-lg-6 mb-2 mb-lg-0'>
-        <p className='text-sm text-muted mb-0'>
-          {`Showing ${startIndex}-${endIndex} of
-          ${total} results`}
-        </p>
-      </div>
-      <div className='col-lg-6'>
-        <ul className='list-inline d-flex align-items-center justify-content-lg-end mb-0'>
-          <li className='list-inline-item'>
-            <select className='selectpicker form-control form-control-sm'>
-              <option value>Sort By </option>
-              <option value='default'>Default sorting </option>
-              <option value='low-high'>Price: Low to High </option>
-              <option value='high-low'>Price: High to Low </option>
-            </select>
-          </li>
-        </ul>
-      </div>
-    </div>
   );
 }
 
