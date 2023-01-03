@@ -112,7 +112,7 @@ let cart = createSlice({
     },
 
     getTax(state) {
-      let newTax = state.subtotal * 0.07;
+      let newTax = state.subtotal * 0.0875;
       state.tax = newTax.toFixed(2);
     },
 
