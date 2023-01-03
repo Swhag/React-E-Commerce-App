@@ -285,7 +285,7 @@ function CartTotal(props) {
                     type='text'
                     placeholder='Enter your coupon'
                   />
-                  <button className='btn btn-dark btn-sm w-100' type='submit'>
+                  <button className='btn btn-dark btn-sm w-100' type='#!'>
                     <i className='fas fa-gift me-2'></i>Apply coupon
                   </button>
                 </div>
