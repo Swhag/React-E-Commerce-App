@@ -18,97 +18,12 @@ function Checkout() {
       <CheckoutHeader></CheckoutHeader>
 
       <section className='py-5'>
+        <h2 className='h5 text-uppercase mb-4'>Billing details</h2>
         <div className='row'>
-          <CheckoutDetails></CheckoutDetails>
+          <BillingDetails></BillingDetails>
           <OrderSummary></OrderSummary>
         </div>
       </section>
-    </div>
-  );
-}
-
-function CheckoutPayment() {
-  return (
-    <div>
-      <h2 className='h5 text-uppercase mb-4'>Payment details</h2>
-
-      <form action='#!'>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <label className='form-label text-sm text-uppercase'>
-              CARD NUMBER
-            </label>
-            <div className='input-group'>
-              <input
-                type='tel'
-                className='form-control form-control-lg'
-                placeholder='Valid Card Number'
-              />
-              <span className='input-group-addon'>
-                <i className='fa fa-credit-card'></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-lg-7'>
-            <label className='form-label text-sm text-uppercase'>
-              <span className='hidden-xs'>EXPIRATION</span>
-              <span className='visible-xs-inline'>EXP</span> DATE
-            </label>
-            <input
-              type='tel'
-              className='form-control form-control-lg'
-              placeholder='MM / YY'
-            />
-          </div>
-          <div className='col-lg-5 pull-right'>
-            <label className='form-label text-sm text-uppercase'>CV CODE</label>
-            <input
-              type='tel'
-              className='form-control form-control-lg'
-              placeholder='CVC'
-            />
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <label className='form-label text-sm text-uppercase'>
-              CARD OWNER
-            </label>
-            <input
-              className='form-control form-control-lg'
-              type='text'
-              placeholder='Card Owner Name'
-            />
-          </div>
-        </div>
-      </form>
-      <div className='row'>
-        <div className='inline-image'>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Mastercard-Curved.png'
-            alt='#!'
-          ></img>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Discover-Curved.png'
-            alt='#!'
-          ></img>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Paypal-Curved.png'
-            alt='#!'
-          ></img>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/American-Express-Curved.png'
-            alt='#!'
-          ></img>
-        </div>
-      </div>
-      <ul className='border-bottom my-2 checkout-divider'></ul>
     </div>
   );
 }
@@ -167,14 +82,16 @@ function CheckoutHeader() {
   );
 }
 
-function CheckoutDetails() {
+function BillingDetails() {
   return (
     <div className='col-lg-8'>
-      <h2 className='h5 text-uppercase mb-4'>Shipping details</h2>
-      <form action='#!'>
+      <form action='#'>
         <div className='row gy-3'>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='firstName'
+            >
               First name
             </label>
             <input
@@ -185,7 +102,10 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='lastName'
+            >
               Last name
             </label>
             <input
@@ -196,7 +116,10 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='email'
+            >
               Email address
             </label>
             <input
@@ -207,7 +130,10 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='phone'
+            >
               Phone number
             </label>
             <input
@@ -218,7 +144,10 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='company'
+            >
               Company name (optional)
             </label>
             <input
@@ -230,7 +159,10 @@ function CheckoutDetails() {
           </div>
 
           <div className='col-lg-12'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='address'
+            >
               Address line 1
             </label>
             <input
@@ -241,7 +173,10 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-12'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='addressalt'
+            >
               Address line 2
             </label>
             <input
@@ -252,7 +187,7 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label className='form-label text-sm text-uppercase' htmlFor='city'>
               Town/City
             </label>
             <input
@@ -262,7 +197,10 @@ function CheckoutDetails() {
             />
           </div>
           <div className='col-lg-6'>
-            <label className='form-label text-sm text-uppercase'>
+            <label
+              className='form-label text-sm text-uppercase'
+              htmlFor='state'
+            >
               State/County
             </label>
             <input
@@ -282,15 +220,170 @@ function CheckoutDetails() {
                   id='alternateAddressCheckbox'
                   type='checkbox'
                 />
-                <label className='form-check-label'>
+                <label
+                  className='form-check-label'
+                  htmlFor='alternateAddressCheckbox'
+                >
                   Alternate billing address
                 </label>
               </div>
             </button>
           </div>
-          <ul className='border-bottom my-2 checkout-divider'></ul>
-          <CheckoutPayment></CheckoutPayment>
-          <CheckoutNav></CheckoutNav>
+          <div className='collapse' id='alternateAddress'>
+            <div className='row gy-3'>
+              <div className='col-12 mt-4'>
+                <h2 className='h4 text-uppercase mb-4'>
+                  Alternative billing details
+                </h2>
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='firstName2'
+                >
+                  First name
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='firstName2'
+                  placeholder='Enter your first name'
+                />
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='lastName2'
+                >
+                  Last name
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='lastName2'
+                  placeholder='Enter your last name'
+                />
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='email2'
+                >
+                  Email address
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='email'
+                  id='email2'
+                  placeholder='e.g. Jason@example.com'
+                />
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='phone2'
+                >
+                  Phone number
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='tel'
+                  id='phone2'
+                  placeholder='e.g. +02 245354745'
+                />
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='company2'
+                >
+                  Company name (optional)
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='company2'
+                  placeholder='Your company name'
+                />
+              </div>
+              <div className='col-lg-6 form-group'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='countryAlt'
+                >
+                  Country
+                </label>
+                <select className='country' id='countryAlt'>
+                  <option value>Choose your country</option>
+                </select>
+              </div>
+              <div className='col-lg-12'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='address2'
+                >
+                  Address line 1
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='address2'
+                  placeholder='House number and street name'
+                />
+              </div>
+              <div className='col-lg-12'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='addressalt2'
+                >
+                  Address line 2
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='addressalt2'
+                  placeholder='Apartment, Suite, Unit, etc (optional)'
+                />
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='city2'
+                >
+                  Town/City
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='city2'
+                />
+              </div>
+              <div className='col-lg-6'>
+                <label
+                  className='form-label text-sm text-uppercase'
+                  htmlFor='state2'
+                >
+                  State/County
+                </label>
+                <input
+                  className='form-control form-control-lg'
+                  type='text'
+                  id='state2'
+                />
+              </div>
+            </div>
+          </div>
+          <div className='col-lg-12 form-group'>
+            <button
+              className='btn btn-dark'
+              type='submit'
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Place order
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -332,35 +425,6 @@ function OrderSummary() {
               <span>${total}</span>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CheckoutNav() {
-  let navigate = useNavigate();
-
-  return (
-    <div className='bg-light px-4 py-3'>
-      <div className='row align-items-center text-center'>
-        <div className='col-md-6 mb-3 mb-md-0 text-md-start'>
-          <a
-            className='btn btn-link p-0 text-dark btn-sm'
-            href='#!'
-            onClick={() => {
-              navigate('/Cart');
-            }}
-          >
-            <i className='fas fa-long-arrow-alt-left me-2'></i>
-            Return to cart
-          </a>
-        </div>
-        <div className='col-md-6 text-md-end'>
-          <a className='btn btn-outline-dark btn-sm' href='#!'>
-            Place Order
-            <i className='fas fa-long-arrow-alt-right ms-2'></i>
-          </a>
         </div>
       </div>
     </div>

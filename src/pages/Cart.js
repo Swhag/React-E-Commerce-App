@@ -124,7 +124,7 @@ function CartTable() {
                       className='reset-anchor d-block animsition-link'
                       href='#!'
                     >
-                      <img src={item.imageURL} alt='...' width='70' />
+                      <img src={item.imageURL} alt='#!' width='70' />
                     </a>
                     <div className='ms-3'>
                       <strong className='h6'>

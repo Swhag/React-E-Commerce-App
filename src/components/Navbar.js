@@ -97,9 +97,11 @@ function TopNavbar(props) {
                 </a>
               </li>
 
+              {/* ------------------------------------------------------------- */}
+
               <li className='nav-item top-nav-item dropdown'>
                 <a
-                  className='nav-link dropdown-toggle'
+                  className='nav-link dropdown-toggle navbar-dropdown-toggle'
                   href='#!'
                   onMouseEnter={() => {
                     setPages('show-pages');
@@ -120,6 +122,9 @@ function TopNavbar(props) {
                     onClick={() => {
                       navigate('/');
                     }}
+                    // onMouseEnter={() => {
+                    //   setPages('show-pages');
+                    // }}
                   >
                     Homepage
                   </a>
@@ -162,6 +167,8 @@ function TopNavbar(props) {
                   </a>
                 </div>
               </li>
+
+              {/* ------------------------------------------------------------- */}
             </ul>
             <ul className='navbar-nav ms-auto'>
               <li className='nav-item top-nav-item navbar-cart'>
