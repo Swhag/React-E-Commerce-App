@@ -1128,6 +1128,14 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.payment-line-block {
+  margin-top: 16px;
+}
+
+.credit-card-icon {
+  font-size: 1.6rem;
+}
+
 .inline-image {
   max-width: 470px;
   margin: 0 auto;

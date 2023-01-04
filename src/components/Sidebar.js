@@ -116,7 +116,7 @@ function SidebarContent(props) {
               setSidebar('hidden');
             }}
           >
-            Checkout
+            View Cart
           </button>
         </div>
       </div>

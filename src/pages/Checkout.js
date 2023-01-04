@@ -32,58 +32,54 @@ function CheckoutPayment() {
     <div>
       <h2 className='h5 text-uppercase mb-4'>Payment details</h2>
 
-      <form action='#!'>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <label className='form-label text-sm text-uppercase'>
-              CARD NUMBER
-            </label>
-            <div className='input-group'>
-              <input
-                type='tel'
-                className='form-control form-control-lg'
-                placeholder='Valid Card Number'
-              />
-              <span className='input-group-addon'>
-                <i className='fa fa-credit-card'></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-lg-7'>
-            <label className='form-label text-sm text-uppercase'>
-              <span className='hidden-xs'>EXPIRATION</span>
-              <span className='visible-xs-inline'>EXP</span> DATE
-            </label>
+      <div className='row'>
+        <div className='col-lg-12 '>
+          <label className='form-label text-sm text-uppercase'>
+            CARD NUMBER
+          </label>
+          <div className='input-group'>
             <input
               type='tel'
               className='form-control form-control-lg'
-              placeholder='MM / YY'
+              placeholder='Valid Card Number'
             />
-          </div>
-          <div className='col-lg-5 pull-right'>
-            <label className='form-label text-sm text-uppercase'>CV CODE</label>
-            <input
-              type='tel'
-              className='form-control form-control-lg'
-              placeholder='CVC'
-            />
+            <i className='fa fa-credit-card credit-card-icon'></i>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <label className='form-label text-sm text-uppercase'>
-              CARD OWNER
-            </label>
-            <input
-              className='form-control form-control-lg'
-              type='text'
-              placeholder='Card Owner Name'
-            />
-          </div>
+      </div>
+      <div className='row'>
+        <div className='col-lg-7 payment-line-block'>
+          <label className='form-label text-sm text-uppercase'>
+            <span className='hidden-xs'>EXPIRATION</span>
+            <span className='visible-xs-inline'>EXP</span> DATE
+          </label>
+          <input
+            type='tel'
+            className='form-control form-control-lg'
+            placeholder='MM / YY'
+          />
         </div>
-      </form>
+        <div className='col-lg-5 pull-right payment-line-block'>
+          <label className='form-label text-sm text-uppercase'>CV CODE</label>
+          <input
+            type='tel'
+            className='form-control form-control-lg'
+            placeholder='CVC'
+          />
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-lg-12 payment-line-block'>
+          <label className='form-label text-sm text-uppercase'>
+            CARD OWNER
+          </label>
+          <input
+            className='form-control form-control-lg'
+            type='text'
+            placeholder='Card Owner Name'
+          />
+        </div>
+      </div>
       <div className='row'>
         <div className='inline-image'>
           <img
