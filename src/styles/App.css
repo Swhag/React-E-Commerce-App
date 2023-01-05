@@ -157,6 +157,20 @@
 } */
 
 /* ----------------------------------------- */
+/* Hero-Slider styling */
+/* ----------------------------------------- */
+
+.carousel-item {
+  height: 30rem;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* ----------------------------------------- */
 /* Hero styling */
 /* ----------------------------------------- */
 .hero-container {

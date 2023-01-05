@@ -18,6 +18,11 @@ import shoesModel3 from '../images/shoes-model3.jpg';
 import shoesModel4 from '../images/shoes-model4.jpg';
 import shoesModel5 from '../images/shoes-model5.jpg';
 
+import slide1 from '../images/slide1.jpg';
+import slide2 from '../images/slide2.jpg';
+import slide3 from '../images/slide3.jpg';
+import slide4 from '../images/slide4.jpg';
+
 let shoesImage = [
   shoes1,
   shoes2,
@@ -40,6 +45,8 @@ let categoryImage = [
   shoesModel4,
   shoesModel5,
 ];
+
+let slideImages = [slide1, slide2, slide3, slide4];
 
 let trendingOne = [
   {
@@ -228,4 +235,11 @@ let trendingTwo = [
   },
 ];
 
-export { shoesImage, trendingOne, trendingTwo, banner, categoryImage };
+export {
+  shoesImage,
+  trendingOne,
+  trendingTwo,
+  banner,
+  categoryImage,
+  slideImages,
+};

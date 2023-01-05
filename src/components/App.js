@@ -11,6 +11,8 @@ import '../styles/App.css';
 
 import TopNavbar from './Navbar';
 import LoginModal from './Login';
+import HeroSlider from './HeroSlider';
+
 import Hero from './Hero';
 import Categories from './Categories';
 import Services from './Services';
@@ -66,8 +68,10 @@ function App() {
             path='/'
             element={
               <>
-                <Hero></Hero>
+                <HeroSlider></HeroSlider>
+
                 <Categories></Categories>
+
                 <Products items={trending} setSidebar={setSidebar}></Products>
                 <div className='button-container'>
                   <ul className='pagination justify-content-center justify-content-lg-end'>
@@ -96,6 +100,8 @@ function App() {
                     </li>
                   </ul>
                 </div>
+                <Hero></Hero>
+
                 <Services></Services>
               </>
             }
