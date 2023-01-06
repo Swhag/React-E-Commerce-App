@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
 import {
   addCount,
   minusCount,
@@ -65,17 +66,19 @@ function CartHeader() {
             <nav aria-label='breadcrumb'>
               <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
                 <li className='breadcrumb-item'>
-                  <a
-                    className='text-dark'
-                    href='#!'
+                  <div
+                    className='text-dark cart-header-nav'
                     onClick={() => {
                       navigate('/');
                     }}
                   >
                     Home
-                  </a>
+                  </div>
                 </li>
-                <li className='breadcrumb-item active' aria-current='page'>
+                <li
+                  className='breadcrumb-item cart-header-nav active'
+                  aria-current='page'
+                >
                   Cart
                 </li>
               </ol>
@@ -120,23 +123,20 @@ function CartTable() {
               <tr key={i}>
                 <th className='ps-0 py-3 border-light' scope='row'>
                   <div className='d-flex align-items-center'>
-                    <a
-                      className='reset-anchor d-block animsition-link'
-                      href='#!'
-                    >
+                    <Link className='reset-anchor d-block animsition-link'>
                       <img src={item.imageURL} alt='#!' width='70' />
-                    </a>
+                    </Link>
                     <div className='ms-3'>
                       <strong className='h6'>
-                        <a
-                          className='reset-anchor animsition-link'
-                          href='#!'
-                          onClick={() => {
-                            navigate(`/detail/` + item.id);
-                          }}
-                        >
-                          {item.name}
-                        </a>
+                        <div className='cart-item-name'>
+                          <span
+                            onClick={() => {
+                              navigate(`/detail/` + item.id);
+                            }}
+                          >
+                            {item.name}
+                          </span>
+                        </div>
                       </strong>
                     </div>
                   </div>
@@ -187,7 +187,7 @@ function CartTable() {
                   <p className='mb-0 small'>${item.price * item.count}</p>
                 </td>
                 <td className='p-3 align-middle border-light'>
-                  <a className='reset-anchor' href='#!'>
+                  <Link className='reset-anchor'>
                     <i
                       className='fas fa-trash-alt small text-muted'
                       onClick={() => {
@@ -198,7 +198,7 @@ function CartTable() {
                         dispatch(updateCartCount());
                       }}
                     ></i>
-                  </a>
+                  </Link>
                 </td>
               </tr>
             );
@@ -210,34 +210,20 @@ function CartTable() {
 }
 
 function CartNav() {
-  let navigate = useNavigate();
-
   return (
     <div className='bg-light px-4 py-3'>
       <div className='row align-items-center text-center'>
         <div className='col-md-6 mb-3 mb-md-0 text-md-start'>
-          <a
-            className='btn btn-link p-0 text-dark btn-sm'
-            href='#!'
-            onClick={() => {
-              navigate('/Shop');
-            }}
-          >
+          <Link to='/Shop' className='btn btn-link p-0 text-dark btn-sm'>
             <i className='fas fa-long-arrow-alt-left me-2'></i>
             Continue shopping
-          </a>
+          </Link>
         </div>
         <div className='col-md-6 text-md-end'>
-          <a
-            className='btn btn-outline-dark btn-sm'
-            href='#!'
-            onClick={() => {
-              navigate('/checkout/');
-            }}
-          >
+          <Link to='/checkout/' className='btn btn-outline-dark btn-sm'>
             Proceed to checkout
             <i className='fas fa-long-arrow-alt-right ms-2'></i>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -278,14 +264,14 @@ function CartTotal(props) {
               <span>${total}</span>
             </li>
             <li>
-              <form action='#!'>
+              <form>
                 <div className='input-group mb-0'>
                   <input
                     className='form-control'
                     type='text'
                     placeholder='Enter your coupon'
                   />
-                  <button className='btn btn-dark btn-sm w-100' type='#!'>
+                  <button className='btn btn-dark btn-sm w-100'>
                     <i className='fas fa-gift me-2'></i>Apply coupon
                   </button>
                 </div>

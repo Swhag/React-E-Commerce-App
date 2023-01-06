@@ -136,7 +136,6 @@ function MainDetails(props) {
   }
 
   return (
-    // <section className='py-5'>
     <div className='container'>
       <div className='row mb-5'>
         <div className='col-lg-6 detail-image-container'>
@@ -198,7 +197,7 @@ function MainDetails(props) {
               </div>
             </div>
             <div className='col-sm-3 pl-sm-0'>
-              <a
+              <div
                 className='btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0'
                 href='#!'
                 onClick={() => {
@@ -208,12 +207,15 @@ function MainDetails(props) {
                 }}
               >
                 Add to cart
-              </a>
+              </div>
             </div>
           </div>
-          <a className='text-dark p-0 mb-4 d-inline-block' href='#!'>
-            <i className='far fa-heart me-2'></i>Add to wish list
-          </a>
+          <div className='text-dark p-0 mb-4 d-inline-block'>
+            <span className='add-to-wish-list'>
+              <i className='far fa-heart me-2 add-to-wish-list'></i>Add to wish
+              list
+            </span>
+          </div>
           <br></br>
           <ul className='list-unstyled small d-inline-block'>
             <li className='px-3 py-2 mb-1 bg-white'>
@@ -222,21 +224,16 @@ function MainDetails(props) {
             </li>
             <li className='px-3 py-2 mb-1 bg-white text-muted'>
               <strong className='text-uppercase text-dark'>Category:</strong>
-              <a className='reset-anchor ms-2' href='#!'>
-                {item.category}
-              </a>
+              <span className='ms-2 text-muted'>{item.category}</span>
             </li>
             <li className='px-3 py-2 mb-1 bg-white text-muted'>
               <strong className='text-uppercase text-dark'>Gender:</strong>
-              <a className='reset-anchor ms-2' href='#!'>
-                {item.gender}
-              </a>
+              <span className='ms-2 text-muted'>{item.gender}</span>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    // </section>
   );
 }
 
@@ -383,9 +380,8 @@ function ProductCard(props) {
             <div className='h-bg-inner'></div>
           </div>
 
-          <a
+          <div
             className='cart'
-            href='#!'
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
@@ -394,9 +390,9 @@ function ProductCard(props) {
           >
             <span className='price'>${item.price}</span>
             <span className='add-to-cart'>
-              <span className='txt'>Add in cart</span>
+              <span className='txt'>Add to cart</span>
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </div>

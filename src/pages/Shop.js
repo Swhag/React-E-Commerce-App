@@ -67,7 +67,7 @@ function ShopHeader() {
           <div className='col-lg-6'>
             <h1 className='h2 mb-0 '>
               <span
-                className='shop-header'
+                className='shop-header-nav'
                 onClick={() => {
                   dispatch(setItems(state.items.data));
                   dispatch(setPage(1));
@@ -81,17 +81,16 @@ function ShopHeader() {
           <div className='col-lg-6 text-lg-end'>
             <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
               <li className='breadcrumb-item'>
-                <a
-                  className='text-dark'
-                  href='#!'
+                <div
+                  className='text-dark shop-header-nav'
                   onClick={() => {
                     navigate('/');
                   }}
                 >
                   Home
-                </a>
+                </div>
               </li>
-              <li className='breadcrumb-item active'>Shop</li>
+              <li className='breadcrumb-item shop-header-nav active'>Shop</li>
             </ol>
           </div>
         </div>
@@ -227,9 +226,8 @@ function ProductCard(props) {
             <div className='h-bg-inner'></div>
           </div>
 
-          <a
+          <div
             className='cart'
-            href='#!'
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
@@ -238,9 +236,9 @@ function ProductCard(props) {
           >
             <span className='price'>${item.price}</span>
             <span className='add-to-cart'>
-              <span className='txt'>Add in cart</span>
+              <span className='txt'>Add to cart</span>
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -260,11 +258,9 @@ function ShopMenu(props) {
           Sneakers & Athletic
         </strong>
       </div>
-      <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+      <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal '>
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'WOMEN', 'CASUAL']));
               dispatch(setPage(1));
@@ -273,12 +269,10 @@ function ShopMenu(props) {
             }}
           >
             Women's Casual
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'MEN', 'CASUAL']));
               dispatch(setPage(1));
@@ -287,12 +281,10 @@ function ShopMenu(props) {
             }}
           >
             Men's Casual
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(
                 multipleCondition([
@@ -307,12 +299,10 @@ function ShopMenu(props) {
             }}
           >
             Women's athletic
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(
                 multipleCondition([
@@ -327,12 +317,10 @@ function ShopMenu(props) {
             }}
           >
             Men's athletic
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByGender([state.items.data, 'KIDS']));
               dispatch(setPage(1));
@@ -341,7 +329,7 @@ function ShopMenu(props) {
             }}
           >
             Kids
-          </a>
+          </div>
         </li>
       </ul>
       <ShopMenu2 setSortOption={setSortOption}></ShopMenu2>
@@ -363,10 +351,8 @@ function ShopMenu2(props) {
         <strong className='small text-uppercase fw-bold'>Brand</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal'>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'NIKE']));
               dispatch(setPage(1));
@@ -375,12 +361,10 @@ function ShopMenu2(props) {
             }}
           >
             Nike
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'ADIDAS']));
               dispatch(setPage(1));
@@ -389,12 +373,10 @@ function ShopMenu2(props) {
             }}
           >
             Adidas
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'HUSHPUPPIES']));
               dispatch(setPage(1));
@@ -403,12 +385,10 @@ function ShopMenu2(props) {
             }}
           >
             Hush Puppies
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'VANS']));
               dispatch(setPage(1));
@@ -417,12 +397,10 @@ function ShopMenu2(props) {
             }}
           >
             Vans
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'AIR JORDAN']));
               dispatch(setPage(1));
@@ -431,7 +409,7 @@ function ShopMenu2(props) {
             }}
           >
             Air Jordan
-          </a>
+          </div>
         </li>
       </ul>
     </>
@@ -449,10 +427,8 @@ function ShopMenu3(props) {
         <strong className='small text-uppercase fw-bold'>Fashion</strong>
       </div>
       <ul className='list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5'>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'WOMEN', 'FORMAL']));
               dispatch(setPage(1));
@@ -461,12 +437,10 @@ function ShopMenu3(props) {
             }}
           >
             Women's Formal
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'MEN', 'FORMAL']));
               dispatch(setPage(1));
@@ -475,12 +449,10 @@ function ShopMenu3(props) {
             }}
           >
             Men's Formal
-          </a>
+          </div>
         </li>
-        <li className='mb-2'>
-          <a
-            className='reset-anchor'
-            href='#!'
+        <li className='mb-2 shop-menu-items'>
+          <div
             onClick={() => {
               dispatch(sortByLimited(state.items.data));
               dispatch(setPage(1));
@@ -489,7 +461,7 @@ function ShopMenu3(props) {
             }}
           >
             Limited Edition
-          </a>
+          </div>
         </li>
       </ul>
     </>
@@ -560,32 +532,27 @@ function PageButtons(props) {
     <div className='button-container'>
       <ul className='pagination justify-content-center justify-content-lg-end'>
         <li className='page-item mx-1'>
-          <a className='page-link' href='#!'>
-            «
-          </a>
+          <div className='page-link'>«</div>
         </li>
 
         {/* Creates an array consisting of undefined items for iteration */}
         {[...Array(pageCount)].map((item, i) => {
           return (
             <li className='page-item mx-1' key={i}>
-              <a
+              <div
                 className='page-link'
-                href='#!'
                 onClick={() => {
                   dispatch(setPage(i + 1));
                   dispatch(setTIndex());
                 }}
               >
                 {i + 1}
-              </a>
+              </div>
             </li>
           );
         })}
         <li className='page-item ms-1'>
-          <a className='page-link' href='#!'>
-            »
-          </a>
+          <div className='page-link'>»</div>
         </li>
       </ul>
     </div>

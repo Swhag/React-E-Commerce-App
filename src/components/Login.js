@@ -67,9 +67,9 @@ function LoginModal(props) {
                     </button>
                   </div>
 
-                  <a className='d-block text-center mt-2 small' href='#!'>
+                  <div className='d-block text-center mt-2 small'>
                     Don't have an account? Register Here
-                  </a>
+                  </div>
 
                   <hr className='my-4'></hr>
 

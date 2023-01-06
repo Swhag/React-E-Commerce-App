@@ -58,9 +58,9 @@ function TopNavbar(props) {
             id='navbarSupportedContent'
           >
             <ul className='navbar-nav me-auto'>
-              <li className='nav-item top-nav-item'>
+              <li className='nav-item'>
                 <Nav.Link
-                  className='nav-link'
+                  className='nav-link top-nav-item'
                   onClick={() => {
                     navigate('/');
                   }}
@@ -69,9 +69,9 @@ function TopNavbar(props) {
                 </Nav.Link>
               </li>
 
-              <li className='nav-item top-nav-item'>
+              <li className='nav-item'>
                 <Nav.Link
-                  className='nav-link'
+                  className='nav-link top-nav-item'
                   onClick={() => {
                     navigate('/shop');
                     dispatch(setItems(state.items.data));
@@ -83,9 +83,9 @@ function TopNavbar(props) {
                 </Nav.Link>
               </li>
 
-              <li className='nav-item top-nav-item'>
+              <li className='nav-item'>
                 <Nav.Link
-                  className='nav-link'
+                  className='nav-link top-nav-item'
                   onClick={() => {
                     navigate('/detail/53');
                   }}
@@ -96,15 +96,15 @@ function TopNavbar(props) {
 
               {/* ------------------------------------------------------------- */}
 
-              <li className='nav-item top-nav-item dropdown'>
-                <Nav.Link
-                  className='nav-link dropdown-toggle navbar-dropdown-toggle'
+              <li className='nav-item dropdown'>
+                <div
+                  className='nav-link top-nav-item dropdown-toggle navbar-dropdown-toggle'
                   onMouseEnter={() => {
                     setPages('show-pages');
                   }}
                 >
                   Pages
-                </Nav.Link>
+                </div>
 
                 <div
                   className={`dropdown-menu mt-3 shadow-sm navbar-dropdown-menu ${pages}`}
@@ -112,31 +112,31 @@ function TopNavbar(props) {
                     setPages('hide-pages');
                   }}
                 >
-                  <Nav.Link
+                  <div
                     className='dropdown-item border-0 transition-link'
                     onClick={() => {
                       navigate('/');
                     }}
                   >
                     Homepage
-                  </Nav.Link>
-                  <Nav.Link
+                  </div>
+                  <div
                     className='dropdown-item border-0 transition-link'
                     onClick={() => {
                       navigate('/Shop');
                     }}
                   >
                     Shop
-                  </Nav.Link>
-                  <Nav.Link
+                  </div>
+                  <div
                     className='dropdown-item border-0 transition-link'
                     onClick={() => {
                       navigate('/detail/53');
                     }}
                   >
                     Product detail
-                  </Nav.Link>
-                  <Nav.Link
+                  </div>
+                  <div
                     className='dropdown-item border-0 transition-link'
                     onClick={() => {
                       navigate('/cart');
@@ -144,24 +144,24 @@ function TopNavbar(props) {
                     }}
                   >
                     Shopping cart
-                  </Nav.Link>
-                  <Nav.Link
+                  </div>
+                  <div
                     className='dropdown-item border-0 transition-link'
                     onClick={() => {
                       navigate('/checkout/');
                     }}
                   >
                     Checkout
-                  </Nav.Link>
+                  </div>
                 </div>
               </li>
 
               {/* ------------------------------------------------------------- */}
             </ul>
             <ul className='navbar-nav ms-auto'>
-              <li className='nav-item top-nav-item navbar-cart'>
+              <li className='nav-item navbar-cart'>
                 <Nav.Link
-                  className='nav-link'
+                  className='nav-link top-nav-item'
                   onClick={() => {
                     navigate('/cart');
                     props.setSidebar('hidden');
@@ -174,15 +174,15 @@ function TopNavbar(props) {
                   </small>
                 </Nav.Link>
               </li>
-              <li className='nav-item top-nav-item'>
-                <Nav.Link className='nav-link'>
+              <li className='nav-item'>
+                <Nav.Link className='nav-link top-nav-item'>
                   <i className='far fa-heart me-1'></i>
                   <small className='text-gray fw-normal'>(0)</small>
                 </Nav.Link>
               </li>
-              <li className='nav-item top-nav-item'>
+              <li className='nav-item'>
                 <Nav.Link
-                  className='nav-link'
+                  className='nav-link top-nav-item'
                   onClick={() => {
                     setLogin('show-login');
                   }}

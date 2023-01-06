@@ -233,7 +233,7 @@ function ProductCard(props) {
           >
             <span className='price'>${item.price}</span>
             <span className='add-to-cart'>
-              <span className='txt'>Add in cart</span>
+              <span className='txt'>Add to cart</span>
             </span>
           </div>
         </div>

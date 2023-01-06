@@ -49,7 +49,7 @@ function Services() {
               </p>
             </div>
             <div className='col-lg-6'>
-              <form action='#!'>
+              <form>
                 <div className='input-group'>
                   <input
                     className='form-control form-control-lg'
@@ -57,11 +57,7 @@ function Services() {
                     placeholder='Enter your email address'
                     aria-describedby='button-addon2'
                   />
-                  <button
-                    className='btn btn-dark'
-                    id='button-addon2'
-                    type='submit'
-                  >
+                  <button className='btn btn-dark' id='button-addon2'>
                     Subscribe
                   </button>
                 </div>

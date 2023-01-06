@@ -27,7 +27,7 @@ function Hero() {
                 New Inspiration 2023
               </p>
               <h1 className='h2 text-uppercase mb-3'>20% off on new season</h1>
-              <a
+              <div
                 className='btn btn-dark'
                 href='#!'
                 onClick={() => {
@@ -35,7 +35,7 @@ function Hero() {
                 }}
               >
                 Browse collections
-              </a>
+              </div>
             </div>
           </div>
         </div>

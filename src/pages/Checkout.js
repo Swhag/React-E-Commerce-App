@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Checkout() {
@@ -110,48 +110,27 @@ function CheckoutPayment() {
 }
 
 function CheckoutHeader() {
-  let navigate = useNavigate();
-
   return (
     <section className='py-5 bg-light'>
       <div className='container'>
         <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
           <div className='col-lg-6'>
             <h1 className='h2 text-uppercase mb-0'>
-              <span
-                className='checkout-header'
-                onClick={() => {
-                  navigate('/checkout');
-                }}
-              >
-                Checkout
-              </span>
+              <span>Checkout</span>
             </h1>
           </div>
           <div className='col-lg-6 text-lg-end'>
             <nav>
               <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
                 <li className='breadcrumb-item'>
-                  <a
-                    className='text-dark'
-                    href='#!'
-                    onClick={() => {
-                      navigate('/');
-                    }}
-                  >
+                  <Link to='/' className='text-dark'>
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className='breadcrumb-item'>
-                  <a
-                    className='text-dark'
-                    href='#!'
-                    onClick={() => {
-                      navigate('/cart');
-                    }}
-                  >
+                  <Link to='/cart' className='text-dark'>
                     Cart
-                  </a>
+                  </Link>
                 </li>
                 <li className='breadcrumb-item active'>Checkout</li>
               </ol>
@@ -335,28 +314,20 @@ function OrderSummary() {
 }
 
 function CheckoutNav() {
-  let navigate = useNavigate();
-
   return (
     <div className='bg-light px-4 py-3'>
       <div className='row align-items-center text-center'>
         <div className='col-md-6 mb-3 mb-md-0 text-md-start'>
-          <a
-            className='btn btn-link p-0 text-dark btn-sm'
-            href='#!'
-            onClick={() => {
-              navigate('/Cart');
-            }}
-          >
+          <Link to='/Cart' className='btn btn-link p-0 text-dark btn-sm'>
             <i className='fas fa-long-arrow-alt-left me-2'></i>
             Return to cart
-          </a>
+          </Link>
         </div>
         <div className='col-md-6 text-md-end'>
-          <a className='btn btn-outline-dark btn-sm' href='#!'>
+          <Link className='btn btn-outline-dark btn-sm'>
             Place Order
             <i className='fas fa-long-arrow-alt-right ms-2'></i>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
