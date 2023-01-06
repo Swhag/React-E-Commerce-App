@@ -276,7 +276,8 @@ function OrderSummary() {
   let state = useSelector((state) => state);
   let subtotal = state.cart.subtotal;
   let tax = state.cart.tax;
-  let total = state.cart.total;
+  let shipping = 10;
+  let total = parseFloat(state.cart.total) + shipping;
 
   return (
     <div className='col-lg-4'>
