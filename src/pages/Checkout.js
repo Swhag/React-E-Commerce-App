@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import {
+  getSubtotal,
+  getTax,
+  getTotal,
+  updateCartCount,
+} from '../redux/cartSlice';
 
 function Checkout() {
   let [fadeIn, setFadeIn] = useState('');
+  let dispatch = useDispatch();
 
   useEffect(() => {
     setFadeIn('end');
@@ -11,6 +19,13 @@ function Checkout() {
     return () => {
       setFadeIn('');
     };
+  }, []);
+
+  useEffect(() => {
+    dispatch(getSubtotal());
+    dispatch(getTax());
+    dispatch(getTotal());
+    dispatch(updateCartCount());
   }, []);
 
   return (
