@@ -298,7 +298,7 @@ function ShopMenu(props) {
               setSortOption('Sort By');
             }}
           >
-            Women's athletic
+            Women's Athletic
           </div>
         </li>
         <li className='mb-2 shop-menu-items'>
@@ -316,7 +316,7 @@ function ShopMenu(props) {
               setSortOption('Sort By');
             }}
           >
-            Men's athletic
+            Men's Athletic
           </div>
         </li>
         <li className='mb-2 shop-menu-items'>
