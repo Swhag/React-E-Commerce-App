@@ -69,7 +69,7 @@ function LoginModal(props) {
 
                   <div className='d-block text-center mt-2 small'>
                     Don't have an account?
-                    <span className='login-register'>Register Here</span>
+                    <span id='login-register'>Register Here</span>
                   </div>
 
                   <hr className='my-4'></hr>

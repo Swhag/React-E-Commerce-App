@@ -98,12 +98,12 @@
   opacity: 1;
 }
 
-.login-register {
+#login-register {
   margin-left: 5px;
   color: #1976d2;
 }
 
-.login-register:hover {
+#login-register:hover {
   cursor: pointer;
 }
 
