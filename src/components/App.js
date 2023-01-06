@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
@@ -76,27 +76,25 @@ function App() {
                 <div className='button-container'>
                   <ul className='pagination justify-content-center justify-content-lg-end'>
                     <li className='page-item mx-1'>
-                      <a
+                      <div
                         className='page-link'
-                        href='#!'
                         onClick={() => {
                           setTrending(trendingOne);
                         }}
                       >
                         <span>«</span>
-                      </a>
+                      </div>
                     </li>
 
                     <li className='page-item ms-1'>
-                      <a
+                      <div
                         className='page-link'
-                        href='#!'
                         onClick={() => {
                           setTrending(trendingTwo);
                         }}
                       >
                         <span>»</span>
-                      </a>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -225,9 +223,8 @@ function ProductCard(props) {
             <div className='h-bg-inner'></div>
           </div>
 
-          <a
+          <div
             className='cart'
-            href='#!'
             onClick={() => {
               dispatch(addItem(item));
               dispatch(updateCartCount());
@@ -238,7 +235,7 @@ function ProductCard(props) {
             <span className='add-to-cart'>
               <span className='txt'>Add in cart</span>
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPage, setTIndex } from '../redux/pageSlice';
 import { setItems } from '../redux/itemSlice';
+import { Nav } from 'react-bootstrap';
 
 function TopNavbar(props) {
   let state = useSelector((state) => state);
@@ -25,15 +26,14 @@ function TopNavbar(props) {
             setPages('hide-pages');
           }}
         >
-          <a
+          <Nav.Link
             className='navbar-brand top-navbar-brand'
-            href='#!'
             onClick={() => {
               navigate('/');
             }}
           >
             <span className='fw-bold text-uppercase text-dark'>KickStore</span>
-          </a>
+          </Nav.Link>
           <button
             className='navbar-toggler navbar-toggler-end'
             type='button'
@@ -59,21 +59,19 @@ function TopNavbar(props) {
           >
             <ul className='navbar-nav me-auto'>
               <li className='nav-item top-nav-item'>
-                <a
+                <Nav.Link
                   className='nav-link'
-                  href='#!'
                   onClick={() => {
                     navigate('/');
                   }}
                 >
                   Home
-                </a>
+                </Nav.Link>
               </li>
 
               <li className='nav-item top-nav-item'>
-                <a
+                <Nav.Link
                   className='nav-link'
-                  href='#!'
                   onClick={() => {
                     navigate('/shop');
                     dispatch(setItems(state.items.data));
@@ -82,33 +80,31 @@ function TopNavbar(props) {
                   }}
                 >
                   Shop
-                </a>
+                </Nav.Link>
               </li>
 
               <li className='nav-item top-nav-item'>
-                <a
+                <Nav.Link
                   className='nav-link'
-                  href='#!'
                   onClick={() => {
                     navigate('/detail/53');
                   }}
                 >
                   Product detail
-                </a>
+                </Nav.Link>
               </li>
 
               {/* ------------------------------------------------------------- */}
 
               <li className='nav-item top-nav-item dropdown'>
-                <a
+                <Nav.Link
                   className='nav-link dropdown-toggle navbar-dropdown-toggle'
-                  href='#!'
                   onMouseEnter={() => {
                     setPages('show-pages');
                   }}
                 >
                   Pages
-                </a>
+                </Nav.Link>
 
                 <div
                   className={`dropdown-menu mt-3 shadow-sm navbar-dropdown-menu ${pages}`}
@@ -116,55 +112,47 @@ function TopNavbar(props) {
                     setPages('hide-pages');
                   }}
                 >
-                  <a
+                  <Nav.Link
                     className='dropdown-item border-0 transition-link'
-                    href='#!'
                     onClick={() => {
                       navigate('/');
                     }}
-                    // onMouseEnter={() => {
-                    //   setPages('show-pages');
-                    // }}
                   >
                     Homepage
-                  </a>
-                  <a
+                  </Nav.Link>
+                  <Nav.Link
                     className='dropdown-item border-0 transition-link'
-                    href='#!'
                     onClick={() => {
                       navigate('/Shop');
                     }}
                   >
                     Shop
-                  </a>
-                  <a
+                  </Nav.Link>
+                  <Nav.Link
                     className='dropdown-item border-0 transition-link'
-                    href='#!'
                     onClick={() => {
                       navigate('/detail/53');
                     }}
                   >
                     Product detail
-                  </a>
-                  <a
+                  </Nav.Link>
+                  <Nav.Link
                     className='dropdown-item border-0 transition-link'
-                    href='#!'
                     onClick={() => {
                       navigate('/cart');
                       props.setSidebar('hidden');
                     }}
                   >
                     Shopping cart
-                  </a>
-                  <a
+                  </Nav.Link>
+                  <Nav.Link
                     className='dropdown-item border-0 transition-link'
-                    href='#!'
                     onClick={() => {
                       navigate('/checkout/');
                     }}
                   >
                     Checkout
-                  </a>
+                  </Nav.Link>
                 </div>
               </li>
 
@@ -172,9 +160,8 @@ function TopNavbar(props) {
             </ul>
             <ul className='navbar-nav ms-auto'>
               <li className='nav-item top-nav-item navbar-cart'>
-                <a
+                <Nav.Link
                   className='nav-link'
-                  href='#!'
                   onClick={() => {
                     navigate('/cart');
                     props.setSidebar('hidden');
@@ -185,24 +172,23 @@ function TopNavbar(props) {
                   <small className='fw-normal cart-count'>
                     ({state.cart.itemCount})
                   </small>
-                </a>
+                </Nav.Link>
               </li>
               <li className='nav-item top-nav-item'>
-                <a className='nav-link' href='#!'>
+                <Nav.Link className='nav-link'>
                   <i className='far fa-heart me-1'></i>
                   <small className='text-gray fw-normal'>(0)</small>
-                </a>
+                </Nav.Link>
               </li>
               <li className='nav-item top-nav-item'>
-                <a
+                <Nav.Link
                   className='nav-link'
-                  href='#!'
                   onClick={() => {
                     setLogin('show-login');
                   }}
                 >
                   <i className='fas fa-user me-1  fw-normal'></i>Login
-                </a>
+                </Nav.Link>
               </li>
             </ul>
           </div>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Footer() {
   return (
     <footer className='bg-dark text-white footer'>
@@ -7,24 +9,24 @@ function Footer() {
             <h6 className='text-uppercase mb-3'>Customer services</h6>
             <ul className='list-unstyled mb-0'>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Help &amp; Contact Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Returns &amp; Refunds
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Online Stores
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Terms &amp; Conditions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -32,24 +34,24 @@ function Footer() {
             <h6 className='text-uppercase mb-3'>Company</h6>
             <ul className='list-unstyled mb-0'>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   What We Do
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Available Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Latest Posts
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   FAQs
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -57,24 +59,24 @@ function Footer() {
             <h6 className='text-uppercase mb-3'>Social media</h6>
             <ul className='list-unstyled mb-0'>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Twitter
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Instagram
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Tumblr
-                </a>
+                </Link>
               </li>
               <li>
-                <a className='footer-link' href='#!'>
+                <Link to='/' className='footer-link'>
                   Pinterest
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -88,15 +90,15 @@ function Footer() {
             </div>
             <div className='col-md-6 text-center text-md-end'>
               <p className='small text-muted mb-0'>
-                <a className='text-muted bottom-link' href='#'>
+                <Link to='/' className='text-muted bottom-link' href='#'>
                   Terms of Use
-                </a>
-                <a className='text-muted bottom-link' href='#'>
+                </Link>
+                <Link to='/' className='text-muted bottom-link' href='#'>
                   Privacy Policy
-                </a>
-                <a className='text-muted bottom-link' href='#'>
+                </Link>
+                <Link to='/' className='text-muted bottom-link' href='#'>
                   Cookie Policy
-                </a>
+                </Link>
               </p>
             </div>
           </div>

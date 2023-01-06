@@ -457,6 +457,10 @@
   font-weight: 700;
 }
 
+.cart:hover {
+  cursor: pointer;
+}
+
 .cart .price {
   -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
   -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { categoryImage } from '../redux/data';
 import { setPage, setTIndex } from '../redux/pageSlice';
@@ -38,7 +38,7 @@ function Categories() {
         </header>
         <div className='row'>
           <div className='col-md-4'>
-            <a className='category-item' href='#!'>
+            <div className='category-item'>
               <img
                 className='img-fluid img-full'
                 src={categoryImage[4]}
@@ -55,10 +55,10 @@ function Categories() {
               >
                 Limited
               </strong>
-            </a>
+            </div>
           </div>
           <div className='col-md-4 col-stacked'>
-            <a className='category-item mb-4' href='#!'>
+            <div className='category-item mb-4'>
               <img
                 className='img-fluid img-stacked'
                 src={categoryImage[0]}
@@ -75,8 +75,8 @@ function Categories() {
               >
                 RUNNING
               </strong>
-            </a>
-            <a className='category-item mb-4' href='#!'>
+            </div>
+            <div className='category-item mb-4'>
               <img
                 className='img-fluid img-stacked'
                 src={categoryImage[5]}
@@ -86,7 +86,6 @@ function Categories() {
                 className='category-item-title'
                 onClick={() => {
                   navigate('/shop');
-                  navigate('/shop');
                   dispatch(sortByCategory([state.items.data, 'FORMAL']));
                   dispatch(setPage(1));
                   dispatch(setTIndex());
@@ -94,10 +93,10 @@ function Categories() {
               >
                 Formal
               </strong>
-            </a>
+            </div>
           </div>
           <div className='col-md-4'>
-            <a className='category-item' href='#!'>
+            <div className='category-item'>
               <img
                 className='img-fluid img-full'
                 src={categoryImage[7]}
@@ -114,7 +113,7 @@ function Categories() {
               >
                 Casual
               </strong>
-            </a>
+            </div>
           </div>
         </div>
       </section>
