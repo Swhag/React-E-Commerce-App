@@ -29,3 +29,5 @@ Click Here: [Live Demo](https://swhag.github.io/store-app-project/) :point_left:
 - [React Router](https://reactrouter.com/)
 - [React Router DOM](https://reactrouter.com/)
 - [Redux](https://redux.js.org/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
