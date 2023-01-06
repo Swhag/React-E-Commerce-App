@@ -13,7 +13,7 @@ A simple e-commerce ReactJS web application.
 - Filter products by categories
 - Responsive design
 
-Click Here: [Live Demo](https://swhag.github.io/store-app-project/) :point_left:
+Click Here: [Live Demo](https://swhag.github.io/React-E-Commerce-App/) :point_left:
 
 ### Frameworks
 
