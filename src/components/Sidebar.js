@@ -27,9 +27,7 @@ function Sidebar(props) {
         <div
           className='toggle-btn'
           onClick={() => {
-            {
-              sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
-            }
+            sidebar === 'show' ? setSidebar('hidden') : setSidebar('show');
           }}
         >
           <i className='fa-solid fa-angle-left toggle-btn-icon'></i>
