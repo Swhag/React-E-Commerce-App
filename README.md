@@ -1,4 +1,4 @@
-# Simple e-commerce web application
+# Simple E-Commerce Web Application
 
 ## Project Overview
 
