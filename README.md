@@ -4,7 +4,7 @@
 
 ### Description
 
-A simple e-commerce ReactJS web application.
+A simple E-Commerce ReactJS Web Application.
 
 ### Features
 
