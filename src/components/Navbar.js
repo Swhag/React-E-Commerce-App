@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPage, setTIndex } from '../redux/pageSlice';
+import { setPage, setIndex } from '../redux/pageSlice';
 import { setItems } from '../redux/itemSlice';
 import { Nav } from 'react-bootstrap';
 
@@ -76,7 +76,7 @@ function TopNavbar(props) {
                     navigate('/shop');
                     dispatch(setItems(state.items.data));
                     dispatch(setPage(1));
-                    dispatch(setTIndex());
+                    dispatch(setIndex());
                   }}
                 >
                   Shop

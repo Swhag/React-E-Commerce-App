@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { categoryImage } from '../redux/data';
-import { setPage, setTIndex } from '../redux/pageSlice';
-import {
-  setItems,
-  sortByBrand,
-  sortByGender,
-  sortByCategory,
-  sortByLimited,
-  doubleCondition,
-  multipleCondition,
-} from '../redux/itemSlice';
+import { setPage, setIndex } from '../redux/pageSlice';
+import { sortByCategory, sortByLimited } from '../redux/itemSlice';
 
 function Categories() {
   let [fadeIn, setFadeIn] = useState('');
@@ -50,7 +42,7 @@ function Categories() {
                   navigate('/shop');
                   dispatch(sortByLimited(state.items.data));
                   dispatch(setPage(1));
-                  dispatch(setTIndex());
+                  dispatch(setIndex());
                 }}
               >
                 Limited
@@ -70,7 +62,7 @@ function Categories() {
                   navigate('/shop');
                   dispatch(sortByCategory([state.items.data, 'RUNNING']));
                   dispatch(setPage(1));
-                  dispatch(setTIndex());
+                  dispatch(setIndex());
                 }}
               >
                 RUNNING
@@ -88,7 +80,7 @@ function Categories() {
                   navigate('/shop');
                   dispatch(sortByCategory([state.items.data, 'FORMAL']));
                   dispatch(setPage(1));
-                  dispatch(setTIndex());
+                  dispatch(setIndex());
                 }}
               >
                 Formal
@@ -108,7 +100,7 @@ function Categories() {
                   navigate('/shop');
                   dispatch(sortByCategory([state.items.data, 'CASUAL']));
                   dispatch(setPage(1));
-                  dispatch(setTIndex());
+                  dispatch(setIndex());
                 }}
               >
                 Casual

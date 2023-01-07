@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { addItem } from '../redux/cartSlice';
-import { setPage, setTIndex } from '../redux/pageSlice';
+import { setPage, setIndex } from '../redux/pageSlice';
 import {
   setItems,
   sortByBrand,
@@ -71,7 +71,7 @@ function ShopHeader() {
                 onClick={() => {
                   dispatch(setItems(state.items.data));
                   dispatch(setPage(1));
-                  dispatch(setTIndex());
+                  dispatch(setIndex());
                 }}
               >
                 SHOP
@@ -264,7 +264,7 @@ function ShopMenu(props) {
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'WOMEN', 'CASUAL']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -276,7 +276,7 @@ function ShopMenu(props) {
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'MEN', 'CASUAL']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -294,7 +294,7 @@ function ShopMenu(props) {
                 ])
               );
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -312,7 +312,7 @@ function ShopMenu(props) {
                 ])
               );
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -324,7 +324,7 @@ function ShopMenu(props) {
             onClick={() => {
               dispatch(sortByGender([state.items.data, 'KIDS']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -356,7 +356,7 @@ function ShopMenu2(props) {
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'NIKE']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -368,7 +368,7 @@ function ShopMenu2(props) {
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'ADIDAS']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -380,7 +380,7 @@ function ShopMenu2(props) {
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'HUSHPUPPIES']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -392,7 +392,7 @@ function ShopMenu2(props) {
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'VANS']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -404,7 +404,7 @@ function ShopMenu2(props) {
             onClick={() => {
               dispatch(sortByBrand([state.items.data, 'AIR JORDAN']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -432,7 +432,7 @@ function ShopMenu3(props) {
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'WOMEN', 'FORMAL']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -444,7 +444,7 @@ function ShopMenu3(props) {
             onClick={() => {
               dispatch(doubleCondition([state.items.data, 'MEN', 'FORMAL']));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -456,7 +456,7 @@ function ShopMenu3(props) {
             onClick={() => {
               dispatch(sortByLimited(state.items.data));
               dispatch(setPage(1));
-              dispatch(setTIndex());
+              dispatch(setIndex());
               setSortOption('Sort By');
             }}
           >
@@ -543,7 +543,7 @@ function PageButtons(props) {
                 className='page-link'
                 onClick={() => {
                   dispatch(setPage(i + 1));
-                  dispatch(setTIndex());
+                  dispatch(setIndex());
                 }}
               >
                 {i + 1}

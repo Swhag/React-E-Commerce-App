@@ -17,11 +17,11 @@ let page = createSlice({
       state.page = a.payload;
     },
 
-    setTIndex(state, a) {
+    setIndex(state, a) {
       state.index = state.page * state.itemsPerPage - state.itemsPerPage;
     },
   },
 });
 
 export default page;
-export let { addPage, minusPage, setPage, setTIndex } = page.actions;
+export let { addPage, minusPage, setPage, setIndex } = page.actions;
