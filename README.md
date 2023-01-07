@@ -13,12 +13,6 @@ A simple e-commerce ReactJS web application.
 - Filter products by categories
 - Responsive design
 
-Click Here: [Live Demo](https://swhag.github.io/React-E-Commerce-App/) :point_left:
-
-
-https://user-images.githubusercontent.com/109196962/211132034-5b9e5596-c025-46f1-b35d-2512d71f26b7.mp4
-
-
 ### Frameworks
 
 - Javascript Framework
@@ -35,6 +29,14 @@ https://user-images.githubusercontent.com/109196962/211132034-5b9e5596-c025-46f1
 - [Redux](https://redux.js.org/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)!
+
+
+Click Here: [Live Demo](https://swhag.github.io/React-E-Commerce-App/) :point_left:
+
+
+https://user-images.githubusercontent.com/109196962/211132034-5b9e5596-c025-46f1-b35d-2512d71f26b7.mp4
+
+
 
 
 ![e-commerce project capture1](https://user-images.githubusercontent.com/109196962/211132167-84e6bc04-2aa8-4fd9-923f-42868ae3ece2.PNG)
