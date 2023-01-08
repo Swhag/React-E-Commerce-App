@@ -12,7 +12,6 @@ import './styles/App.css';
 import TopNavbar from './components/Navbar';
 import LoginModal from './components/Login';
 import HeroSlider from './components/HeroSlider';
-
 import Banner from './components/Banner';
 import Categories from './components/Categories';
 import Services from './components/Services';
