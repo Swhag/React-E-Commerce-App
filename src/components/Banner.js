@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { banner } from '../redux/data';
 
-function Hero() {
+function Banner() {
   let [fadeIn, setFadeIn] = useState('');
   let navigate = useNavigate();
 
@@ -44,4 +44,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default Banner;

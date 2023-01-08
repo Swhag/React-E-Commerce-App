@@ -3,26 +3,26 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { trendingOne, trendingTwo } from '../redux/data';
-import { setCart, addItem } from '../redux/cartSlice';
-import { setItems } from '../redux/itemSlice';
-import { updateCartCount } from '../redux/cartSlice';
-import '../styles/App.css';
+import { trendingOne, trendingTwo } from './redux/data';
+import { setCart, addItem } from './redux/cartSlice';
+import { setItems } from './redux/itemSlice';
+import { updateCartCount } from './redux/cartSlice';
+import './styles/App.css';
 
-import TopNavbar from './Navbar';
-import LoginModal from './Login';
-import HeroSlider from './HeroSlider';
+import TopNavbar from './components/Navbar';
+import LoginModal from './components/Login';
+import HeroSlider from './components/HeroSlider';
 
-import Hero from './Hero';
-import Categories from './Categories';
-import Services from './Services';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
+import Banner from './components/Banner';
+import Categories from './components/Categories';
+import Services from './components/Services';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
 
-import ShopPage from '../pages/Shop';
-import DetailsPage from '../pages/Detail';
-import CartPage from '../pages/Cart';
-import CheckoutPage from '../pages/Checkout';
+import ShopPage from './pages/Shop';
+import DetailsPage from './pages/Detail';
+import CartPage from './pages/Cart';
+import CheckoutPage from './pages/Checkout';
 
 function App() {
   let state = useSelector((state) => state);
@@ -69,9 +69,7 @@ function App() {
             element={
               <>
                 <HeroSlider></HeroSlider>
-
                 <Categories></Categories>
-
                 <Products items={trending} setSidebar={setSidebar}></Products>
                 <div className='button-container'>
                   <ul className='pagination justify-content-center justify-content-lg-end'>
@@ -98,8 +96,7 @@ function App() {
                     </li>
                   </ul>
                 </div>
-                <Hero></Hero>
-
+                <Banner></Banner>
                 <Services></Services>
               </>
             }
@@ -143,7 +140,6 @@ function App() {
           />
         </Routes>
       </div>
-
       <Sidebar
         sidebar={sidebar}
         setSidebar={setSidebar}
