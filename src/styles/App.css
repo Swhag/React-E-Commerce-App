@@ -530,6 +530,7 @@
   letter-spacing: 0.045em;
   text-transform: uppercase;
   white-space: nowrap;
+  margin-left: 35px;
 }
 
 .p-name:hover {
