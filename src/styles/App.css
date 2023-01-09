@@ -91,6 +91,10 @@
   visibility: hidden;
   opacity: 0;
   transition: all 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .show-login {
@@ -110,7 +114,6 @@
 /* ------------------------ */
 
 .login-container {
-  margin-top: 200px;
   position: relative;
 }
 
