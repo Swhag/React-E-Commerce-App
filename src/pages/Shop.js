@@ -85,6 +85,7 @@ function ShopHeader() {
                   className='text-dark shop-header-nav'
                   onClick={() => {
                     navigate('/');
+                    window.scrollTo(0, 0);
                   }}
                 >
                   Home

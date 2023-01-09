@@ -32,6 +32,7 @@ function Banner() {
                 href='#!'
                 onClick={() => {
                   navigate('/shop');
+                  window.scrollTo(0, 0);
                 }}
               >
                 Browse collections

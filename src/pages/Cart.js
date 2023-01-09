@@ -70,6 +70,7 @@ function CartHeader() {
                     className='text-dark cart-header-nav'
                     onClick={() => {
                       navigate('/');
+                      window.scrollTo(0, 0);
                     }}
                   >
                     Home

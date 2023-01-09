@@ -43,6 +43,7 @@ function Categories() {
                   dispatch(sortByLimited(state.items.data));
                   dispatch(setPage(1));
                   dispatch(setIndex());
+                  window.scrollTo(0, 0);
                 }}
               >
                 Limited
@@ -63,6 +64,7 @@ function Categories() {
                   dispatch(sortByCategory([state.items.data, 'RUNNING']));
                   dispatch(setPage(1));
                   dispatch(setIndex());
+                  window.scrollTo(0, 0);
                 }}
               >
                 RUNNING
@@ -81,6 +83,7 @@ function Categories() {
                   dispatch(sortByCategory([state.items.data, 'FORMAL']));
                   dispatch(setPage(1));
                   dispatch(setIndex());
+                  window.scrollTo(0, 0);
                 }}
               >
                 Formal
@@ -101,6 +104,7 @@ function Categories() {
                   dispatch(sortByCategory([state.items.data, 'CASUAL']));
                   dispatch(setPage(1));
                   dispatch(setIndex());
+                  window.scrollTo(0, 0);
                 }}
               >
                 Casual

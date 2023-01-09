@@ -87,6 +87,7 @@ function SidebarContent(props) {
                 navigate(`/detail/` + item.id);
                 setSidebar('hidden');
                 setDetailItem(item);
+                window.scrollTo(0, 0);
               }}
             >
               <p className='sidebar-product-name'>{item.name}</p>
