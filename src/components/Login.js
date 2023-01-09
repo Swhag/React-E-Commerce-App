@@ -1,8 +1,7 @@
 import React from 'react';
 
 function LoginModal(props) {
-  let login = props.login;
-  let setLogin = props.setLogin;
+  const { login, setLogin } = props;
 
   const exitPrompt = (e) => {
     if (e.target.classList.contains('exit-zone')) {

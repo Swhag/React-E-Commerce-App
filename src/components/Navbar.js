@@ -6,15 +6,16 @@ import { setItems } from '../redux/itemSlice';
 import { Nav } from 'react-bootstrap';
 
 function TopNavbar(props) {
+  const { setSidebar, setLogin, getCart } = props;
+
   let state = useSelector((state) => state);
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let [navToggle, setNavToggle] = useState('hidden');
   let [pages, setPages] = useState('hide-pages');
-  let setLogin = props.setLogin;
 
   useEffect(() => {
-    props.getCart();
+    getCart();
   }, []);
 
   return (
@@ -140,7 +141,7 @@ function TopNavbar(props) {
                     className='dropdown-item border-0 transition-link'
                     onClick={() => {
                       navigate('/cart');
-                      props.setSidebar('hidden');
+                      setSidebar('hidden');
                     }}
                   >
                     Shopping cart
@@ -164,7 +165,7 @@ function TopNavbar(props) {
                   className='nav-link top-nav-item'
                   onClick={() => {
                     navigate('/cart');
-                    props.setSidebar('hidden');
+                    setSidebar('hidden');
                   }}
                 >
                   <i className='fas fa-dolly-flatbed me-1 cart-icon'></i>

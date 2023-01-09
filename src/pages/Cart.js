@@ -230,8 +230,8 @@ function CartNav() {
   );
 }
 function CartTotal(props) {
-  let subtotal = props.subtotal;
-  let tax = props.tax;
+  const { subtotal, tax } = props;
+
   let shipping = 10;
   let total = parseFloat(props.total) + shipping;
 

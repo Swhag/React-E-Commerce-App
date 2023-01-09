@@ -150,8 +150,7 @@ function App() {
 }
 
 function Products(props) {
-  let items = props.items;
-  let setSidebar = props.setSidebar;
+  const { items, setSidebar } = props;
 
   return (
     <section className='pt-5 product-container'>
@@ -180,10 +179,10 @@ function Products(props) {
 }
 
 function ProductCard(props) {
+  const { id, item, setSidebar } = props;
+
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let item = props.item;
-  let setSidebar = props.setSidebar;
 
   return (
     <div className='col-lg-3 col-sm-6'>
@@ -200,7 +199,7 @@ function ProductCard(props) {
               <span
                 className='p-name'
                 onClick={() => {
-                  navigate(`/detail/` + props.id);
+                  navigate(`/detail/` + id);
                 }}
               >
                 {item.name}

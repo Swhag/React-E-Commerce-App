@@ -13,9 +13,10 @@ function Details(props) {
   let [tab, setTab] = useState(0);
   let [moreItems, setMoreItems] = useState([]);
   let [ItemsData, setItemsData] = useState([]);
-  let setSidebar = props.setSidebar;
+
   let item = props.detailItem;
   let setItem = props.setDetailItem;
+  let setSidebar = props.setSidebar;
 
   function getMoreItems(itemsDataCopy) {
     let currentItem = itemsDataCopy.find((item) => item.id === parseInt(id));
@@ -112,10 +113,10 @@ function Details(props) {
 }
 
 function MainDetails(props) {
+  const { item, setSidebar } = props;
+
   let dispatch = useDispatch();
   let [quantity, setQuantity] = useState(1);
-  let item = props.item;
-  let setSidebar = props.setSidebar;
 
   function decreaseQuantity() {
     if (quantity > 1) {
@@ -309,17 +310,13 @@ function TabContent({ tab, shoes }) {
 }
 
 function MoreProducts(props) {
-  let moreItems = props.item;
-  let setItem = props.setItem;
-  let ItemsData = props.ItemsData;
-  let getMoreItems = props.getMoreItems;
-  let setSidebar = props.setSidebar;
+  const { setItem, ItemsData, getMoreItems, setSidebar } = props;
 
   return (
     <div className='more-products-container'>
       <h2 className='h5 text-uppercase mb-4'>Related products</h2>
       <div className='row'>
-        {moreItems.map((item, i) => {
+        {props.item.map((item, i) => {
           return (
             <ProductCard
               key={i}
@@ -337,13 +334,10 @@ function MoreProducts(props) {
 }
 
 function ProductCard(props) {
+  const { item, setItem, ItemsData, getMoreItems, setSidebar } = props;
+
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let item = props.item;
-  let setItem = props.setItem;
-  let ItemsData = props.ItemsData;
-  let getMoreItems = props.getMoreItems;
-  let setSidebar = props.setSidebar;
 
   return (
     <div className='col-lg-3 col-sm-6'>

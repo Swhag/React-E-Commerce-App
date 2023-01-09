@@ -166,7 +166,6 @@ function Products(props) {
   let items = props.items;
   let index = state.page.index;
   let itemsPerPage = state.page.itemsPerPage;
-  let setSortOption = props.setSortOption;
   let setSidebar = props.setSidebar;
 
   return (

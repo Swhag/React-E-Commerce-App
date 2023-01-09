@@ -4,9 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getSubtotal } from '../redux/cartSlice';
 
 function Sidebar(props) {
-  let sidebar = props.sidebar;
-  let setSidebar = props.setSidebar;
-  let setDetailItem = props.setDetailItem;
+  const { sidebar, setSidebar, setDetailItem } = props;
 
   const closeSidebar = (e) => {
     if (e.target.classList.contains('sidebar-bg')) {
@@ -42,12 +40,12 @@ function Sidebar(props) {
 }
 
 function SidebarContent(props) {
+  const { setSidebar, setDetailItem } = props;
+
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
   let navigate = useNavigate();
-  let setSidebar = props.setSidebar;
   let cartItems = state.cart.items;
-  let setDetailItem = props.setDetailItem;
 
   useEffect(() => {
     dispatch(getSubtotal());
