@@ -208,6 +208,7 @@ function ProductCard(props) {
                 className='p-name'
                 onClick={() => {
                   navigate(`/detail/` + props.id);
+                  window.scrollTo(0, 0);
                 }}
               >
                 {item.name}

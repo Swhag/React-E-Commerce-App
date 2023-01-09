@@ -132,6 +132,7 @@ function CartTable() {
                           <span
                             onClick={() => {
                               navigate(`/detail/` + item.id);
+                              window.scrollTo(0, 0);
                             }}
                           >
                             {item.name}

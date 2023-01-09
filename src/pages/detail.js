@@ -357,6 +357,7 @@ function ProductCard(props) {
                   navigate(`/detail/` + item.id);
                   setItem(item);
                   getMoreItems(ItemsData);
+                  window.scrollTo(0, 0);
                 }}
               >
                 {item.name}
