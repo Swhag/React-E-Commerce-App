@@ -216,13 +216,25 @@ function CartNav() {
     <div className='bg-light px-4 py-3'>
       <div className='row align-items-center text-center'>
         <div className='col-md-6 mb-3 mb-md-0 text-md-start'>
-          <Link to='/Shop' className='btn btn-link p-0 text-dark btn-sm'>
+          <Link
+            to='/Shop'
+            className='btn btn-link p-0 text-dark btn-sm'
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
             <i className='fas fa-long-arrow-alt-left me-2'></i>
             Continue shopping
           </Link>
         </div>
         <div className='col-md-6 text-md-end'>
-          <Link to='/checkout/' className='btn btn-outline-dark btn-sm'>
+          <Link
+            to='/checkout/'
+            className='btn btn-outline-dark btn-sm'
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
             Proceed to checkout
             <i className='fas fa-long-arrow-alt-right ms-2'></i>
           </Link>

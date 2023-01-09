@@ -138,12 +138,24 @@ function CheckoutHeader() {
             <nav>
               <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
                 <li className='breadcrumb-item'>
-                  <Link to='/' className='text-dark'>
+                  <Link
+                    to='/'
+                    className='text-dark'
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
                     Home
                   </Link>
                 </li>
                 <li className='breadcrumb-item'>
-                  <Link to='/cart' className='text-dark'>
+                  <Link
+                    to='/cart'
+                    className='text-dark'
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
                     Cart
                   </Link>
                 </li>
@@ -334,7 +346,13 @@ function CheckoutNav() {
     <div className='bg-light px-4 py-3'>
       <div className='row align-items-center text-center'>
         <div className='col-md-6 mb-3 mb-md-0 text-md-start'>
-          <Link to='/Cart' className='btn btn-link p-0 text-dark btn-sm'>
+          <Link
+            to='/Cart'
+            className='btn btn-link p-0 text-dark btn-sm'
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
             <i className='fas fa-long-arrow-alt-left me-2'></i>
             Return to cart
           </Link>
