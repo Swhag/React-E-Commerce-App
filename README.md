@@ -27,6 +27,7 @@ A simple E-Commerce ReactJS Web Application.
 - [React Router](https://reactrouter.com/)
 - [React Router DOM](https://reactrouter.com/)
 - [Redux](https://redux.js.org/)
+- [Axios](https://axios-http.com/docs/intro)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 

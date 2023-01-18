@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { banner } from '../redux/data';
+import { banner } from '../data/data';
 
 function Banner() {
   let [fadeIn, setFadeIn] = useState('');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import { slideImages } from '../redux/data';
+import { slideImages } from '../data/data';
 
 function HeroSlider() {
   const [index, setIndex] = useState(0);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { categoryImage } from '../redux/data';
+import { categoryImage } from '../data/data';
 import { setPage, setIndex } from '../redux/pageSlice';
 import { sortByCategory, sortByLimited } from '../redux/itemSlice';
 

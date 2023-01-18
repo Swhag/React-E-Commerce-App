@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { trendingOne, trendingTwo } from './redux/data';
+import { trendingOne, trendingTwo } from './data/data';
 import { setCart, addItem } from './redux/cartSlice';
 import { setItems } from './redux/itemSlice';
 import { updateCartCount } from './redux/cartSlice';
