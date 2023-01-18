@@ -33,7 +33,9 @@ function App() {
 
   useEffect(() => {
     const fetchShoes = async () => {
-      const res = await axios.get('https://Swhag.github.io/shoesData1.json');
+      const res = await axios.get(
+        'https://raw.githubusercontent.com/Swhag/React-E-Commerce-App/main/src/data/shoesData1.json'
+      );
       let itemsDataCopy = [...res.data];
 
       dispatch(setItems(itemsDataCopy));
