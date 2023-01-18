@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "./static/css/main.36e609a9.css",
+    "main.js": "./static/js/main.3d49c9fd.js",
+    "static/media/slide4.jpg": "./static/media/slide4.d460de7efd9d20193333.jpg",
+    "static/media/slide2.jpg": "./static/media/slide2.f906de138c0808b1962e.jpg",
+    "static/media/slide3.jpg": "./static/media/slide3.ea0174f49c02159948cf.jpg",
+    "static/media/shoes5.PNG": "./static/media/shoes5.e9a2a73405ea82a68649.PNG",
+    "static/media/shoes8.PNG": "./static/media/shoes8.22cd0073b8b9ece8d620.PNG",
+    "static/media/shoes7.PNG": "./static/media/shoes7.b1dab85554a95a50f926.PNG",
+    "static/media/shoes9.PNG": "./static/media/shoes9.5b6377650e9c9020965f.PNG",
+    "static/media/slide1.jpg": "./static/media/slide1.b8b3373c6a2ac91f0432.jpg",
+    "static/media/shoes4.PNG": "./static/media/shoes4.c612c927fbf80b6cb7f4.PNG",
+    "static/media/shoes-model1.jpg": "./static/media/shoes-model1.6d0294852381444acf8a.jpg",
+    "static/media/shoes-model2.jpg": "./static/media/shoes-model2.778b03474976d19934e6.jpg",
+    "static/media/shoes-model5.jpg": "./static/media/shoes-model5.28d1c339d3d06c87e8b3.jpg",
+    "static/media/shoes6.PNG": "./static/media/shoes6.56ca361c26ed5480c4f6.PNG",
+    "static/media/shoes-model.jpg": "./static/media/shoes-model.008bb981e4b702ab18b0.jpg",
+    "static/media/shoes-model4.jpg": "./static/media/shoes-model4.3598d7929f752c47a071.jpg",
+    "static/media/banner.jpg": "./static/media/banner.601abd1acf72914fa184.jpg",
+    "static/media/shoes-model3.jpg": "./static/media/shoes-model3.c9a686c3dd3e903ba3b6.jpg",
+    "static/media/shoes2.jpg": "./static/media/shoes2.acf4372152017d8dfd45.jpg",
+    "static/media/shoes3.jpg": "./static/media/shoes3.df497c7b8c04674d5218.jpg",
+    "static/media/shoes1.jpg": "./static/media/shoes1.e7b6da8d465ea481d3e0.jpg",
+    "static/media/casual.jpg": "./static/media/casual.e2494a048d571f52c5cc.jpg",
+    "static/media/sports.jpg": "./static/media/sports.1c30bd724455afc333f9.jpg",
+    "index.html": "./index.html",
+    "main.36e609a9.css.map": "./static/css/main.36e609a9.css.map",
+    "main.3d49c9fd.js.map": "./static/js/main.3d49c9fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.36e609a9.css",
+    "static/js/main.3d49c9fd.js"
+  ]
+}
