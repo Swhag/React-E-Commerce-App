@@ -50,9 +50,9 @@ function App() {
   const getCart = () => {
     let cartState = state.cart.items;
 
-    if (localStorage.getItem('ecomCart')) {
-      dispatch(setCart(JSON.parse(localStorage.getItem('ecomCart'))));
-    } else localStorage.setItem('ecomCart', JSON.stringify(cartState));
+    if (localStorage.getItem('ecommCart')) {
+      dispatch(setCart(JSON.parse(localStorage.getItem('ecommCart'))));
+    } else localStorage.setItem('ecommCart', JSON.stringify(cartState));
   };
 
   return (
