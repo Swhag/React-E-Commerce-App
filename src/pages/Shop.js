@@ -523,22 +523,39 @@ function MenuRadio() {
 }
 
 function PageButtons(props) {
-  // Calculates # of page by dividing the total # of items by # of items to show
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
+  let [pagination, setPagination] = useState(6);
+
+  // Calculates # of page by dividing the total # of items by # of items to show
   let itemsPerPage = state.page.itemsPerPage;
-  let pageCount = Math.ceil(props.items.length / itemsPerPage);
+  let totalPageCount = Math.ceil(props.items.length / itemsPerPage);
+
+  if (totalPageCount > 6) {
+    // console.log(pageCount);
+  }
+
+  console.log(pagination);
 
   return (
     <div className='button-container'>
       <ul className='pagination justify-content-center justify-content-lg-end'>
         <li className='page-item mx-1'>
-          <div className='page-link'>«</div>
+          <div
+            className='page-link'
+            onClick={() => {
+              setPagination((prevPagination) => prevPagination - 6);
+            }}
+          >
+            «
+          </div>
         </li>
 
         {/* Creates an array consisting of undefined items for iteration */}
-        {[...Array(pageCount)].map((item, i) => {
-          return (
+        {[...Array(totalPageCount)].map((item, i) => {
+          return i > pagination ? (
+            console.log('greater than 6')
+          ) : (
             <li className='page-item mx-1' key={i}>
               <div
                 className='page-link'
@@ -553,7 +570,14 @@ function PageButtons(props) {
           );
         })}
         <li className='page-item ms-1'>
-          <div className='page-link'>»</div>
+          <div
+            className='page-link'
+            onClick={() => {
+              setPagination((prevPagination) => prevPagination + 6);
+            }}
+          >
+            »
+          </div>
         </li>
       </ul>
     </div>
