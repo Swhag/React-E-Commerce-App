@@ -572,11 +572,17 @@ function PageButtons(props) {
   }
 
   useEffect(() => {
+    highlightPageButton(state.page.page);
+  });
+
+  useEffect(() => {
     resetPagination();
   }, [totalPageCount]);
 
   useEffect(() => {
     highlightPageButton(state.page.page);
+
+    return;
   }, [state.page.page]);
 
   return (
@@ -600,7 +606,7 @@ function PageButtons(props) {
             <li className='page-item mx-1' key={i}>
               <div
                 className='page-link page-buttons'
-                onClick={(e) => {
+                onClick={() => {
                   dispatch(setPage(i + 1));
                   dispatch(setIndex());
                 }}
