@@ -34,7 +34,7 @@ function ShopPage(props) {
   return (
     <div className={`container start ${fadeIn} main-container`}>
       <ShopHeader></ShopHeader>
-      <section className='py-5'>
+      <section className='py-5 shop-content-container'>
         <div className='row'>
           <ShopMenu setSortOption={setSortOption}></ShopMenu>
           <div className='col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0'>
@@ -131,7 +131,8 @@ function ProductHeader(props) {
   }
 
   return (
-    <div className='row mb-3 align-items-center'>
+    // <div className='row mb-3 align-items-center'>
+    <div className='product-header'>
       <div className='col-lg-6 mb-2 mb-lg-0'>
         <p className='text-sm text-muted mb-0'>
           {`Showing ${startIndex}-${endIndex} of
@@ -252,7 +253,7 @@ function ShopMenu(props) {
   let setSortOption = props.setSortOption;
 
   return (
-    <div className='col-lg-3 order-2 order-lg-1'>
+    <div className='col-lg-3 order-2 order-lg-1 shop-menu'>
       <h5 className='text-uppercase mb-4'>Categories</h5>
       <div className='py-2 px-4 bg-light mb-3'>
         <strong className='small text-uppercase fw-bold'>

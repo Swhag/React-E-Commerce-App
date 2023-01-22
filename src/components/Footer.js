@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className='bg-dark text-white footer'>
       <div className='container py-4'>
-        <div className='row py-5'>
+        <div className='row py-5 footer-row'>
           <div className='col-md-4 mb-3 mb-md-0'>
             <h6 className='text-uppercase mb-3'>Customer services</h6>
             <ul className='list-unstyled mb-0'>
