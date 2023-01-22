@@ -5,12 +5,12 @@ let page = createSlice({
   initialState: { page: 1, index: 0, itemsPerPage: 9 },
 
   reducers: {
-    addPage(state, a) {
-      state.page++;
+    prevPage(state, a) {
+      state.page -= a.payload;
     },
 
-    minusPage(state, a) {
-      state.page--;
+    nextPage(state, a) {
+      state.page += a.payload;
     },
 
     setPage(state, a) {

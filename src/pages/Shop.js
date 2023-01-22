@@ -527,6 +527,7 @@ function PageButtons(props) {
   let dispatch = useDispatch();
 
   // Calculates # of page by dividing the total # of items by # of items to show
+  // let currentPage = state.page.page;
   let itemsPerPage = state.page.itemsPerPage;
   let totalPageCount = Math.ceil(props.items.length / itemsPerPage);
 
@@ -538,13 +539,18 @@ function PageButtons(props) {
     if (pageStart - 6 > 0) {
       setPageStart((prevPageStart) => prevPageStart - 6);
       setPageEnd((prevPageEnd) => prevPageEnd - 6);
+      dispatch(setPage(pageEnd - 6));
+      dispatch(setIndex());
     } else return;
   }
 
   function handleNext() {
+    // only runs if the pageEnd is less than totalPageCount value
     if (pageEnd < totalPageCount) {
       setPageStart((prevPageStart) => prevPageStart + 6);
       setPageEnd((prevPageEnd) => prevPageEnd + 6);
+      dispatch(setPage(pageStart + 6));
+      dispatch(setIndex());
     } else return;
   }
 
@@ -553,9 +559,25 @@ function PageButtons(props) {
     setPageEnd(6);
   }
 
+  function highlightPageButton(currentPage) {
+    const PageButtons = document.querySelectorAll('.page-buttons');
+
+    for (let i = 0; i < PageButtons.length; i++) {
+      PageButtons[i].classList.remove('selected-button');
+
+      if (i + 1 === currentPage) {
+        PageButtons[i].classList.add('selected-button');
+      }
+    }
+  }
+
   useEffect(() => {
     resetPagination();
   }, [totalPageCount]);
+
+  useEffect(() => {
+    highlightPageButton(state.page.page);
+  }, [state.page.page]);
 
   return (
     <div className='button-container'>
@@ -577,8 +599,8 @@ function PageButtons(props) {
           return i + 1 >= pageStart && i + 1 <= pageEnd ? (
             <li className='page-item mx-1' key={i}>
               <div
-                className='page-link'
-                onClick={() => {
+                className='page-link page-buttons'
+                onClick={(e) => {
                   dispatch(setPage(i + 1));
                   dispatch(setIndex());
                 }}
@@ -587,7 +609,17 @@ function PageButtons(props) {
               </div>
             </li>
           ) : (
-            false
+            <li className='page-item mx-1 hide' key={i}>
+              <div
+                className='page-link page-buttons'
+                onClick={(e) => {
+                  dispatch(setPage(i + 1));
+                  dispatch(setIndex());
+                }}
+              >
+                H{i + 1}
+              </div>
+            </li>
           );
         })}
         <li className='page-item ms-1'>
