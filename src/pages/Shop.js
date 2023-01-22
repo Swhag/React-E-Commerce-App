@@ -32,7 +32,7 @@ function ShopPage(props) {
   }, []);
 
   return (
-    <div className={`container start ${fadeIn} main-container`}>
+    <div className={`container start ${fadeIn} shop-container`}>
       <ShopHeader></ShopHeader>
       <section className='py-5 shop-content-container'>
         <div className='row'>
