@@ -195,7 +195,7 @@ function ProductCard(props) {
 
   return (
     <div className='col-lg-4 col-sm-6'>
-      <div className='el-wrapper shop-el-wrapper '>
+      <div className='el-wrapper shop-el-wrapper'>
         <div className='box-up'>
           <img
             className='img product-image'

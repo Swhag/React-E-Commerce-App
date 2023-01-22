@@ -658,7 +658,7 @@
 
 @media (max-width: 580px) {
   .shop-el-wrapper {
-    width: 370px;
+    width: 360px;
   }
 }
 
@@ -670,7 +670,7 @@
 
 @media (max-width: 360px) {
   .shop-el-wrapper {
-    width: 270px;
+    width: 280px;
   }
 }
 
@@ -695,8 +695,6 @@
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  /* transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -705,16 +703,8 @@
   }
 }
 
-.page-link:hover {
+.page-buttons:hover {
   z-index: 2;
-  color: #fff;
-  background-color: #000;
-  outline: 0;
-  box-shadow: none;
-}
-
-.page-link:active {
-  z-index: 3;
   color: #fff;
   background-color: #000;
   outline: 0;
