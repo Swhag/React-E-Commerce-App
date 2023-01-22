@@ -268,6 +268,7 @@ function ShopMenu(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Women's Casual
@@ -280,6 +281,7 @@ function ShopMenu(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Men's Casual
@@ -298,6 +300,7 @@ function ShopMenu(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Women's Athletic
@@ -316,6 +319,7 @@ function ShopMenu(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Men's Athletic
@@ -328,6 +332,7 @@ function ShopMenu(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Kids
@@ -360,6 +365,7 @@ function ShopMenu2(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Nike
@@ -372,6 +378,7 @@ function ShopMenu2(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Adidas
@@ -384,6 +391,7 @@ function ShopMenu2(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Hush Puppies
@@ -396,6 +404,7 @@ function ShopMenu2(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Vans
@@ -408,6 +417,7 @@ function ShopMenu2(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Air Jordan
@@ -436,6 +446,7 @@ function ShopMenu3(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Women's Formal
@@ -448,6 +459,7 @@ function ShopMenu3(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Men's Formal
@@ -460,6 +472,7 @@ function ShopMenu3(props) {
               dispatch(setPage(1));
               dispatch(setIndex());
               setSortOption('Sort By');
+              window.scrollTo(0, 220);
             }}
           >
             Limited Edition
@@ -610,6 +623,7 @@ function PageButtons(props) {
                 onClick={() => {
                   dispatch(setPage(i + 1));
                   dispatch(setIndex());
+                  window.scrollTo(0, 220);
                 }}
               >
                 {i + 1}
