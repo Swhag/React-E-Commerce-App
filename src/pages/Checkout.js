@@ -45,9 +45,7 @@ function Checkout() {
 function CheckoutDetails() {
   return (
     <div className='col-lg-8'>
-      <h2 className='h5 text-uppercase mb-4 checkout-title'>
-        Shipping details
-      </h2>
+      <h2 className='h5 text-uppercase mb-4'>Shipping details</h2>
       <form action='#!'>
         <div className='row gy-3'>
           <div className='col-lg-6'>
@@ -153,7 +151,7 @@ function CheckoutDetails() {
               className='btn btn-link text-dark p-0 shadow-0'
               type='button'
             >
-              <div className='form-check'>
+              <div className='form-check checkout-form-check'>
                 <input
                   className='form-check-input'
                   id='alternateAddressCheckbox'
@@ -177,7 +175,7 @@ function CheckoutDetails() {
 function CheckoutPayment() {
   return (
     <div>
-      <h2 className='h5 text-uppercase mb-4 checkout-title'>Payment details</h2>
+      <h2 className='h5 text-uppercase mb-4'>Payment details</h2>
 
       <div className='row'>
         <div className='col-lg-12 '>

@@ -1208,12 +1208,6 @@
   color: #0dcaf0;
 }
 
-@media (max-width: 768px) {
-  .shopping-cart-title {
-    text-align: center;
-  }
-}
-
 /* ----------------------------------------- */
 /* Checkout styling */
 /* ----------------------------------------- */
@@ -1271,8 +1265,8 @@
 }
 
 @media (max-width: 768px) {
-  .checkout-title {
-    text-align: center;
+  .checkout-form-check {
+    padding: 0px 20px;
   }
 }
 
