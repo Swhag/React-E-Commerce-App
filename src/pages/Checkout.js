@@ -42,137 +42,12 @@ function Checkout() {
   );
 }
 
-function CheckoutPayment() {
-  return (
-    <div>
-      <h2 className='h5 text-uppercase mb-4'>Payment details</h2>
-
-      <div className='row'>
-        <div className='col-lg-12 '>
-          <label className='form-label text-sm text-uppercase'>
-            CARD NUMBER
-          </label>
-          <div className='input-group'>
-            <input
-              type='tel'
-              className='form-control form-control-lg'
-              placeholder='Valid Card Number'
-            />
-            <i className='fa fa-credit-card credit-card-icon'></i>
-          </div>
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col-lg-7 payment-line-block'>
-          <label className='form-label text-sm text-uppercase'>
-            <span className='hidden-xs'>EXPIRATION</span>
-            <span className='visible-xs-inline'>EXP</span> DATE
-          </label>
-          <input
-            type='tel'
-            className='form-control form-control-lg'
-            placeholder='MM / YY'
-          />
-        </div>
-        <div className='col-lg-5 pull-right payment-line-block'>
-          <label className='form-label text-sm text-uppercase'>CV CODE</label>
-          <input
-            type='tel'
-            className='form-control form-control-lg'
-            placeholder='CVC'
-          />
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col-lg-12 payment-line-block'>
-          <label className='form-label text-sm text-uppercase'>
-            CARD OWNER
-          </label>
-          <input
-            className='form-control form-control-lg'
-            type='text'
-            placeholder='Card Owner Name'
-          />
-        </div>
-      </div>
-      <div className='row'>
-        <div className='inline-image'>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Mastercard-Curved.png'
-            alt='#!'
-          ></img>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Discover-Curved.png'
-            alt='#!'
-          ></img>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Paypal-Curved.png'
-            alt='#!'
-          ></img>
-          <img
-            className='img-responsive images'
-            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/American-Express-Curved.png'
-            alt='#!'
-          ></img>
-        </div>
-      </div>
-      <ul className='border-bottom my-2 checkout-divider'></ul>
-    </div>
-  );
-}
-
-function CheckoutHeader() {
-  return (
-    <section className='py-5 bg-light'>
-      <div className='container'>
-        <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
-          <div className='col-lg-6'>
-            <h1 className='h2 text-uppercase mb-0'>
-              <span>Checkout</span>
-            </h1>
-          </div>
-          <div className='col-lg-6 text-lg-end'>
-            <nav>
-              <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
-                <li className='breadcrumb-item'>
-                  <Link
-                    to='/'
-                    className='text-dark'
-                    onClick={() => {
-                      window.scrollTo(0, 0);
-                    }}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className='breadcrumb-item'>
-                  <Link
-                    to='/cart'
-                    className='text-dark'
-                    onClick={() => {
-                      window.scrollTo(0, 0);
-                    }}
-                  >
-                    Cart
-                  </Link>
-                </li>
-                <li className='breadcrumb-item active'>Checkout</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function CheckoutDetails() {
   return (
     <div className='col-lg-8'>
-      <h2 className='h5 text-uppercase mb-4'>Shipping details</h2>
+      <h2 className='h5 text-uppercase mb-4 checkout-title'>
+        Shipping details
+      </h2>
       <form action='#!'>
         <div className='row gy-3'>
           <div className='col-lg-6'>
@@ -296,6 +171,133 @@ function CheckoutDetails() {
         </div>
       </form>
     </div>
+  );
+}
+
+function CheckoutPayment() {
+  return (
+    <div>
+      <h2 className='h5 text-uppercase mb-4 checkout-title'>Payment details</h2>
+
+      <div className='row'>
+        <div className='col-lg-12 '>
+          <label className='form-label text-sm text-uppercase'>
+            CARD NUMBER
+          </label>
+          <div className='input-group'>
+            <input
+              type='tel'
+              className='form-control form-control-lg'
+              placeholder='Valid Card Number'
+            />
+            <i className='fa fa-credit-card credit-card-icon'></i>
+          </div>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-lg-7 payment-line-block'>
+          <label className='form-label text-sm text-uppercase'>
+            <span className='hidden-xs'>EXPIRATION</span>
+            <span className='visible-xs-inline'>EXP</span> DATE
+          </label>
+          <input
+            type='tel'
+            className='form-control form-control-lg'
+            placeholder='MM / YY'
+          />
+        </div>
+        <div className='col-lg-5 pull-right payment-line-block'>
+          <label className='form-label text-sm text-uppercase'>CV CODE</label>
+          <input
+            type='tel'
+            className='form-control form-control-lg'
+            placeholder='CVC'
+          />
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-lg-12 payment-line-block'>
+          <label className='form-label text-sm text-uppercase'>
+            CARD OWNER
+          </label>
+          <input
+            className='form-control form-control-lg'
+            type='text'
+            placeholder='Card Owner Name'
+          />
+        </div>
+      </div>
+      <div className='row'>
+        <div className='inline-image'>
+          <img
+            className='img-responsive images'
+            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Mastercard-Curved.png'
+            alt='#!'
+          ></img>
+          <img
+            className='img-responsive images'
+            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Discover-Curved.png'
+            alt='#!'
+          ></img>
+          <img
+            className='img-responsive images'
+            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/Paypal-Curved.png'
+            alt='#!'
+          ></img>
+          <img
+            className='img-responsive images'
+            src='https://cdn0.iconfinder.com/data/icons/credit-card-debit-card-payment-PNG/128/American-Express-Curved.png'
+            alt='#!'
+          ></img>
+        </div>
+      </div>
+      <ul className='border-bottom my-2 checkout-divider'></ul>
+    </div>
+  );
+}
+
+function CheckoutHeader() {
+  return (
+    <section className='py-5 bg-light'>
+      <div className='container'>
+        <div className='row px-4 px-lg-5 py-lg-4 align-items-center'>
+          <div className='col-lg-6'>
+            <h1 className='h2 text-uppercase mb-0'>
+              <span>Checkout</span>
+            </h1>
+          </div>
+          <div className='col-lg-6 text-lg-end'>
+            <nav>
+              <ol className='breadcrumb justify-content-lg-end mb-0 px-0 bg-light'>
+                <li className='breadcrumb-item'>
+                  <Link
+                    to='/'
+                    className='text-dark'
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className='breadcrumb-item'>
+                  <Link
+                    to='/cart'
+                    className='text-dark'
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Cart
+                  </Link>
+                </li>
+                <li className='breadcrumb-item active'>Checkout</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

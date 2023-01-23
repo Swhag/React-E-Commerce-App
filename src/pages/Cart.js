@@ -39,7 +39,9 @@ function Cart() {
     <div className={`container cart-container start ${fadeIn}`}>
       <CartHeader></CartHeader>
       <section className='py-5'>
-        <h2 className='h5 text-uppercase mb-4'>Shopping cart</h2>
+        <h2 className='h5 text-uppercase mb-4 shopping-cart-title'>
+          Shopping cart
+        </h2>
         <div className='row'>
           <div className='col-lg-8 mb-4 mb-lg-0'>
             <CartTable></CartTable>
