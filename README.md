@@ -4,7 +4,8 @@
 
 ### Description
 
-A simple E-Commerce ReactJS Web Application.
+Simple E-Commerce Web Application built with ReactJS, Redux, Axios,<br>
+React Router and Bootstrap to strap everything together.
 
 ### Features
 
