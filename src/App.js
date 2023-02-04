@@ -11,7 +11,7 @@ import './styles/App.css';
 
 import TopNavbar from './components/Navbar';
 import LoginModal from './components/Login';
-import HeroSlider from './components/HeroSlider';
+import Slider from './components/Slider';
 import Banner from './components/Banner';
 import Categories from './components/Categories';
 import Services from './components/Services';
@@ -69,7 +69,8 @@ function App() {
             path='/'
             element={
               <>
-                <HeroSlider></HeroSlider>
+                <Banner></Banner>
+
                 <Categories></Categories>
                 <Products items={trending} setSidebar={setSidebar}></Products>
                 <div className='button-container'>
@@ -97,7 +98,7 @@ function App() {
                     </li>
                   </ul>
                 </div>
-                <Banner></Banner>
+                {/* <Slider></Slider> */}
                 <Services></Services>
               </>
             }

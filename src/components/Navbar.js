@@ -97,7 +97,7 @@ function TopNavbar(props) {
 
               {/* ------------------------------------------------------------- */}
 
-              <li className='nav-item dropdown'>
+              {/* <li className='nav-item dropdown'>
                 <div
                   className='nav-link top-nav-item dropdown-toggle navbar-dropdown-toggle'
                   onMouseEnter={() => {
@@ -155,7 +155,7 @@ function TopNavbar(props) {
                     Checkout
                   </div>
                 </div>
-              </li>
+              </li> */}
 
               {/* ------------------------------------------------------------- */}
             </ul>

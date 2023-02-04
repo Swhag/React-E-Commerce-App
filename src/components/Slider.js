@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { slideImages } from '../data/data';
 
-function HeroSlider() {
+function Slider() {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -54,4 +54,4 @@ function HeroSlider() {
   );
 }
 
-export default HeroSlider;
+export default Slider;

@@ -164,18 +164,6 @@
   background-color: #004c8c;
 }
 
-/* .btn-google {
-  border: 2px solid #db3236;
-  background-color: white;
-  color: #db3236;
-} */
-
-/* .btn-facebook {
-  border: 2px solid #3b5998;
-  background-color: white;
-  color: #3b5998;
-} */
-
 /* ----------------------------------------- */
 /* Hero-Slider styling */
 /* ----------------------------------------- */
@@ -188,10 +176,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-.slide-images {
-  filter: brightness(80%) saturate(110%);
 }
 
 @media (max-width: 768px) {
@@ -236,7 +220,17 @@
   height: 304px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .img-full {
+    height: 430px;
+  }
+
+  .img-stacked {
+    height: 204px;
+  }
+}
+
+@media (max-width: 600px) {
   .img-full,
   .img-stacked {
     width: 100%;
@@ -549,6 +543,7 @@
   border: 5px solid rgb(248, 249, 250);
   background-color: #fff;
   width: 310px;
+
   padding: 15px;
   margin: 0 auto;
 }
@@ -561,11 +556,11 @@
 
 @media (max-width: 1200px) {
   .home-el-wrapper {
-    width: 250px;
+    width: 220px;
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 992px) {
   .home-el-wrapper {
     width: 330px;
   }
@@ -579,7 +574,7 @@
 
 @media (max-width: 580px) {
   .home-el-wrapper {
-    width: 370px;
+    width: 100%;
   }
 }
 
@@ -627,7 +622,7 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .shop-container * {
     padding: 0px;
     margin: 0px;
@@ -640,25 +635,12 @@
     margin-bottom: 20px;
   }
 
-  .product-header {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .shop-menu * {
-    text-align: center;
-  }
-
   .form-check {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 135px;
-    gap: 10px;
+    padding-left: 20px;
   }
 
   .shop-content-container {
+    margin-top: 20px;
     padding: 0 !important;
   }
 }
@@ -687,7 +669,7 @@
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 992px) {
   .shop-el-wrapper {
     width: 330px;
   }
@@ -713,7 +695,7 @@
 
 @media (max-width: 360px) {
   .shop-el-wrapper {
-    width: 280px;
+    width: 100%;
   }
 }
 
@@ -1140,7 +1122,7 @@
   }
 }
 
-@media (max-width: 968px) {
+@media (max-width: 992px) {
   .detail-el-wrapper {
     width: 300px;
   }
