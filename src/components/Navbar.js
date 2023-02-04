@@ -175,12 +175,7 @@ function TopNavbar(props) {
                   </small>
                 </Nav.Link>
               </li>
-              <li className='nav-item'>
-                <Nav.Link className='nav-link top-nav-item'>
-                  <i className='far fa-heart me-1'></i>
-                  <small className='text-gray fw-normal'>(0)</small>
-                </Nav.Link>
-              </li>
+
               <li className='nav-item'>
                 <Nav.Link
                   className='nav-link top-nav-item'
