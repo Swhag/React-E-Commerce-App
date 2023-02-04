@@ -12,15 +12,17 @@ function HeroSlider() {
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
-        <img
-          className='d-block w-100 slide-images'
-          alt='First slide'
-          src={slideImages[0]}
-        />
-        <Carousel.Caption>
-          <h3>Step Into The Cool</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
+        <div className='overlay'>
+          <img
+            className='d-block w-100 slide-images'
+            alt='First slide'
+            src={slideImages[0]}
+          />
+          <Carousel.Caption>
+            <h3>Step Into The Cool</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </div>
       </Carousel.Item>
       <Carousel.Item>
         <img
