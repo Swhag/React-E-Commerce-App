@@ -46,7 +46,7 @@ let cart = createSlice({
       let item = state.items.find((item) => item.id === a.payload.id);
       item.count++;
 
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      localStorage.setItem('ecommCart', JSON.stringify(state.items));
     },
 
     minusCount(state, a) {
@@ -57,7 +57,7 @@ let cart = createSlice({
         state.items.splice(index, 1);
       } else item.count--;
 
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      localStorage.setItem('ecommCart', JSON.stringify(state.items));
     },
 
     addItem(state, a) {
@@ -71,7 +71,7 @@ let cart = createSlice({
         state.items.push(newItem);
       }
 
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      localStorage.setItem('ecommCart', JSON.stringify(state.items));
     },
 
     addItemWithQuantity(state, a) {
@@ -87,7 +87,7 @@ let cart = createSlice({
         state.items.push(newItem);
       }
 
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      localStorage.setItem('ecommCart', JSON.stringify(state.items));
     },
 
     removeItem(state, a) {
@@ -97,7 +97,7 @@ let cart = createSlice({
         }
       });
 
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      localStorage.setItem('ecommCart', JSON.stringify(state.items));
     },
 
     getSubtotal(state) {
