@@ -6,8 +6,10 @@ Click Here: [Live Demo](https://swhag.github.io/React-E-Commerce-App/) :point_le
 
 ### Description
 
-Simple E-Commerce Web Application built with ReactJS, Redux, Axios,<br>
-React Router and Bootstrap to strap everything together.
+A basic e-commerce web application that retrieves product list from a
+mockup database created by me. Users can add/delete/update products in
+the shopping cart. Built suing React, Redux, Axios, React Router, and
+Bootstrap.
 
 ### Features
 
