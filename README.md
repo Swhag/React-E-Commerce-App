@@ -34,6 +34,4 @@ React Router and Bootstrap to strap everything together.
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 
-<br>
-<br>
 https://user-images.githubusercontent.com/109196962/211132034-5b9e5596-c025-46f1-b35d-2512d71f26b7.mp4
